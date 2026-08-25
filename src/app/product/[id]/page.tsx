@@ -6,9 +6,24 @@ import { AuctionDetailSection, BidActivity } from "@/components/auction/AuctionD
 import { SellerCard } from "@/components/seller/SellerCard";
 import { ProductCard } from "@/components/product/ProductCard";
 import { IconBack, IconHeart, IconShare, IconStar } from "@/components/icons/Icons";
+import type { Metadata } from "next";
 
 export function generateStaticParams() {
   return PRODUCTS.slice(0, 30).map((p) => ({ id: p.id }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const p = getProduct(id);
+  if (!p) return {};
+  const title = `${p.title} — ${formatKGS(p.price)} сом | ITOrgo`;
+  const desc = `${p.title} · ${p.city} · ${p.condition === "new" ? "Новый" : "Б/у"} · рейтинг ${p.rating}`;
+  return {
+    title,
+    description: desc,
+    openGraph: { title, description: desc, type: "website", url: `https://www.itorgo.kg/product/${p.id}` },
+    alternates: { canonical: `https://www.itorgo.kg/product/${p.id}` },
+  };
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
@@ -19,8 +34,31 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   const discount = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
   const related = PRODUCTS.filter((p) => p.categoryId === product.categoryId && p.id !== product.id).slice(0, 4);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    offers: {
+      "@type": "Offer",
+      price: auction ? auction.currentBid : product.price,
+      priceCurrency: "KGS",
+      availability: "https://schema.org/InStock",
+      url: `https://www.itorgo.kg/product/${product.id}`,
+    },
+    aggregateRating: { "@type": "AggregateRating", ratingValue: product.rating, reviewCount: product.reviewsCount },
+    brand: { "@type": "Brand", name: "ITOrgo" },
+  };
+
   return (
     <main className="pb-6">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {/* Breadcrumb */}
+      <nav aria-label="Хлебные крошки" className="px-4 py-2 text-xs text-ink-faint">
+        <Link href="/" className="hover:underline">
+          Главная
+        </Link>{" "}
+        / <Link href={`/search?cat=${product.categoryId}`} className="hover:underline">{product.categoryId}</Link> / {product.title}
+      </nav>
       {/* Top bar */}
       <div className="safe-top sticky top-0 z-30 flex items-center justify-between bg-surface/90 px-2 py-2 backdrop-blur-md">
         <Link href="/" className="flex h-9 w-9 items-center justify-center rounded-full bg-surface shadow-card">

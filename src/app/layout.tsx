@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { BottomNav } from "@/components/navigation/BottomNav";
 import { FloatingSell } from "@/components/sell/FloatingSell";
+import { PWAInstaller } from "@/components/pwa/PWAInstaller";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic", "cyrillic-ext"],
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="h-[72px]" aria-hidden />
         </div>
         <FloatingSell />
+        <PWAInstaller />
         <BottomNav />
       </body>
     </html>
