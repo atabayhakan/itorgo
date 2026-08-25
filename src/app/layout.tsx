@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { BottomNav } from "@/components/navigation/BottomNav";
+import { DesktopNav } from "@/components/navigation/DesktopNav";
 import { FloatingSell } from "@/components/sell/FloatingSell";
 import { PWAInstaller } from "@/components/pwa/PWAInstaller";
 
@@ -39,13 +40,34 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" className={inter.variable}>
       <body className="antialiased">
-        <div className="mx-auto min-h-dvh max-w-xl bg-surface-dim">
-          {children}
-          <div className="h-[72px]" aria-hidden />
+        <DesktopNav />
+        <div className="mx-auto min-h-dvh max-w-xl bg-surface-dim lg:max-w-6xl lg:bg-surface-dim">
+          <div className="lg:flex lg:gap-6 lg:px-6 lg:py-4">
+            <div className="min-w-0 flex-1">{children}</div>
+            {/* Desktop sidebar — filters / seller dashboard teaser (spec #36) */}
+            <aside className="hidden w-[300px] shrink-0 lg:block">
+              <div className="sticky top-[88px] space-y-3">
+                <div className="rounded-2xl bg-surface p-4 shadow-card">
+                  <p className="text-sm font-bold">Фильтры</p>
+                  <p className="mt-1 text-xs text-ink-faint">Категория · цена · город · состояние · рейтинг — sidebar на десктопе</p>
+                </div>
+                <div className="rounded-2xl bg-surface p-4 shadow-card">
+                  <p className="text-sm font-bold">Продавцу</p>
+                  <p className="mt-1 text-xs text-ink-faint">Панель продавца · заказы · аукционы — dashboard</p>
+                  <a href="/sell" className="btn-primary mt-3 w-full !min-h-10">
+                    + Продать
+                  </a>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div className="h-[72px] lg:hidden" aria-hidden />
         </div>
-        <FloatingSell />
+        <div className="lg:hidden">
+          <FloatingSell />
+          <BottomNav />
+        </div>
         <PWAInstaller />
-        <BottomNav />
       </body>
     </html>
   );

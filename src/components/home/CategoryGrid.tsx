@@ -4,7 +4,7 @@ import { CATEGORIES } from "@/lib/data/mock-data";
 export function CategoryGrid() {
   const shown = CATEGORIES.slice(0, 16);
   return (
-    <div className="grid grid-cols-4 gap-2 px-2">
+    <div className="grid grid-cols-4 gap-2 px-2 lg:grid-cols-8">
       {shown.map((c) => (
         <Link
           key={c.id}

@@ -70,7 +70,7 @@ export default function HomePage() {
       {/* SMART FEED — Для вас (spec #20) */}
       <section className="mt-6 space-y-3">
         <SectionHeader title="Для вас" subtitle="Подобрано на основе ваших интересов · Бишкек" href="/search" />
-        <div className="grid grid-cols-2 gap-3 px-4">
+        <div className="grid grid-cols-2 gap-3 px-4 lg:grid-cols-4">
           {feed.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

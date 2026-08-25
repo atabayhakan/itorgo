@@ -57,7 +57,7 @@ export default async function SearchPage({
       </p>
 
       {list.length > 0 ? (
-        <div className="mt-3 grid grid-cols-2 gap-3">
+        <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-4">
           {list.slice(0, 40).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
