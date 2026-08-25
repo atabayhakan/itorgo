@@ -8,6 +8,7 @@ import { PWAInstaller } from "@/components/pwa/PWAInstaller";
 import { CartProvider } from "@/lib/cart/CartContext";
 import { FavoritesProvider } from "@/lib/favorites/FavoritesContext";
 import { FollowsProvider } from "@/lib/follows/FollowsContext";
+import { themeInitScript } from "@/components/theme/ThemeToggle";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic", "cyrillic-ext"],
@@ -41,7 +42,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru" className={inter.variable}>
+    <html lang="ru" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="antialiased">
         <FavoritesProvider>
           <CartProvider>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CountrySwitcher, LocaleSwitcher } from "@/components/i18n/LocaleCountrySwitcher";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export default function ProfilePage() {
   return (
@@ -61,6 +62,10 @@ export default function ProfilePage() {
         <div className="mt-3 flex items-center justify-between">
           <span className="text-sm font-medium">Страна</span>
           <CountrySwitcher />
+        </div>
+        <div className="mt-3 flex items-center justify-between">
+          <span className="text-sm font-medium">Тема</span>
+          <ThemeToggle />
         </div>
       </section>
 
