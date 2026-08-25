@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ITOrgo Design System — tokens
+   Mobile-first · Premium · Trust
+   ============================================================ */
+@theme {
+  /* Brand — deep violet-indigo: modern fintech trust */
+  --color-brand-50: #f0efff;
+  --color-brand-100: #e3e1ff;
+  --color-brand-200: #cbc7ff;
+  --color-brand-300: #aca2ff;
+  --color-brand-400: #8b7bff;
+  --color-brand-500: #6f5cf7;
+  --color-brand-600: #5b46e8;
+  --color-brand-700: #4c38cd;
+  --color-brand-800: #4031a5;
+  --color-brand-900: #372e82;
+  --color-brand-950: #231b4d;
+
+  /* Auction / attention — hot amber-coral */
+  --color-auction-50: #fff7ed;
+  --color-auction-100: #ffedd5;
+  --color-auction-200: #fed7aa;
+  --color-auction-400: #fb923c;
+  --color-auction-500: #f97316;
+  --color-auction-600: #ea580c;
+  --color-auction-700: #c2410c;
+
+  /* Semantic */
+  --color-success: #16a34a;
+  --color-success-bg: #f0fdf4;
+  --color-warning: #d97706;
+  --color-warning-bg: #fffbeb;
+  --color-danger: #dc2626;
+  --color-danger-bg: #fef2f2;
+  --color-info: #0284c7;
+  --color-info-bg: #f0f9ff;
+
+  /* Neutrals */
+  --color-ink: #17171f;
+  --color-ink-soft: #55555f;
+  --color-ink-faint: #8a8a94;
+  --color-line: #ececf1;
+  --color-surface: #ffffff;
+  --color-surface-dim: #f6f6f9;
+  --color-surface-sunken: #efeff4;
+
+  /* Radii */
+  --radius-card: 1rem;
+  --radius-xl2: 1.25rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgb(23 23 31 / 0.05), 0 8px 24px -8px rgb(23 23 31 / 0.10);
+  --shadow-lifted: 0 2px 4px rgb(23 23 31 / 0.06), 0 12px 32px -12px rgb(35 27 77 / 0.22);
+  --shadow-cta: 0 8px 20px -6px rgb(91 70 232 / 0.45);
+
+  /* Typography */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Dark mode (infrastructure ready, default light) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-ink: #f2f2f7;
+    --color-ink-soft: #a9a9b4;
+    --color-ink-faint: #71717c;
+    --color-line: #2a2a33;
+    --color-surface: #141419;
+    --color-surface-dim: #1c1c23;
+    --color-surface-sunken: #101014;
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -8px rgb(0 0 0 / 0.5);
+  }
+}
+[data-theme="dark"] {
+  --color-ink: #f2f2f7;
+  --color-ink-soft: #a9a9b4;
+  --color-ink-faint: #71717c;
+  --color-line: #2a2a33;
+  --color-surface: #141419;
+  --color-surface-dim: #1c1c23;
+  --color-surface-sunken: #101014;
+}
+
+/* ---------- Base ---------- */
+html {
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+}
+body {
+  background: var(--color-surface-dim);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overscroll-behavior-y: none;
+  min-height: 100dvh;
+}
+button { touch-action: manipulation; }
+::selection { background: var(--color-brand-200); }
+
+/* Hide scrollbars on horizontal rails */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* Safe areas for iOS notch / bottom nav */
+.safe-top { padding-top: max(env(safe-area-inset-top), 0px); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* ---------- Component primitives ---------- */
+@utility btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  border-radius: 0.875rem; font-weight: 600; font-size: 0.9375rem;
+  min-height: 3rem; padding-inline: 1.25rem;
+  background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-700));
+  color: #fff; box-shadow: var(--shadow-cta);
+  transition: transform 120ms var(--ease-out-expo), filter 150ms;
+}
+@utility btn-primary {
+  &:active { transform: scale(0.97); filter: brightness(1.08); }
+}
+
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  border-radius: 0.875rem; font-weight: 600; font-size: 0.9375rem;
+  min-height: 3rem; padding-inline: 1.25rem;
+  background: var(--color-brand-50); color: var(--color-brand-700);
+  transition: transform 120ms var(--ease-out-expo);
+}
+.btn-secondary:active { transform: scale(0.97); }
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  border-radius: 9999px; font-size: 0.75rem; font-weight: 600;
+  padding: 0.25rem 0.625rem; white-space: nowrap;
+}
+
+/* ---------- Animations ---------- */
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.8); }
+}
+.live-dot { animation: pulse-live 1.4s ease-in-out infinite; }
+
+@keyframes bid-flash {
+  0% { background-color: rgb(249 115 22 / 0.18); }
+  100% { background-color: transparent; }
+}
+.bid-flash { animation: bid-flash 900ms ease-out; }
+
+@keyframes heart-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.45); }
+  100% { transform: scale(1); }
+}
+.heart-pop { animation: heart-pop 350ms var(--ease-out-expo); }
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--color-surface-sunken) 25%,
+    color-mix(in srgb, var(--color-surface) 60%, var(--color-surface-sunken)) 45%,
+    var(--color-surface-sunken) 65%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 0.75rem;
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise-in { animation: rise-in 420ms var(--ease-out-expo) both; }
+
+@keyframes slide-up-sheet {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.sheet-enter { animation: slide-up-sheet 320ms var(--ease-out-expo); }
+
+@keyframes confetti-win {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(90px) rotate(240deg); opacity: 0; }
+}

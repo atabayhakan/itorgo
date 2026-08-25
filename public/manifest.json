@@ -1,0 +1,13 @@
+{
+  "name": "ITOrgo",
+  "short_name": "ITOrgo",
+  "description": "Кыргызстандын жаңы муундагы соода платформасы — Marketplace · Live Auctions · Stores · AI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f6f9",
+  "theme_color": "#5b46e8",
+  "icons": [
+    { "src": "/icon.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "lang": "ru"
+}
