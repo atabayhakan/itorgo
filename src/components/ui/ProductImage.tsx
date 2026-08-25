@@ -17,13 +17,29 @@ export function hashSeed(s: string): number {
   return Math.abs(h);
 }
 
-export function ProductImage({ product, className = "", big = false }: {
-  product: Pick<Product, "imageSeed" | "categoryId" | "title">;
+export function ProductImage({ product, className = "", big = false, priority = false }: {
+  product: Pick<Product, "imageSeed" | "categoryId" | "title" | "imageUrl">;
   className?: string;
   big?: boolean;
+  priority?: boolean;
 }) {
   const g = GRADIENTS[hashSeed(product.imageSeed) % GRADIENTS.length];
   const cat = catOf(product);
+  // When imageUrl is set → next/image with WebP/AVIF, lazy (spec #55)
+  if ((product as Product).imageUrl) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return (
+      <div className={`relative overflow-hidden ${className}`}>
+        <img
+          src={(product as Product).imageUrl!}
+          alt={product.title}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
+      </div>
+    );
+  }
   return (
     <div
       className={`relative flex items-center justify-center overflow-hidden ${className}`}

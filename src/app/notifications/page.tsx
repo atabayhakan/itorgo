@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { EmptyState } from "@/components/ui/States";
+import { PushSubscribe } from "@/components/pwa/PushSubscribe";
 
 const GROUPS = [
   { id: "auctions", icon: "🔥", label: "Аукционы", items: ["Ваша ставка 42 000 сом — пока лидируете", "Аукцион iPhone 17 Pro Max заканчивается через 2 мин"] },
@@ -36,6 +37,10 @@ export default function NotificationsPage() {
             </ul>
           </section>
         ))}
+      </div>
+
+      <div className="mt-4">
+        <PushSubscribe />
       </div>
 
       <div className="mt-6">

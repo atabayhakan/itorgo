@@ -45,6 +45,7 @@ export interface Product {
   id: string;
   title: string;
   imageSeed: string;
+  imageUrl?: string; // CDN URL — when set, next/image is used (WebP/AVIF, lazy, priority)
   price: number; // KGS
   oldPrice?: number;
   condition: ProductCondition;
