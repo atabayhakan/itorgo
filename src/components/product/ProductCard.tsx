@@ -6,11 +6,13 @@ import type { Product } from "@/lib/types";
 import { formatKGS, getSeller, getStore } from "@/lib/data/mock-data";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { IconBolt, IconFire, IconHeart, IconStar } from "@/components/icons/Icons";
+import { useFavorites } from "@/lib/favorites/FavoritesContext";
 
 export function ProductCard({ product }: { product: Product }) {
   const seller = getSeller(product.sellerId);
   const store = getStore(product.storeId);
-  const [fav, setFav] = useState(false);
+  const { has, toggle } = useFavorites();
+  const fav = has(product.id);
   const [pop, setPop] = useState(false);
 
   const discount = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
@@ -18,7 +20,7 @@ export function ProductCard({ product }: { product: Product }) {
   function toggleFav(e: React.MouseEvent) {
     e.preventDefault();
     e.stopPropagation();
-    setFav((f) => !f);
+    toggle(product.id);
     setPop(true);
   }
 

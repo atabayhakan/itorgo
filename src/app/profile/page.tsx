@@ -39,6 +39,8 @@ export default function ProfilePage() {
           ["Мои объявления", "/seller/s1"],
           ["Мой магазин", "/store/st1"],
           ["Кошелёк", "/wallet"],
+          ["Корзина", "/cart"],
+          ["Избранное", "/favorites"],
           ["Уведомления", "/notifications"],
           ["Настройки", "/settings"],
         ].map(([label, href]) => (
