@@ -28,17 +28,17 @@ export default function HomePage() {
         <LiveTicker />
       </div>
 
-      {/* Premium bento hero — 21st editorial, ilk 3 sn WOW (spec #3, #5) */}
-      <div className="mt-3 rise-in">
+      {/* Premium bento hero — editorial, ilk 3 sn WOW */}
+      <div className="mt-4 rise-in">
         <PremiumHero />
       </div>
 
-      <div className="mt-3 px-4 lg:px-0">
+      <div className="mt-4 px-4 lg:px-0">
         <TrustBarPro />
       </div>
 
       {/* HERO / DISCOVERY — 🔥 Сейчас на торгах */}
-      <section className="rise-in mt-5 space-y-3" style={{ animationDelay: "80ms" }}>
+      <section className="rise-in mt-10 space-y-4" style={{ animationDelay: "80ms" }}>
         <SectionHeader title="Сейчас на торгах" live href="/auctions" count={live.length} subtitle="Торги в реальном времени — сделайте ставку" />
         <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1 snap-x snap-mandatory">
           {live.slice(0, 8).map((a) => (
@@ -49,13 +49,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* QUICK ACTIONS — spec #9 */}
-      <section className="rise-in mt-6" style={{ animationDelay: "140ms" }}>
+      {/* QUICK ACTIONS */}
+      <section className="rise-in mt-10" style={{ animationDelay: "140ms" }}>
         <QuickActions />
       </section>
 
-      {/* AI SEARCH ASSISTANT banner — spec #12 */}
-      <div className="rise-in mx-4 mt-4 flex items-center justify-between rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 px-4 py-3.5 text-white shadow-lifted" style={{ animationDelay: "200ms" }}>
+      {/* AI SEARCH ASSISTANT */}
+      <div className="rise-in mx-4 mt-10 flex items-center justify-between rounded-2xl bg-ink px-4 py-4 text-white shadow-lifted" style={{ animationDelay: "200ms" }}>
         <div>
           <p className="text-sm font-bold">🤖 Помочь найти?</p>
           <p className="mt-0.5 text-xs opacity-80">Опишите, что ищете — AI подберёт варианты</p>
@@ -65,14 +65,14 @@ export default function HomePage() {
         </Link>
       </div>
 
-      {/* CATEGORY EXPERIENCE — spec #10 */}
-      <section className="rise-in mt-6 space-y-3" style={{ animationDelay: "260ms" }}>
+      {/* CATEGORY EXPERIENCE */}
+      <section className="rise-in mt-12 space-y-4" style={{ animationDelay: "260ms" }}>
         <SectionHeader title="Категории" href="/categories" subtitle="Электроника, авто, ферма — всё в одном месте" />
         <CategoryGrid />
       </section>
 
-      {/* SMART FEED — Для вас (spec #20) */}
-      <section className="rise-in mt-6 space-y-3" style={{ animationDelay: "320ms" }}>
+      {/* SMART FEED — Для вас */}
+      <section className="rise-in mt-12 space-y-4" style={{ animationDelay: "320ms" }}>
         <SectionHeader title="Для вас" subtitle="Подобрано на основе ваших интересов · Бишкек" href="/search" />
         <div className="grid grid-cols-2 gap-3 px-4 lg:grid-cols-4">
           {feed.map((p) => (
@@ -86,9 +86,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Ending soon rail — FOMO */}
+      {/* Ending soon — FOMO */}
       {endingSoon.length > 0 && (
-        <section className="mt-6 space-y-3">
+        <section className="mt-10 space-y-4">
           <SectionHeader title="Скоро закончится" subtitle="Успейте сделать ставку" href="/auctions?filter=ending_soon" />
           <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1 snap-x snap-mandatory">
             {endingSoon.map((a) => (
@@ -100,14 +100,14 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Popular stores — spec #18 */}
-      <section className="mt-6 space-y-3">
+      {/* Popular stores */}
+      <section className="mt-10 space-y-4">
         <SectionHeader title="Популярные магазины" subtitle="Проверенные продавцы Кыргызстана" href="/stores" />
         <StoreStrip />
       </section>
 
-      {/* Footer SEO + trust */}
-      <footer className="mt-8 border-t border-line bg-surface px-4 py-8">
+      {/* Footer */}
+      <footer className="mt-12 border-t border-line bg-surface px-4 py-8">
         <p className="text-sm font-bold">ITOrgo — Кыргызстандын жаңы муундагы соода платформасы</p>
         <p className="mt-1 text-xs leading-relaxed text-ink-faint">
           Marketplace · Live Auctions · Магазины · AI · Trust. Бишкек · Ош · Джалал-Абад · Каракол · Токмок и вся страна.
