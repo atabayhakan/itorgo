@@ -35,9 +35,9 @@ export function AuctionDetailSection({ auction }: { auction: Auction }) {
         </button>
 
         {auction.buyNowPrice && (
-          <button className="btn-secondary mt-2 w-full gap-2">
+          <Link href={`/checkout?auction=${auction.id}`} className="btn-secondary mt-2 w-full gap-2">
             <IconBolt size={18} strokeWidth={2.2} /> Купить сейчас — {formatKGS(auction.buyNowPrice)} сом
-          </button>
+          </Link>
         )}
 
         <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-ink-faint">

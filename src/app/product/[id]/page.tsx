@@ -108,7 +108,9 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         </>
       ) : (
         <div className="mx-4 mt-4 grid gap-2">
-          <button className="btn-primary w-full text-base">Купить сейчас — {formatKGS(product.price)} сом</button>
+          <Link href={`/checkout?product=${product.id}`} className="btn-primary w-full text-base">
+            Купить сейчас — {formatKGS(product.price)} сом
+          </Link>
           <button className="btn-secondary w-full">В корзину</button>
           <p className="text-center text-xs text-ink-faint">Доставка по всему Кыргызстану · Защита покупателя</p>
         </div>
