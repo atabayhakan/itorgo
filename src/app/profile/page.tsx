@@ -37,6 +37,7 @@ export default function ProfilePage() {
         {[
           ["Мои покупки", "/orders"],
           ["Мои ставки", "/auctions"],
+          ["Сообщения", "/messages"],
           ["Мои объявления", "/seller/s1"],
           ["Мой магазин", "/store/st1"],
           ["Кошелёк", "/wallet"],
