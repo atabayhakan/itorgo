@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useCart } from "@/lib/cart/CartContext";
 import { formatKGS } from "@/lib/data/mock-data";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { CouponInput } from "@/components/coupons/CouponInput";
 
 export default function CartPage() {
   const { items, remove, clear, count, total } = useCart();
+  const [discount, setDiscount] = useState(0);
+  const discounted = Math.round(total * (1 - discount / 100));
 
   if (items.length === 0) {
     return (
@@ -39,10 +43,15 @@ export default function CartPage() {
         ))}
       </ul>
 
+      <div className="mt-3">
+        <CouponInput onApply={(d) => setDiscount(d)} />
+        {discount > 0 && <p className="mt-2 text-sm font-bold text-success">Скидка {discount}% применена</p>}
+      </div>
+
       <div className="mt-4 rounded-2xl bg-ink p-4 text-white">
         <div className="flex justify-between font-black">
           <span>Итого</span>
-          <span className="tabular-nums">{formatKGS(total)} сом</span>
+          <span className="tabular-nums">{formatKGS(discounted)} сом {discount > 0 && <span className="text-xs line-through opacity-60">{formatKGS(total)}</span>}</span>
         </div>
         <Link href="/checkout" className="btn-primary mt-3 w-full bg-white !text-ink">
           Оформить заказ

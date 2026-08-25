@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { formatKGS } from "@/lib/data/mock-data";
+import { CouponInput } from "@/components/coupons/CouponInput";
 
 /**
  * Checkout — spec #8 Buy Now / #48 Payment abstraction
@@ -10,7 +11,9 @@ import { formatKGS } from "@/lib/data/mock-data";
  */
 export default function CheckoutPage() {
   const [method, setMethod] = useState<"card" | "wallet" | "receipt">("card");
+  const [discount, setDiscount] = useState(0);
   const price = 49500;
+  const discounted = Math.round(price * (1 - discount / 100));
 
   return (
     <main className="px-4 py-4">
@@ -58,10 +61,14 @@ export default function CheckoutPage() {
         <p className="mt-2 text-xs text-ink-faint">Статусы: pending → processing → paid / failed / refunded — PaymentProvider</p>
       </section>
 
+      <div className="mt-3">
+        <CouponInput onApply={(d) => setDiscount(d)} />
+      </div>
+
       <div className="mt-4 rounded-2xl bg-ink p-4 text-white">
         <div className="flex justify-between text-sm">
           <span>Товар</span>
-          <span className="tabular-nums">{formatKGS(price)} сом</span>
+          <span className="tabular-nums">{formatKGS(discounted)} сом {discount > 0 && <span className="line-through opacity-60">{formatKGS(price)}</span>}</span>
         </div>
         <div className="flex justify-between text-sm opacity-80">
           <span>Доставка</span>
@@ -69,10 +76,10 @@ export default function CheckoutPage() {
         </div>
         <div className="mt-2 flex justify-between border-t border-white/15 pt-2 text-base font-black">
           <span>Итого</span>
-          <span className="tabular-nums">{formatKGS(price + 300)} сом</span>
+          <span className="tabular-nums">{formatKGS(discounted + 300)} сом</span>
         </div>
         <Link href="/wallet" className="btn-primary mt-4 w-full bg-white !text-ink">
-          Оплатить · {formatKGS(price + 300)} сом
+          Оплатить · {formatKGS(discounted + 300)} сом
         </Link>
         <p className="mt-2 text-center text-xs opacity-60">Защита покупателя · возврат в течение 7 дней</p>
       </div>

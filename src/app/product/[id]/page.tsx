@@ -6,8 +6,9 @@ import { AuctionDetailSection, BidActivity } from "@/components/auction/AuctionD
 import { SellerCard } from "@/components/seller/SellerCard";
 import { ProductCard } from "@/components/product/ProductCard";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
+import { ProductTopBar } from "@/components/product/ProductTopBar";
 import { ReviewList } from "@/components/reviews/ReviewList";
-import { IconBack, IconHeart, IconShare, IconStar } from "@/components/icons/Icons";
+import { IconStar } from "@/components/icons/Icons";
 import type { Metadata } from "next";
 
 export function generateStaticParams() {
@@ -61,20 +62,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         </Link>{" "}
         / <Link href={`/search?cat=${product.categoryId}`} className="hover:underline">{product.categoryId}</Link> / {product.title}
       </nav>
-      {/* Top bar */}
-      <div className="safe-top sticky top-0 z-30 flex items-center justify-between bg-surface/90 px-2 py-2 backdrop-blur-md">
-        <Link href="/" className="flex h-9 w-9 items-center justify-center rounded-full bg-surface shadow-card">
-          <IconBack size={20} />
-        </Link>
-        <div className="flex gap-2">
-          <button aria-label="Поделиться" className="flex h-9 w-9 items-center justify-center rounded-full bg-surface shadow-card">
-            <IconShare size={18} />
-          </button>
-          <button aria-label="В избранное" className="flex h-9 w-9 items-center justify-center rounded-full bg-surface shadow-card">
-            <IconHeart size={18} />
-          </button>
-        </div>
-      </div>
+      <ProductTopBar productId={product.id} title={product.title} />
 
       <ProductGallery product={product} />
 
