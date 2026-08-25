@@ -24,7 +24,7 @@ export function PremiumHero() {
           </span>
           <span className="hidden lg:inline">Кыргызстан · сом · ru</span>
         </span>
-        <span className="hidden lg:inline">Apple + StockX + Airbnb editorial</span>
+        <span className="hidden lg:inline text-white/40">● 4 210 онлайн</span>
       </div>
 
       <div className="grid gap-2.5 lg:grid-cols-[1.55fr_0.95fr]">
@@ -103,8 +103,8 @@ export function PremiumHero() {
         </div>
       </div>
 
-      <p className="px-2 pt-2 text-center text-xs font-medium tracking-wide text-white/50 lg:text-left">
-        Marketplace · Live Auctions · Магазины · AI · Trust — Кыргызстан · сом · KZ/UZ скоро
+      <p className="px-2 pt-2 text-center text-xs font-medium tracking-wide text-white/35 lg:text-left">
+        Бишкек · Ош · Джалал-Абад · Каракол · Токмок
       </p>
     </section>
   );

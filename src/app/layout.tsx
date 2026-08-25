@@ -54,18 +54,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="mx-auto min-h-dvh max-w-xl bg-surface-dim lg:max-w-6xl lg:bg-surface-dim">
           <div className="lg:flex lg:gap-6 lg:px-6 lg:py-4">
             <div className="min-w-0 flex-1">{children}</div>
-            {/* Desktop sidebar — filters / seller dashboard teaser (spec #36) */}
+            {/* Desktop sidebar — real filters (component not filler) */}
             <aside className="hidden w-[300px] shrink-0 lg:block">
               <div className="sticky top-[88px] space-y-3">
                 <div className="rounded-2xl bg-surface p-4 shadow-card">
-                  <p className="text-sm font-bold">Фильтры</p>
-                  <p className="mt-1 text-xs text-ink-faint">Категория · цена · город · состояние · рейтинг — sidebar на десктопе</p>
+                  <p className="text-sm font-bold">Быстрые фильтры</p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {["Электроника","Авто","Новинки","Аукцион","Бишкек","до 50 000 сом"].map((f) => (
+                      <a key={f} href={`/search?q=${encodeURIComponent(f)}`} className="rounded-full bg-surface-dim px-3 py-1.5 text-xs font-semibold hover:bg-brand-50">
+                        {f}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-                <div className="rounded-2xl bg-surface p-4 shadow-card">
-                  <p className="text-sm font-bold">Продавцу</p>
-                  <p className="mt-1 text-xs text-ink-faint">Панель продавца · заказы · аукционы — dashboard</p>
-                  <a href="/sell" className="btn-primary mt-3 w-full !min-h-10">
-                    + Продать
+                <div className="rounded-2xl bg-ink p-4 text-white shadow-lifted">
+                  <p className="text-sm font-black">Продавайте на ITOrgo</p>
+                  <p className="mt-1 text-xs opacity-80">0% комиссия на первый месяц · AI поможет с ценой</p>
+                  <a href="/sell" className="mt-3 inline-flex w-full justify-center rounded-xl bg-white px-4 py-2.5 text-sm font-black text-ink">
+                    + Создать объявление
                   </a>
                 </div>
               </div>

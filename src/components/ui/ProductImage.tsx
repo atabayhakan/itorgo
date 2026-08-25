@@ -1,10 +1,11 @@
 import type { Product, Category } from "@/lib/types";
 import { CATEGORIES } from "@/lib/data/mock-data";
 
+// Disiplinli palet: 2 nötr + 1 brand tint. Gökkuşağı yok — premium = tutarlılık.
 const GRADIENTS: [string, string][] = [
-  ["#e0e7ff", "#c7d2fe"], ["#fce7f3", "#fbcfe8"], ["#d1fae5", "#a7f3d0"],
-  ["#fef3c7", "#fde68a"], ["#ede9fe", "#ddd6fe"], ["#ffe4e6", "#fecdd3"],
-  ["#cffafe", "#a5f3fc"], ["#f3e8ff", "#e9d5ff"], ["#dcfce7", "#bbf7d0"],
+  ["#f6f6f9", "#ececf1"], // warm gray
+  ["#f1f5f9", "#e2e8f0"], // cool gray
+  ["#f0efff", "#e3e1ff"], // brand tint (subtle)
 ];
 
 export function catOf(p: { categoryId: string }): Category {
@@ -55,6 +56,7 @@ export function ProductImage({ product, className = "", big = false, priority = 
 }
 
 export function Avatar({ name, seed, size = 40 }: { name: string; seed?: string; size?: number }) {
+  // Avatar uses same disciplined 3-tone system, but small so color variance is okay.
   const g = GRADIENTS[hashSeed(seed ?? name) % GRADIENTS.length];
   const initial = name.trim().charAt(0).toUpperCase();
   return (

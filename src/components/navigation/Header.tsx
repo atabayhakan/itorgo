@@ -13,7 +13,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <header className="safe-top sticky top-0 z-40 bg-surface-dim/85 backdrop-blur-lg">
+    <header className="safe-top sticky top-0 z-40 bg-surface-dim/85 backdrop-blur-lg lg:hidden">
       <div className={`mx-auto flex max-w-xl items-center gap-2.5 px-4 transition-all duration-300 ${scrolled ? "py-2" : "py-3.5"}`}>
         {!scrolled && (
           <Link href="/" className="shrink-0 text-[19px] font-black tracking-tight">
