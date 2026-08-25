@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CATEGORIES } from "@/lib/data/mock-data";
+import { CartBadge } from "@/components/cart/CartBadge";
 
 const TOP_LINKS = [
   { href: "/auctions", label: "Аукционы" },
@@ -38,6 +39,7 @@ export function DesktopNav() {
         </div>
 
         <div className="ml-4 flex items-center gap-2">
+          <CartBadge />
           <Link href="/sell" className="btn-primary !min-h-9 !px-4 !text-sm">
             + Продать
           </Link>

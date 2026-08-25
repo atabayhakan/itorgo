@@ -5,6 +5,7 @@ import { BottomNav } from "@/components/navigation/BottomNav";
 import { DesktopNav } from "@/components/navigation/DesktopNav";
 import { FloatingSell } from "@/components/sell/FloatingSell";
 import { PWAInstaller } from "@/components/pwa/PWAInstaller";
+import { CartProvider } from "@/lib/cart/CartContext";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic", "cyrillic-ext"],
@@ -40,7 +41,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" className={inter.variable}>
       <body className="antialiased">
-        <DesktopNav />
+        <CartProvider>
+          <DesktopNav />
         <div className="mx-auto min-h-dvh max-w-xl bg-surface-dim lg:max-w-6xl lg:bg-surface-dim">
           <div className="lg:flex lg:gap-6 lg:px-6 lg:py-4">
             <div className="min-w-0 flex-1">{children}</div>
@@ -67,7 +69,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <FloatingSell />
           <BottomNav />
         </div>
-        <PWAInstaller />
+          <PWAInstaller />
+        </CartProvider>
       </body>
     </html>
   );

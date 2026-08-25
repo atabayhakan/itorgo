@@ -5,6 +5,7 @@ import { ProductGallery } from "@/components/product/ProductGallery";
 import { AuctionDetailSection, BidActivity } from "@/components/auction/AuctionDetailSection";
 import { SellerCard } from "@/components/seller/SellerCard";
 import { ProductCard } from "@/components/product/ProductCard";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { IconBack, IconHeart, IconShare, IconStar } from "@/components/icons/Icons";
 import type { Metadata } from "next";
 
@@ -111,7 +112,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           <Link href={`/checkout?product=${product.id}`} className="btn-primary w-full text-base">
             Купить сейчас — {formatKGS(product.price)} сом
           </Link>
-          <button className="btn-secondary w-full">В корзину</button>
+          <AddToCartButton product={product} />
           <p className="text-center text-xs text-ink-faint">Доставка по всему Кыргызстану · Защита покупателя</p>
         </div>
       )}
