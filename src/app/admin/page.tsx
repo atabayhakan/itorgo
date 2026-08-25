@@ -1,12 +1,14 @@
+import { StatCard } from "@/components/admin/Chart";
+
 export default function AdminPage() {
   const kpis = [
-    { label: "GMV", value: "12.4 млн сом" },
-    { label: "Выручка", value: "1.1 млн сом" },
-    { label: "Заказы", value: "3 842" },
-    { label: "Активных аукционов", value: "20" },
-    { label: "Пользователи", value: "4 210" },
-    { label: "Продавцы", value: "30" },
-  ];
+    { label: "GMV", value: "12.4 млн сом", data: [4, 6, 5, 8, 7, 9, 6], color: "#5b46e8" },
+    { label: "Выручка", value: "1.1 млн сом", data: [2, 3, 2, 4, 3, 5, 4], color: "#16a34a" },
+    { label: "Заказы", value: "3 842", data: [12, 18, 14, 20, 16, 22, 19], color: "#0284c7" },
+    { label: "Активных аукционов", value: "20", data: [8, 12, 10, 20, 15, 18, 20], color: "#f97316" },
+    { label: "Пользователи", value: "4 210", data: [30, 42, 38, 45, 48, 52, 49], color: "#a855f7" },
+    { label: "Продавцы", value: "30", data: [22, 24, 26, 28, 30, 32, 30], color: "#eab308" },
+  ] as const;
   const alerts = [
     { label: "Fraud Alerts", value: "3", tone: "danger" },
     { label: "Pending KYC", value: "12", tone: "warning" },
@@ -22,10 +24,7 @@ export default function AdminPage() {
 
       <div className="grid grid-cols-3 gap-2 px-4 py-4">
         {kpis.map((k) => (
-          <div key={k.label} className="rounded-2xl bg-surface p-3 shadow-card">
-            <p className="text-xs text-ink-faint">{k.label}</p>
-            <p className="mt-1 text-sm font-black tabular-nums">{k.value}</p>
-          </div>
+          <StatCard key={k.label} label={k.label} value={k.value} data={[...k.data]} color={k.color} />
         ))}
       </div>
 

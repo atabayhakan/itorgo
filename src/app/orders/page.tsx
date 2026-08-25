@@ -16,12 +16,14 @@ export default function OrdersPage() {
       <p className="text-xs text-ink-faint">История заказов · статусы: pending → processing → paid → shipped → delivered</p>
       <ul className="mt-4 space-y-2">
         {MOCK_ORDERS.map((o) => (
-          <li key={o.id} className="flex items-center justify-between rounded-2xl bg-surface px-4 py-3 shadow-card">
-            <div>
-              <p className="text-sm font-semibold">{o.title}</p>
-              <p className="text-xs text-ink-faint">{o.id} · {o.at} · {formatKGS(o.price)} сом</p>
-            </div>
-            <span className={`chip ${tone[o.status]}`}>{o.status}</span>
+          <li key={o.id}>
+            <Link href={`/orders/${o.id}`} className="flex items-center justify-between rounded-2xl bg-surface px-4 py-3 shadow-card">
+              <div>
+                <p className="text-sm font-semibold">{o.title}</p>
+                <p className="text-xs text-ink-faint">{o.id} · {o.at} · {formatKGS(o.price)} сом</p>
+              </div>
+              <span className={`chip ${tone[o.status]}`}>{o.status}</span>
+            </Link>
           </li>
         ))}
       </ul>
