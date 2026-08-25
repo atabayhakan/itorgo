@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { IconBolt, IconFire, IconGavel, IconVerified } from "@/components/icons/Icons";
 import { formatKGS, getLiveAuctions, getProduct, getSeller } from "@/lib/data/mock-data";
@@ -17,6 +18,7 @@ export function AuctionCard({ auctionId }: { auctionId: string }) {
   return (
     <>
       <article className="card relative w-[272px] shrink-0 overflow-hidden shadow-lifted">
+        <Link href={`/product/${p.id}`} className="absolute inset-0 z-[1]" aria-label={p.title} />
         <div className="relative">
           <ProductImage product={p} big className="h-[190px] w-full" />
           {a.buyNowPrice && (
@@ -55,12 +57,22 @@ export function AuctionCard({ auctionId }: { auctionId: string }) {
             <span className="chip bg-success-bg text-success">🛡 {seller.positivePct}%</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-2">
-            <button onClick={() => setSheetOpen(true)} className="btn-primary !min-h-11 !rounded-xl !text-sm">
+          <div className="relative z-[2] grid grid-cols-2 gap-2">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setSheetOpen(true);
+              }}
+              className="btn-primary !min-h-11 !rounded-xl !text-sm"
+            >
               <IconGavel size={16} strokeWidth={2.2} /> Ставка
             </button>
             {a.buyNowPrice && (
-              <button className="btn-secondary !min-h-11 !rounded-xl !text-sm">
+              <button
+                onClick={(e) => e.stopPropagation()}
+                className="btn-secondary !min-h-11 !rounded-xl !text-sm"
+              >
                 <IconBolt size={15} strokeWidth={2.2} /> {formatKGS(a.buyNowPrice)}
               </button>
             )}

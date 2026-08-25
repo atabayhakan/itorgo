@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import type { Product } from "@/lib/types";
 import { formatKGS, getSeller, getStore } from "@/lib/data/mock-data";
@@ -14,13 +15,15 @@ export function ProductCard({ product }: { product: Product }) {
 
   const discount = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
 
-  function toggleFav() {
+  function toggleFav(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
     setFav((f) => !f);
     setPop(true);
   }
 
   return (
-    <article className="card overflow-hidden">
+    <Link href={`/product/${product.id}`} className="card block overflow-hidden">
       <div className="relative">
         <ProductImage product={product} className="h-[150px] w-full" />
         <button
@@ -60,6 +63,6 @@ export function ProductCard({ product }: { product: Product }) {
 
         <p className="truncate text-[11px] text-ink-faint">{store?.name ?? seller.name}</p>
       </div>
-    </article>
+    </Link>
   );
 }
