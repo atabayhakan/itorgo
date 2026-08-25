@@ -28,10 +28,10 @@ export function Header() {
           <span className="truncate">Что вы ищете?</span>
           <span className="ml-auto chip hidden bg-brand-50 text-brand-600 sm:inline-flex">🤖 AI</span>
         </Link>
-        <button aria-label="Уведомления" className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface text-ink-soft shadow-card">
+        <Link href="/notifications" aria-label="Уведомления" className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface text-ink-soft shadow-card">
           <IconBell size={20} />
           <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-danger ring-2 ring-white" />
-        </button>
+        </Link>
         <Link href="/profile" aria-label="Профиль" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface text-ink-soft shadow-card">
           <IconUser size={20} />
         </Link>
