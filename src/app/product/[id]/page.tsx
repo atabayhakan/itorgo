@@ -6,6 +6,7 @@ import { AuctionDetailSection, BidActivity } from "@/components/auction/AuctionD
 import { SellerCard } from "@/components/seller/SellerCard";
 import { ProductCard } from "@/components/product/ProductCard";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
+import { ReviewList } from "@/components/reviews/ReviewList";
 import { IconBack, IconHeart, IconShare, IconStar } from "@/components/icons/Icons";
 import type { Metadata } from "next";
 
@@ -119,6 +120,9 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
       {/* Seller */}
       <SellerCard product={product} />
+
+      {/* Reviews — spec #17 tab Отзывы */}
+      <ReviewList productId={product.id} />
 
       {/* Description */}
       <section className="mx-4 mt-4 rounded-2xl bg-surface p-4 shadow-card">

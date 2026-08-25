@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { getSeller, getStore } from "@/lib/data/mock-data";
 import { Avatar } from "@/components/ui/ProductImage";
 import { IconShield, IconStar, IconVerified } from "@/components/icons/Icons";
+import { useFollows } from "@/lib/follows/FollowsContext";
 import type { Product } from "@/lib/types";
 
 export function SellerCard({ product }: { product: Product }) {
   const seller = getSeller(product.sellerId);
   const store = getStore(product.storeId);
+  const { has, toggle } = useFollows();
+  const following = has(seller.id);
   return (
     <section className="mx-4 mt-4 rounded-2xl bg-surface p-4 shadow-card">
       <Link href={`/seller/${seller.id}`} className="flex items-center gap-3">
@@ -31,7 +36,9 @@ export function SellerCard({ product }: { product: Product }) {
         </Link>
       )}
       <div className="mt-3 grid grid-cols-2 gap-2">
-        <button className="btn-secondary !min-h-10 text-sm">Подписаться</button>
+        <button onClick={() => toggle(seller.id)} className={`!min-h-10 rounded-xl px-3 py-2.5 text-sm font-semibold ${following ? "bg-ink text-white" : "btn-secondary"}`}>
+          {following ? "✓ Подписан" : "Подписаться"}
+        </button>
         <button className="rounded-xl border border-line bg-surface px-3 py-2.5 text-sm font-semibold">Сообщение</button>
       </div>
       <p className="mt-2 flex items-center justify-center gap-1 text-xs text-success">
