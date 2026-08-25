@@ -1,6 +1,7 @@
 import { Header } from "@/components/navigation/Header";
 import { LiveTicker } from "@/components/home/LiveTicker";
 import { PremiumHero } from "@/components/home/PremiumHero";
+import { TrustBarPro } from "@/components/home/TrustBarPro";
 import { AuctionCard } from "@/components/auction/AuctionCard";
 import { QuickActions } from "@/components/home/QuickActions";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
@@ -28,12 +29,16 @@ export default function HomePage() {
       </div>
 
       {/* Premium bento hero — 21st editorial, ilk 3 sn WOW (spec #3, #5) */}
-      <div className="mt-3">
+      <div className="mt-3 rise-in">
         <PremiumHero />
       </div>
 
+      <div className="mt-3 px-4 lg:px-0">
+        <TrustBarPro />
+      </div>
+
       {/* HERO / DISCOVERY — 🔥 Сейчас на торгах */}
-      <section className="mt-5 space-y-3">
+      <section className="rise-in mt-5 space-y-3" style={{ animationDelay: "80ms" }}>
         <SectionHeader title="Сейчас на торгах" live href="/auctions" count={live.length} subtitle="Торги в реальном времени — сделайте ставку" />
         <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1 snap-x snap-mandatory">
           {live.slice(0, 8).map((a) => (
@@ -45,12 +50,12 @@ export default function HomePage() {
       </section>
 
       {/* QUICK ACTIONS — spec #9 */}
-      <section className="mt-6">
+      <section className="rise-in mt-6" style={{ animationDelay: "140ms" }}>
         <QuickActions />
       </section>
 
       {/* AI SEARCH ASSISTANT banner — spec #12 */}
-      <div className="mx-4 mt-4 flex items-center justify-between rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 px-4 py-3.5 text-white shadow-lifted">
+      <div className="rise-in mx-4 mt-4 flex items-center justify-between rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 px-4 py-3.5 text-white shadow-lifted" style={{ animationDelay: "200ms" }}>
         <div>
           <p className="text-sm font-bold">🤖 Помочь найти?</p>
           <p className="mt-0.5 text-xs opacity-80">Опишите, что ищете — AI подберёт варианты</p>
@@ -61,13 +66,13 @@ export default function HomePage() {
       </div>
 
       {/* CATEGORY EXPERIENCE — spec #10 */}
-      <section className="mt-6 space-y-3">
+      <section className="rise-in mt-6 space-y-3" style={{ animationDelay: "260ms" }}>
         <SectionHeader title="Категории" href="/categories" subtitle="Электроника, авто, ферма — всё в одном месте" />
         <CategoryGrid />
       </section>
 
       {/* SMART FEED — Для вас (spec #20) */}
-      <section className="mt-6 space-y-3">
+      <section className="rise-in mt-6 space-y-3" style={{ animationDelay: "320ms" }}>
         <SectionHeader title="Для вас" subtitle="Подобрано на основе ваших интересов · Бишкек" href="/search" />
         <div className="grid grid-cols-2 gap-3 px-4 lg:grid-cols-4">
           {feed.map((p) => (

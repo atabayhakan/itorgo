@@ -9,18 +9,18 @@ export function CategoryGrid() {
         <Link
           key={c.id}
           href={`/search?cat=${c.id}`}
-          className="flex flex-col items-center gap-1.5 rounded-2xl bg-surface px-1 py-3 shadow-card transition active:scale-[0.98]"
+          className="group flex flex-col items-center gap-2 rounded-[18px] bg-surface px-1 py-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-lifted active:scale-[0.98]"
         >
-          <span className="text-[22px] leading-none">{c.emoji}</span>
-          <span className="text-center text-[11px] leading-tight font-medium">{c.label}</span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface-dim text-[20px] transition group-hover:bg-brand-50">{c.emoji}</span>
+          <span className="text-center text-[11px] font-bold leading-tight tracking-tight">{c.label}</span>
         </Link>
       ))}
       <Link
         href="/categories"
-        className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-dashed border-line bg-surface-dim px-1 py-3 text-ink-soft"
+        className="flex flex-col items-center justify-center gap-2 rounded-[18px] border border-dashed border-line bg-surface-dim px-1 py-4 text-ink-soft transition hover:bg-surface"
       >
-        <span className="text-lg">⊕</span>
-        <span className="text-[11px] font-semibold">Все категории</span>
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-lg">⊕</span>
+        <span className="text-[11px] font-black tracking-wide">Все категории</span>
       </Link>
     </div>
   );
