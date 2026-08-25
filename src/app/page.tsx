@@ -1,5 +1,6 @@
 import { Header } from "@/components/navigation/Header";
 import { LiveTicker } from "@/components/home/LiveTicker";
+import { PremiumHero } from "@/components/home/PremiumHero";
 import { AuctionCard } from "@/components/auction/AuctionCard";
 import { QuickActions } from "@/components/home/QuickActions";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
@@ -26,11 +27,9 @@ export default function HomePage() {
         <LiveTicker />
       </div>
 
-      {/* Trust strip — ilk 3 saniyede guven tesisi (spec #3) */}
-      <div className="mt-3 flex items-center justify-between gap-2 px-4 text-[11px] font-medium">
-        <span className="inline-flex items-center gap-1 rounded-full bg-success-bg px-2.5 py-1 text-success">🛡 Безопасная сделка</span>
-        <span className="inline-flex items-center gap-1 rounded-full bg-surface px-2.5 py-1 text-ink-soft shadow-card">✅ Проверенные продавцы</span>
-        <span className="inline-flex items-center gap-1 rounded-full bg-surface px-2.5 py-1 text-ink-soft shadow-card">💳 Защита покупателя</span>
+      {/* Premium bento hero — 21st editorial, ilk 3 sn WOW (spec #3, #5) */}
+      <div className="mt-3">
+        <PremiumHero />
       </div>
 
       {/* HERO / DISCOVERY — 🔥 Сейчас на торгах */}
