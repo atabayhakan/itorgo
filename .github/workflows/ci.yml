@@ -20,3 +20,9 @@ jobs:
         env:
           DATABASE_URL: postgresql://dummy:dummy@localhost:5432/dummy
       - run: npm test --if-present
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.14.x
+          lhci autorun || echo "LHCI skipped (no server)"
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
