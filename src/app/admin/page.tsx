@@ -80,6 +80,21 @@ export default function AdminPage() {
         </ul>
       </section>
 
+      <nav className="mx-4 mt-4 grid grid-cols-2 gap-2 text-sm">
+        {[
+          ["/admin/users", "Пользователи"],
+          ["/admin/orders", "Заказы"],
+          ["/admin/media", "Media Library"],
+          ["/admin/fraud", "Fraud Center"],
+          ["/admin/audit", "Audit Log"],
+          ["/kyc", "KYC очередь"],
+        ].map(([href, label]) => (
+          <a key={href} href={href} className="rounded-xl bg-surface px-4 py-3 text-center font-semibold shadow-card">
+            {label}
+          </a>
+        ))}
+      </nav>
+
       <p className="px-4 py-6 text-center text-xs text-ink-faint">
         RBAC: Super Admin · Auction/Finance/KYC/Fraud/Support/Marketing/Moderator · Audit Log · полный доступ по ролям
       </p>
