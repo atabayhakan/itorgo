@@ -88,7 +88,7 @@ export default function AdminPage() {
           ["/admin/audit", "Audit Log"],
           ["/admin/cms", "CMS · тексты"],
           ["/admin/coupons", "Купоны"],
-          ["/kyc", "KYC очередь"],
+          ["/admin/kyc", "KYC очередь"],
         ].map(([href, label]) => (
           <a key={href} href={href} className="rounded-xl bg-surface px-4 py-3 text-center font-semibold shadow-card">
             {label}
