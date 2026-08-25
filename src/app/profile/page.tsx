@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CountrySwitcher, LocaleSwitcher } from "@/components/i18n/LocaleCountrySwitcher";
 
 export default function ProfilePage() {
   return (
@@ -47,6 +48,19 @@ export default function ProfilePage() {
           </Link>
         ))}
       </nav>
+
+      <section className="mt-4 rounded-2xl bg-surface p-4 shadow-card">
+        <p className="font-bold">Язык и страна</p>
+        <p className="mt-1 text-xs text-ink-faint">Spec #43–44 · переводы по ключам (auction.bid…), KZ/UZ из админки</p>
+        <div className="mt-3 flex items-center justify-between">
+          <span className="text-sm font-medium">Язык</span>
+          <LocaleSwitcher />
+        </div>
+        <div className="mt-3 flex items-center justify-between">
+          <span className="text-sm font-medium">Страна</span>
+          <CountrySwitcher />
+        </div>
+      </section>
 
       <div className="mt-4 rounded-2xl bg-surface p-4 shadow-card">
         <p className="font-bold">Trust — детали</p>
