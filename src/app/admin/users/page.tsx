@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { DataDenseTable, type Column } from "@/components/admin/DataDenseTable";
 
 function AdminShell({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -12,26 +15,39 @@ function AdminShell({ title, children }: { title: string; children: React.ReactN
   );
 }
 
+type UserRow = { id: string; name: string; role: string; city: string; trust: number; kyc: string; sales: number };
+
+const rows: UserRow[] = [
+  { id: "s1", name: "Азамат Т.", role: "seller", city: "Бишкек", trust: 96, kyc: "verified", sales: 247 },
+  { id: "s2", name: "Bek Store", role: "store_owner", city: "Ош", trust: 88, kyc: "pending", sales: 89 },
+  { id: "s5", name: "TechMarket KG", role: "store_owner", city: "Бишкек", trust: 92, kyc: "verified", sales: 412 },
+  { id: "s7", name: "Гульмира Ж.", role: "seller", city: "Токмок", trust: 74, kyc: "rejected", sales: 12 },
+  { id: "s9", name: "Нурлан А.", role: "seller", city: "Каракол", trust: 81, kyc: "verified", sales: 67 },
+  { id: "s12", name: "Ulut Shop", role: "store_owner", city: "Джалал-Абад", trust: 95, kyc: "verified", sales: 203 },
+  { id: "s15", name: "Эржан Б.", role: "seller", city: "Бишкек", trust: 69, kyc: "pending", sales: 5 },
+  { id: "s20", name: "Aida Market", role: "moderator", city: "Бишкек", trust: 99, kyc: "verified", sales: 0 },
+];
+
 export default function AdminUsersPage() {
-  const users = [
-    { id: "s1", name: "Азамат Т.", role: "seller", city: "Бишкек", trust: 96 },
-    { id: "s2", name: "Bek Store", role: "store_owner", city: "Ош", trust: 88 },
-    { id: "s5", name: "TechMarket KG", role: "store_owner", city: "Бишкек", trust: 92 },
+  const cols: Column<UserRow>[] = [
+    { key: "id", header: "ID", width: "70px", sortable: true },
+    { key: "name", header: "Имя", sortable: true },
+    { key: "role", header: "Роль", render: (r) => <span className="chip bg-brand-50 text-brand-700">{r.role}</span> },
+    { key: "city", header: "Город", sortable: true },
+    { key: "trust", header: "Trust", align: "right", sortable: true, render: (r) => <span className={r.trust >= 90 ? "font-black text-success" : r.trust >= 80 ? "font-bold" : "text-warning"}>{r.trust}%</span> },
+    { key: "kyc", header: "KYC", align: "center", render: (r) => <span className={`chip ${r.kyc === "verified" ? "bg-success-bg text-success" : r.kyc === "pending" ? "bg-warning-bg text-warning" : "bg-danger-bg text-danger"}`}>{r.kyc}</span> },
+    { key: "sales", header: "Продажи", align: "right", sortable: true },
   ];
+
   return (
     <AdminShell title="Пользователи">
-      <p className="text-xs text-ink-faint">RBAC · поиск · KYC статус · бан — TODO(table + pagination)</p>
-      <ul className="mt-3 space-y-2">
-        {users.map((u) => (
-          <li key={u.id} className="flex items-center justify-between rounded-2xl bg-surface px-4 py-3 shadow-card">
-            <div>
-              <p className="text-sm font-semibold">{u.name}</p>
-              <p className="text-xs text-ink-faint">{u.role} · {u.city} · trust {u.trust}%</p>
-            </div>
-            <span className="chip bg-surface-sunken text-ink-soft">{u.id}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="mb-3 flex items-center justify-between text-xs">
+        <span className="text-ink-faint">{rows.length} пользователей · density + KYC</span>
+        <span className="rounded-full bg-surface px-3 py-1 font-bold shadow-card">Поиск ▾</span>
+      </div>
+      {/* @ts-ignore — DataDenseTable generic */}
+      <DataDenseTable columns={cols} rows={rows} sortKey="trust" sortDir="desc" />
+      <p className="mt-2 text-xs text-ink-faint">TODO: pagination + `prisma.user.findMany` + RBAC filter</p>
     </AdminShell>
   );
 }
