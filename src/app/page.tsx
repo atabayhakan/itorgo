@@ -23,12 +23,11 @@ export default function HomePage() {
     <main className="pb-6">
       <Header />
 
-      {/* Live ticker — platform canliligi hissi (spec #8/#63) */}
       <div className="pt-2">
         <LiveTicker />
       </div>
 
-      {/* Premium bento hero — editorial, ilk 3 sn WOW */}
+      {/* LIVE AUCTION HERO — editorial, signature */}
       <div className="mt-4 rise-in">
         <PremiumHero />
       </div>
@@ -37,15 +36,31 @@ export default function HomePage() {
         <TrustBarPro />
       </div>
 
-      {/* HERO / DISCOVERY — 🔥 Сейчас на торгах */}
-      <section className="rise-in mt-10 space-y-4" style={{ animationDelay: "80ms" }}>
-        <SectionHeader title="Сейчас на торгах" live href="/auctions" count={live.length} subtitle="Торги в реальном времени — сделайте ставку" />
-        <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1 snap-x snap-mandatory">
-          {live.slice(0, 8).map((a) => (
-            <div key={a.id} className="snap-start">
-              <AuctionCard auctionId={a.id} />
+      {/* Signature: dark auction section — Сейчас на торгах */}
+      <section className="rise-in mt-10 bg-ink py-8" style={{ animationDelay: "80ms" }}>
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-4 flex items-end justify-between gap-3 px-4 lg:px-6">
+            <div className="min-w-0">
+              <h2 className="flex flex-wrap items-center gap-2 text-[18px] font-bold tracking-tight text-white lg:text-[22px]">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-white px-2 py-1 text-[11px] font-bold tracking-wide text-danger">
+                  <span className="live-dot h-2 w-2 rounded-full bg-danger" /> LIVE
+                </span>
+                Сейчас на торгах
+                <span className="rounded-md bg-white/10 px-2 py-0.5 text-xs font-bold text-white/70">{live.length}</span>
+              </h2>
+              <p className="mt-1 text-sm text-white/60">Торги в реальном времени — сделайте ставку</p>
             </div>
-          ))}
+            <Link href="/auctions" className="shrink-0 rounded-[10px] border border-white/25 px-3.5 py-2 text-sm font-semibold text-white hover:bg-white/10">
+              Все
+            </Link>
+          </div>
+          <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 lg:px-6">
+            {live.slice(0, 8).map((a) => (
+              <div key={a.id} className="snap-start">
+                <AuctionCard auctionId={a.id} dark />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -54,33 +69,22 @@ export default function HomePage() {
         <QuickActions />
       </section>
 
-      {/* AI SEARCH ASSISTANT */}
-      <div className="rise-in mx-4 mt-10 flex items-center justify-between rounded-2xl bg-ink px-4 py-4 text-white shadow-lifted" style={{ animationDelay: "200ms" }}>
-        <div>
-          <p className="text-sm font-bold">🤖 Помочь найти?</p>
-          <p className="mt-0.5 text-xs opacity-80">Опишите, что ищете — AI подберёт варианты</p>
-        </div>
-        <Link href="/search" className="shrink-0 rounded-full bg-white px-4 py-2 text-sm font-bold text-brand-700">
-          Спросить AI
-        </Link>
-      </div>
-
       {/* CATEGORY EXPERIENCE */}
-      <section className="rise-in mt-12 space-y-4" style={{ animationDelay: "260ms" }}>
-        <SectionHeader title="Категории" href="/categories" subtitle="Электроника, авто, ферма — всё в одном месте" />
+      <section className="rise-in mt-12 space-y-4" style={{ animationDelay: "200ms" }}>
+        <SectionHeader title="Категории" href="/categories" subtitle="16 категорий — от электроники до фермы" />
         <CategoryGrid />
       </section>
 
-      {/* SMART FEED — Для вас */}
-      <section className="rise-in mt-12 space-y-4" style={{ animationDelay: "320ms" }}>
+      {/* SMART FEED */}
+      <section className="rise-in mt-12 space-y-4" style={{ animationDelay: "260ms" }}>
         <SectionHeader title="Для вас" subtitle="Подобрано на основе ваших интересов · Бишкек" href="/search" />
-        <div className="grid grid-cols-2 gap-3 px-4 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 px-4 lg:grid-cols-4 lg:px-0">
           {feed.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>
-        <div className="px-4">
-          <Link href="/search" className="btn-secondary w-full">
+        <div className="px-4 lg:px-0">
+          <Link href="/search" className="inline-flex w-full items-center justify-center rounded-[10px] border border-line bg-surface py-3 text-sm font-semibold hover:bg-surface-dim">
             Показать ещё
           </Link>
         </div>
@@ -88,9 +92,9 @@ export default function HomePage() {
 
       {/* Ending soon — FOMO */}
       {endingSoon.length > 0 && (
-        <section className="mt-10 space-y-4">
+        <section className="mt-12 space-y-4">
           <SectionHeader title="Скоро закончится" subtitle="Успейте сделать ставку" href="/auctions?filter=ending_soon" />
-          <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1 snap-x snap-mandatory">
+          <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1">
             {endingSoon.map((a) => (
               <div key={a.id} className="snap-start">
                 <AuctionCard auctionId={a.id} />
@@ -101,7 +105,7 @@ export default function HomePage() {
       )}
 
       {/* Popular stores */}
-      <section className="mt-10 space-y-4">
+      <section className="mt-12 space-y-4">
         <SectionHeader title="Популярные магазины" subtitle="Проверенные продавцы Кыргызстана" href="/stores" />
         <StoreStrip />
       </section>
@@ -111,7 +115,7 @@ export default function HomePage() {
         <p className="text-sm font-bold">ITOrgo — Кыргызстандын жаңы муундагы соода платформасы</p>
         <p className="mt-1 text-xs leading-relaxed text-ink-faint">
           Marketplace · Live Auctions · Магазины · AI · Trust. Бишкек · Ош · Джалал-Абад · Каракол · Токмок и вся страна.
-          Валюта — сом. Языки — русский, кыргызча. Платформа готова к расширению: Казахстан и Узбекистан.
+          Валюта — сом. Языки — русский, кыргызча.
         </p>
         <div className="mt-4 flex flex-wrap gap-2 text-xs">
           <span className="chip bg-surface-sunken text-ink-soft">KG · активен</span>

@@ -37,6 +37,41 @@ function pick<T>(arr: T[], i: number): T {
   return arr[i % arr.length];
 }
 
+// ── Real product imagery (Unsplash stable IDs, WebP via params) ──
+// Fallback: premium neutral placeholder (ProductImage onError) — never emoji.
+const U = (id: string) => `https://images.unsplash.com/${id}?w=900&q=80&auto=format&fit=crop`;
+
+const CAT_IMAGES: Record<string, string[]> = {
+  electronics: [U("photo-1592750475338-74b7b21085ab"), U("photo-1610945265064-0e34e5519bbf"), U("photo-1598327105666-5b89351aff97"), U("photo-1580910051074-3eb694886505"), U("photo-1546868871-7041f2a55e12"), U("photo-1505740420928-5e560c06d30e"), U("photo-1544244015-0df4b3ffc6b0"), U("photo-1502920917128-1aa500764cbd"), U("photo-1571175443880-49e1d25b2bc5"), U("photo-1626806787461-102c1bfaaea1"), U("photo-1583394838336-acd977736f90"), U("photo-1593640408182-31c70c8268f5")],
+  auto: [U("photo-1550355291-bbee04a92027"), U("photo-1552519507-da3b142c6e3d"), U("photo-1618843479313-40f8afb4b4d8")],
+  realty: [U("photo-1600585154340-be6161a56a0c"), U("photo-1560448204-e02f11c3d0e2"), U("photo-1512917774080-9991f1c4c750")],
+  clothes: [U("photo-1521572163474-6864f9cf17ab"), U("photo-1548883354-94bcfe321cbb"), U("photo-1591047139829-d91aecb6caea"), U("photo-1551028719-00167b16eac5"), U("photo-1520975954732-35dd22299614")],
+  beauty: [U("photo-1596462502278-27bfdc403348")],
+  home: [U("photo-1555041469-a586c61ea9bc"), U("photo-1586023492125-27b2c045efd7"), U("photo-1493663284031-b7e3aefcae8e"), U("photo-1556911220-bff31c812dba"), U("photo-1505693416388-ac5ce068fe85"), U("photo-1520366498724-709889c0c685"), U("photo-1585659722983-3a675dabf23d")],
+  animals: [U("photo-1546445317-29f4545e9d53"), U("photo-1484557985045-edf25e08da73"), U("photo-1527153857715-3908f2bae5e8")],
+  farm: [U("photo-1592982537447-7440770cbfc9"), U("photo-1625246333195-78d9c38ad449"), U("photo-1530267981378-37cc459e6ac2"), U("photo-1587049352846-4a222e784d38")],
+  services: [U("photo-1581092160562-40aa08e78837")],
+  construction: [U("photo-1504307651254-35680f356dfd"), U("photo-1541888946425-d81bb19240f5"), U("photo-1530124566582-a618bc2615dc")],
+  jewelry: [U("photo-1605100804763-247f67b3557e"), U("photo-1611591437281-460bfbe1220a")],
+  watches: [U("photo-1523170335258-f5ed11844a49"), U("photo-1524805444758-089113d48a6d")],
+  games: [U("photo-1606813907291-d86efa9b94db"), U("photo-1606144042614-b2417e99c4e3"), U("photo-1592840496694-26d035b52b48")],
+  books: [U("photo-1544947950-fa07a98d237f")],
+  sport: [U("photo-1517836357463-d25dfeac3438"), U("photo-1485965120184-e220f721d03e"), U("photo-1558981403-c5f9899a28bc"), U("photo-1571068316344-75bc76f77890")],
+  collectibles: [U("photo-1610375461246-83df859d849d"), U("photo-1510915361894-db8b60106cb1")],
+};
+
+function hashSeedStr(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+
+/** Deterministic per-product image from category pool */
+export function imageFor(categoryId: string, seed: string): string {
+  const pool = CAT_IMAGES[categoryId] ?? CAT_IMAGES.collectibles;
+  return pool[hashSeedStr(seed) % pool.length];
+}
+
 export const SELLERS: Seller[] = Array.from({ length: 30 }, (_, i) => ({
   id: `s${i + 1}`,
   name: pick(SELLER_NAMES, i),
@@ -137,6 +172,7 @@ export const PRODUCTS: Product[] = SEEDS.map(([title, price, categoryId, conditi
     id: `p${i + 1}`,
     title,
     imageSeed: `product-${i + 1}`,
+    imageUrl: imageFor(categoryId, `product-${i + 1}`),
     price: price || Math.round((500 + ((i * 173) % 3000)) / 100) * 100,
     oldPrice: i % 4 === 0 ? Math.round((price * 1.18) / 100) * 100 : undefined,
     condition,
