@@ -7,6 +7,7 @@ import { SellerCard } from "@/components/seller/SellerCard";
 import { ProductCard } from "@/components/product/ProductCard";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { ProductTopBar } from "@/components/product/ProductTopBar";
+import { StickyCTA } from "@/components/product/StickyCTA";
 import { ReviewList } from "@/components/reviews/ReviewList";
 import { IconStar } from "@/components/icons/Icons";
 import type { Metadata } from "next";
@@ -133,6 +134,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           </div>
         </section>
       )}
+
+      <StickyCTA product={product} auction={auction} />
     </main>
   );
 }

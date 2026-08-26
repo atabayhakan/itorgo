@@ -6,7 +6,7 @@ import { IconGavel, IconHeart, IconHome, IconSearch, IconUser } from "@/componen
 
 const TABS = [
   { href: "/", label: "Главная", icon: IconHome },
-  { href: "/search", label: "Поиск", icon: IconSearch },
+  { href: "/categories", label: "Каталог", icon: IconSearch },
   { href: "/auctions", label: "Аукционы", icon: IconGavel, live: true as const },
   { href: "/favorites", label: "Избранное", icon: IconHeart },
   { href: "/profile", label: "Профиль", icon: IconUser },
