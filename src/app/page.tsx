@@ -8,37 +8,47 @@ import { CategoryGrid } from "@/components/home/CategoryGrid";
 import { SectionHeader } from "@/components/home/SectionHeader";
 import { StoreStrip } from "@/components/home/StoreStrip";
 import { ProductCard } from "@/components/product/ProductCard";
-import { getLiveAuctions, getFeed } from "@/lib/data/mock-data";
+import { AIFloatingButton } from "@/components/home/AIFloatingButton";
 import Link from "next/link";
+import { getLiveAuctions, getFeed } from "@/lib/data/catalog";
 
 // Force dynamic so countdown "endsAt" is live per request (demo).
 export const dynamic = "force-dynamic";
 
-export default function HomePage() {
-  const live = getLiveAuctions();
-  const feed = getFeed(12);
-  const endingSoon = live.filter((a) => a.status === "ending_soon").slice(0, 6);
+export default async function HomePage() {
+  const live = await getLiveAuctions();
+  const feed = await getFeed(12);
+  // Ending-soon auctions get their own FOMO rail below — keep the general
+  // live rail from showing the same cards twice.
+  const endingSoon = live.filter((a) => a.status === "ending_soon");
+  const generalLive = live.filter((a) => a.status !== "ending_soon").slice(0, 8);
 
   return (
-    <main className="pb-6">
+    <main className="pb-10">
       <Header />
 
-      <div className="pt-2">
+      <div className="pt-3 px-4 lg:px-0">
         <LiveTicker />
       </div>
 
       {/* LIVE AUCTION HERO — editorial, signature */}
-      <div className="mt-4 rise-in">
+      <div className="mt-5 rise-in">
         <PremiumHero />
       </div>
 
-      <div className="mt-4 px-4 lg:px-0">
+      {/* QUICK ACTIONS */}
+      <section className="rise-in mt-10" style={{ animationDelay: "60ms" }}>
+        <QuickActions />
+      </section>
+
+      {/* Trust bar — compact, no dashboard feel */}
+      <div className="mt-10 px-4 lg:px-0">
         <TrustBarPro />
       </div>
 
       {/* Signature: dark auction section — Сейчас на торгах */}
-      <section className="rise-in mt-10 bg-ink py-8" style={{ animationDelay: "80ms" }}>
-        <div className="mx-auto max-w-6xl">
+      <section className="rise-in mt-14 bg-ink py-12" style={{ animationDelay: "100ms" }}>
+        <div className="mx-auto max-w-[1400px]">
           <div className="mb-4 flex items-end justify-between gap-3 px-4 lg:px-6">
             <div className="min-w-0">
               <h2 className="flex flex-wrap items-center gap-2 text-[18px] font-bold tracking-tight text-white lg:text-[22px]">
@@ -55,7 +65,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 lg:px-6">
-            {live.slice(0, 8).map((a) => (
+            {generalLive.map((a) => (
               <div key={a.id} className="snap-start">
                 <AuctionCard auctionId={a.id} dark />
               </div>
@@ -64,19 +74,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* QUICK ACTIONS */}
-      <section className="rise-in mt-10" style={{ animationDelay: "140ms" }}>
-        <QuickActions />
-      </section>
-
       {/* CATEGORY EXPERIENCE */}
-      <section className="rise-in mt-12 space-y-4" style={{ animationDelay: "200ms" }}>
+      <section className="rise-in mt-16 space-y-6" style={{ animationDelay: "180ms" }}>
         <SectionHeader title="Категории" href="/categories" subtitle="16 категорий — от электроники до фермы" />
         <CategoryGrid />
       </section>
 
       {/* SMART FEED */}
-      <section className="rise-in mt-12 space-y-4" style={{ animationDelay: "260ms" }}>
+      <section className="rise-in mt-16 space-y-6" style={{ animationDelay: "240ms" }}>
         <SectionHeader title="Для вас" subtitle="Подобрано на основе ваших интересов · Бишкек" href="/search" />
         <div className="grid grid-cols-2 gap-3 px-4 lg:grid-cols-4 lg:px-0">
           {feed.map((p) => (
@@ -84,7 +89,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className="px-4 lg:px-0">
-          <Link href="/search" className="inline-flex w-full items-center justify-center rounded-[10px] border border-line bg-surface py-3 text-sm font-semibold hover:bg-surface-dim">
+          <Link href="/search" className="inline-flex w-full items-center justify-center rounded-[10px] border border-line bg-surface py-4 text-sm font-semibold hover:bg-surface-dim transition">
             Показать ещё
           </Link>
         </div>
@@ -92,10 +97,10 @@ export default function HomePage() {
 
       {/* Ending soon — FOMO */}
       {endingSoon.length > 0 && (
-        <section className="mt-12 space-y-4">
+        <section className="mt-16 space-y-6">
           <SectionHeader title="Скоро закончится" subtitle="Успейте сделать ставку" href="/auctions?filter=ending_soon" />
           <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1">
-            {endingSoon.map((a) => (
+            {endingSoon.slice(0, 6).map((a) => (
               <div key={a.id} className="snap-start">
                 <AuctionCard auctionId={a.id} />
               </div>
@@ -105,10 +110,12 @@ export default function HomePage() {
       )}
 
       {/* Popular stores */}
-      <section className="mt-12 space-y-4">
+      <section className="mt-16 space-y-6">
         <SectionHeader title="Популярные магазины" subtitle="Проверенные продавцы Кыргызстана" href="/stores" />
         <StoreStrip />
       </section>
+
+      <AIFloatingButton />
 
       {/* Footer */}
       <footer className="mt-12 border-t border-line bg-surface px-4 py-8">

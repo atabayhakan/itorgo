@@ -1,24 +1,28 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getProduct, getAuctionForProduct, formatKGS, PRODUCTS } from "@/lib/data/mock-data";
+import { getProduct, getAuctionForProduct, getProducts } from "@/lib/data/catalog";
+import { formatKGS } from "@/lib/data/mock-data";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { AuctionDetailSection, BidActivity } from "@/components/auction/AuctionDetailSection";
 import { SellerCard } from "@/components/seller/SellerCard";
 import { ProductCard } from "@/components/product/ProductCard";
+import { AuctionCard } from "@/components/auction/AuctionCard";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { ProductTopBar } from "@/components/product/ProductTopBar";
 import { StickyCTA } from "@/components/product/StickyCTA";
 import { ReviewList } from "@/components/reviews/ReviewList";
 import { IconStar } from "@/components/icons/Icons";
 import type { Metadata } from "next";
+import type { Product, Auction } from "@/lib/types";
 
-export function generateStaticParams() {
-  return PRODUCTS.slice(0, 30).map((p) => ({ id: p.id }));
+export async function generateStaticParams() {
+  const products = await getProducts();
+  return products.slice(0, 30).map((p) => ({ id: p.id }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  const p = getProduct(id);
+  const p = await getProduct(id);
   if (!p) return {};
   const title = `${p.title} — ${formatKGS(p.price)} сом | ITOrgo`;
   const desc = `${p.title} · ${p.city} · ${p.condition === "new" ? "Новый" : "Б/у"} · рейтинг ${p.rating}`;
@@ -32,11 +36,12 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const product = getProduct(id);
+  const product = await getProduct(id);
   if (!product) notFound();
-  const auction = getAuctionForProduct(product.id);
+  const auction = await getAuctionForProduct(product.id);
   const discount = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
-  const related = PRODUCTS.filter((p) => p.categoryId === product.categoryId && p.id !== product.id).slice(0, 4);
+  const all = await getProducts();
+  const related = all.filter((p) => p.categoryId === product.categoryId && p.id !== product.id).slice(0, 4);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -63,7 +68,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         </Link>{" "}
         / <Link href={`/search?cat=${product.categoryId}`} className="hover:underline">{product.categoryId}</Link> / {product.title}
       </nav>
-      <ProductTopBar productId={product.id} title={product.title} />
+      <ProductTopBar productId={product.id} title={product.title} price={product.price} oldPrice={product.oldPrice} condition={product.condition} />
 
       <ProductGallery product={product} />
 
@@ -128,9 +133,14 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         <section className="mt-6 space-y-3">
           <h3 className="px-4 font-bold">Похожие товары</h3>
           <div className="grid grid-cols-2 gap-3 px-4">
-            {related.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
+            {related.map((p) => {
+              const isAuction = p.isAuction;
+              return isAuction ? (
+                <AuctionCard key={p.id} auctionId={p.id} />
+              ) : (
+                <ProductCard key={p.id} product={p} />
+              );
+            })}
           </div>
         </section>
       )}
