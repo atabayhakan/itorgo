@@ -11,15 +11,13 @@ export function FloatingSell() {
         setPressed(true);
         setTimeout(() => setPressed(false), 900);
       }}
-      className="btn-primary fixed right-4 bottom-[86px] z-40 !min-h-14 !rounded-full !px-6 shadow-lifted"
+      className="fixed right-4 bottom-[86px] z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-auction-500 to-auction-700 text-white shadow-[0_8px_28px_-6px_rgba(249,115,22,0.55)] transition-transform duration-150 active:scale-95 hover:shadow-[0_12px_36px_-8px_rgba(249,115,22,0.65)]"
       aria-label="Продать"
     >
       {pressed ? (
-        <span className="rise-in flex items-center gap-2">🤖 Загружаем AI-помощника…</span>
+        <span className="rise-in text-[10px] font-bold">AI…</span>
       ) : (
-        <>
-          <IconPlus size={20} strokeWidth={2.4} /> Продать
-        </>
+        <IconPlus size={22} strokeWidth={2.4} />
       )}
     </button>
   );

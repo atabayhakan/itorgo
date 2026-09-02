@@ -20,8 +20,8 @@ export function AuctionDetailSection({ auction }: { auction: Auction }) {
               {formatKGS(auction.currentBid)} <span className="text-base font-semibold text-ink-soft">сом</span>
             </p>
             <p className="mt-1 flex items-center gap-2 text-xs text-ink-faint">
-              <span className="chip bg-surface-sunken text-ink-soft">🔥 {auction.bidsCount} ставок</span>
-              <span className="chip bg-surface-sunken text-ink-soft">👥 {auction.participants} участников</span>
+              <span className="chip bg-surface-sunken text-ink-soft">{auction.bidsCount} ставок</span>
+              <span className="chip bg-surface-sunken text-ink-soft">{auction.participants} участников</span>
             </p>
           </div>
           <div className="text-right">

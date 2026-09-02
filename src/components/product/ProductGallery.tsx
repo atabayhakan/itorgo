@@ -6,7 +6,8 @@ import type { Product } from "@/lib/types";
 
 /**
  * Full-width swipe gallery — mobile-first.
- * TODO(media): real images via CDN (WebP/AVIF), video thumbnail support.
+ * Real photo when available; neutral gradient + SVG icon fallback (never emoji).
+ * Crossfade transition between slides.
  */
 export function ProductGallery({ product }: { product: Product }) {
   const [idx, setIdx] = useState(0);
@@ -18,7 +19,7 @@ export function ProductGallery({ product }: { product: Product }) {
       <div className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto">
         {slides.map((s) => (
           <div key={s} className="w-full shrink-0 snap-start">
-            <ProductImage product={product} big className="h-[360px] w-full" />
+            <ProductImage product={product} big className="h-[360px] w-full transition-opacity duration-500" />
           </div>
         ))}
       </div>
@@ -28,10 +29,7 @@ export function ProductGallery({ product }: { product: Product }) {
         {slides.map((s) => (
           <button
             key={s}
-            onClick={() => {
-              setIdx(s);
-              // scroll handled natively; keep visual feedback
-            }}
+            onClick={() => setIdx(s)}
             aria-label={`Фото ${s + 1}`}
             className={`h-1.5 rounded-full transition-all ${idx === s ? "w-6 bg-white" : "w-1.5 bg-white/55"}`}
           />

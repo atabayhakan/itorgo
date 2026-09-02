@@ -4,22 +4,22 @@
 import type { Auction, Category, Product, Seller, Store } from "../types";
 
 export const CATEGORIES: Category[] = [
-  { id: "electronics", emoji: "📱", label: "Электроника" },
-  { id: "auto", emoji: "🚗", label: "Авто" },
-  { id: "realty", emoji: "🏠", label: "Недвижимость" },
-  { id: "clothes", emoji: "👕", label: "Одежда" },
-  { id: "beauty", emoji: "💄", label: "Красота" },
-  { id: "home", emoji: "🛋", label: "Дом" },
-  { id: "animals", emoji: "🐄", label: "Животные" },
-  { id: "farm", emoji: "🌾", label: "Ферма" },
-  { id: "services", emoji: "🔧", label: "Услуги" },
-  { id: "construction", emoji: "🏗", label: "Строительство" },
-  { id: "watches", emoji: "⌚", label: "Часы" },
-  { id: "jewelry", emoji: "💎", label: "Ювелирные изделия" },
-  { id: "games", emoji: "🎮", label: "Игры" },
-  { id: "books", emoji: "📚", label: "Книги" },
-  { id: "sport", emoji: "🏋", label: "Спорт" },
-  { id: "collectibles", emoji: "🎨", label: "Коллекции" },
+  { id: "electronics", emoji: "", label: "Электроника" },
+  { id: "auto", emoji: "", label: "Авто" },
+  { id: "realty", emoji: "", label: "Недвижимость" },
+  { id: "clothes", emoji: "", label: "Одежда" },
+  { id: "beauty", emoji: "", label: "Красота" },
+  { id: "home", emoji: "", label: "Дом" },
+  { id: "animals", emoji: "", label: "Животные" },
+  { id: "farm", emoji: "", label: "Ферма" },
+  { id: "services", emoji: "", label: "Услуги" },
+  { id: "construction", emoji: "", label: "Строительство" },
+  { id: "watches", emoji: "", label: "Часы" },
+  { id: "jewelry", emoji: "", label: "Ювелирные изделия" },
+  { id: "games", emoji: "", label: "Игры" },
+  { id: "books", emoji: "", label: "Книги" },
+  { id: "sport", emoji: "", label: "Спорт" },
+  { id: "collectibles", emoji: "", label: "Коллекции" },
 ];
 
 const CITIES = ["Бишкек", "Ош", "Джалал-Абад", "Каракол", "Токмок"];

@@ -1,0 +1,6 @@
+D:\itorgo\.github\workflows\ci.yml
+D:\itorgo\CLAUDE.md
+D:\itorgo\README.md
+D:\itorgo\docker-compose.yml
+D:\itorgo\docs\QA.md
+D:\itorgo\docs\SECURITY.md

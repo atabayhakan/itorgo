@@ -1,6 +1,10 @@
 "use client";
 
+import { AdminShell } from "@/components/admin/AdminShell";
 import { DataDenseTable, type Column } from "@/components/admin/DataDenseTable";
+import { FilterPanel, type FilterField, type FilterValue } from "@/components/admin/FilterPanel";
+import { StatusBadge } from "@/components/admin/StatusBadge";
+import React from "react";
 
 type KycRow = { id: string; user: string; type: string; status: string; at: string; score: number };
 
@@ -13,30 +17,47 @@ const rows: KycRow[] = [
   { id: "k6", user: "s15 · Эржан Б.", type: "phone · +996", status: "verified", at: "2026-08-25 07:30", score: 88 },
 ];
 
+const KYC_FILTERS: FilterField[] = [
+  { key: "status", label: "Статус", options: ["verified", "pending", "rejected"] },
+  { key: "type", label: "Тип", options: ["doc · паспорт", "business · ИП", "bank · счёт", "phone · +996"] },
+];
+
 export default function AdminKycPage() {
+  const [filters, setFilters] = React.useState<FilterValue>({});
+
+  const filteredRows = React.useMemo(() => {
+    return rows.filter((r) => {
+      const statusMatch = !filters.status?.length || filters.status.includes(r.status);
+      const typeMatch = !filters.type?.length || filters.type.includes(r.type);
+      return statusMatch && typeMatch;
+    });
+  }, [filters]);
+
   const cols: Column<KycRow>[] = [
     { key: "id", header: "ID", width: "60px" },
     { key: "user", header: "Пользователь", sortable: true },
-    { key: "type", header: "Тип" },
-    { key: "status", header: "Статус", align: "center", render: (r) => <span className={`chip ${r.status === "verified" ? "bg-success-bg text-success" : r.status === "pending" ? "bg-warning-bg text-warning" : "bg-danger-bg text-danger"}`}>{r.status}</span> },
+    { key: "type", header: "Тип", sortable: true },
+    { key: "status", header: "Статус", align: "center", render: (r) => <StatusBadge status={r.status} /> },
     { key: "score", header: "Trust", align: "right", sortable: true, render: (r) => <span className={`font-black tabular-nums ${r.score >= 80 ? "text-success" : r.score >= 60 ? "text-warning" : "text-danger"}`}>{r.score}%</span> },
     { key: "at", header: "Время", width: "130px", sortable: true },
   ];
 
   return (
-    <main className="min-h-dvh bg-surface-dim">
-      <div className="sticky top-0 bg-surface px-4 py-3 shadow-sm">
-        <a href="/admin" className="text-sm font-bold">← Admin</a> <span className="ml-2 text-sm font-semibold">KYC очередь</span>
+    <AdminShell title="KYC очередь">
+      <div className="mb-4">
+        <FilterPanel fields={KYC_FILTERS} value={filters} onChange={setFilters} />
       </div>
-      <div className="p-4">
-        <div className="mb-3 flex items-center justify-between text-xs">
-          <span className="text-ink-faint">{rows.length} заявок · телефон/email/документы/банк — spec #47</span>
-          <span className="rounded-full bg-surface px-3 py-1 font-bold shadow-card">Очередь ▾</span>
-        </div>
-        {/* @ts-ignore */}
-        <DataDenseTable columns={cols} rows={rows} sortKey="score" sortDir="desc" />
-        <p className="mt-2 text-xs text-ink-faint">TODO: `prisma.kyc.findMany` + `verification` + approve/reject → AuditLog</p>
+      <div className="mb-4">
+        <DataDenseTable
+          columns={cols}
+          rows={filteredRows}
+          sortKey="score"
+          sortDir="desc"
+        />
       </div>
-    </main>
+      <p className="mt-2 text-xs text-ink-faint">
+        Filterlar client-side (demo). Prod: prisma.kyc.findMany + verification + approve/reject → AuditLog
+      </p>
+    </AdminShell>
   );
 }

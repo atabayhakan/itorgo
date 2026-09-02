@@ -1,3 +1,4 @@
+import { AdminShell } from "@/components/admin/AdminShell";
 import { StatCard } from "@/components/admin/Chart";
 
 export default function AdminPage() {
@@ -16,19 +17,28 @@ export default function AdminPage() {
   ];
 
   return (
-    <main className="min-h-dvh bg-surface-dim">
-      <div className="border-b border-line bg-surface px-4 py-3">
-        <p className="text-sm font-black">ITOrgo Admin</p>
-        <p className="text-xs text-ink-faint">SaaS · fintech dashboard · RBAC · Feature Flags</p>
+    <AdminShell title="Дашборд">
+      <p className="text-xs text-ink-faint">SaaS · fintech dashboard · RBAC · Feature Flags</p>
+
+      {/* Hierarchy: GMV hero → 2 medium → 3 small */}
+      <div className="mt-3">
+        <div className="grid grid-cols-1 gap-2 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <StatCard label={kpis[0].label} value={kpis[0].value} data={[...kpis[0].data]} color={kpis[0].color} />
+          </div>
+          <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
+            <StatCard label={kpis[2].label} value={kpis[2].value} data={[...kpis[2].data]} color={kpis[2].color} />
+            <StatCard label={kpis[1].label} value={kpis[1].value} data={[...kpis[1].data]} color={kpis[1].color} />
+          </div>
+        </div>
+        <div className="mt-2 grid grid-cols-3 gap-2">
+          {kpis.slice(3).map((k) => (
+            <StatCard key={k.label} label={k.label} value={k.value} data={[...k.data]} color={k.color} />
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 px-4 py-4">
-        {kpis.map((k) => (
-          <StatCard key={k.label} label={k.label} value={k.value} data={[...k.data]} color={k.color} />
-        ))}
-      </div>
-
-      <div className="grid grid-cols-3 gap-2 px-4">
+      <div className="mt-4 grid grid-cols-3 gap-2">
         {alerts.map((a) => (
           <div
             key={a.label}
@@ -39,7 +49,7 @@ export default function AdminPage() {
         ))}
       </div>
 
-      <section className="mx-4 mt-4 rounded-2xl bg-surface p-4 shadow-card">
+      <section className="mt-4 rounded-2xl bg-surface p-4 shadow-card">
         <h2 className="font-bold">🤖 ITOrgo AI — админ-ассистент</h2>
         <p className="mt-1 text-sm text-ink-faint">«Покажи подозрительные аукционы» · «Какие категории растут?» — TODO(agent)</p>
         <div className="mt-3 flex gap-2">
@@ -48,7 +58,7 @@ export default function AdminPage() {
         </div>
       </section>
 
-      <section className="mx-4 mt-4 rounded-2xl bg-surface p-4 shadow-card">
+      <section className="mt-4 rounded-2xl bg-surface p-4 shadow-card">
         <h3 className="font-bold">System · Feature Flags</h3>
         <p className="text-xs text-ink-faint">Auction / Buy Now / Wallet / AI / KYC / Stores — вкл/выкл без деплоя</p>
         <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
@@ -60,7 +70,7 @@ export default function AdminPage() {
         </div>
       </section>
 
-      <section className="mx-4 mt-4 rounded-2xl bg-surface p-4 shadow-card">
+      <section className="mt-4 rounded-2xl bg-surface p-4 shadow-card">
         <h3 className="font-bold">System Health</h3>
         <p className="mt-1 text-xs text-ink-faint">server · db · api · queue · payment · OCR · AI — TODO(monitoring)</p>
         <ul className="mt-2 space-y-1 text-xs">
@@ -79,27 +89,9 @@ export default function AdminPage() {
         </ul>
       </section>
 
-      <nav className="mx-4 mt-4 grid grid-cols-2 gap-2 text-sm">
-        {[
-          ["/admin/users", "Пользователи"],
-          ["/admin/orders", "Заказы"],
-          ["/admin/media", "Media Library"],
-          ["/admin/fraud", "Fraud Center"],
-          ["/admin/audit", "Audit Log"],
-          ["/admin/cms", "CMS · тексты"],
-          ["/admin/coupons", "Купоны"],
-          ["/admin/push", "Push log"],
-          ["/admin/kyc", "KYC очередь"],
-        ].map(([href, label]) => (
-          <a key={href} href={href} className="rounded-xl bg-surface px-4 py-3 text-center font-semibold shadow-card">
-            {label}
-          </a>
-        ))}
-      </nav>
-
-      <p className="px-4 py-6 text-center text-xs text-ink-faint">
+      <p className="py-6 text-center text-xs text-ink-faint">
         RBAC: Super Admin · Auction/Finance/KYC/Fraud/Support/Marketing/Moderator · Audit Log · полный доступ по ролям
       </p>
-    </main>
+    </AdminShell>
   );
 }

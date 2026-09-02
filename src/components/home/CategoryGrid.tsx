@@ -17,13 +17,13 @@ export function CategoryGrid() {
         <Link
           key={c.id}
           href={`/search?cat=${c.id}`}
-          className="group flex flex-col items-center gap-2 rounded-[12px] border border-line/60 bg-surface px-1 py-3.5 transition-all hover:-translate-y-0.5 hover:border-line hover:shadow-card"
+          className="group flex flex-col items-center gap-2 rounded-[14px] border border-line/50 bg-surface px-2 py-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lifted"
         >
-          <span className="text-ink-soft transition group-hover:text-brand-700">
-            <CategoryIcon id={c.id} size={20} />
+          <span className="text-ink-soft transition group-hover:text-brand-600">
+            <CategoryIcon id={c.id} size={22} />
           </span>
-          <span className="text-center text-[11px] font-medium leading-tight">{c.label}</span>
-          <span className="text-[10px] text-ink-faint">{(COUNTS[c.id] ?? 0).toLocaleString("ru-RU")}</span>
+          <span className="text-center text-[11px] font-semibold leading-tight">{c.label}</span>
+          <span className="text-[10px] font-medium text-ink-faint">{(COUNTS[c.id] ?? 0).toLocaleString("ru-RU")}</span>
         </Link>
       ))}
     </div>

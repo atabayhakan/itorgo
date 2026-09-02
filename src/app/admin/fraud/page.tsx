@@ -1,6 +1,10 @@
 "use client";
 
+import { AdminShell } from "@/components/admin/AdminShell";
 import { DataDenseTable, type Column } from "@/components/admin/DataDenseTable";
+import { FilterPanel, type FilterField, type FilterValue } from "@/components/admin/FilterPanel";
+import { StatusBadge } from "@/components/admin/StatusBadge";
+import React from "react";
 
 type FraudRow = { id: string; kind: string; subject: string; score: number; status: string; at: string };
 
@@ -13,30 +17,47 @@ const rows: FraudRow[] = [
   { id: "f6", kind: "duplicate_image", subject: "product p27", score: 88, status: "open", at: "2026-08-24 18:33" },
 ];
 
+const FRAUD_FILTERS: FilterField[] = [
+  { key: "status", label: "Статус", options: ["open", "reviewing", "closed"] },
+  { key: "kind", label: "Тип", options: ["shill_bidding", "duplicate_account", "fake_listing", "suspicious_payment", "abnormal_login", "duplicate_image"] },
+];
+
 export default function AdminFraudPage() {
+  const [filters, setFilters] = React.useState<FilterValue>({});
+
+  const filteredRows = React.useMemo(() => {
+    return rows.filter((r) => {
+      const statusMatch = !filters.status?.length || filters.status.includes(r.status);
+      const kindMatch = !filters.kind?.length || filters.kind.includes(r.kind);
+      return statusMatch && kindMatch;
+    });
+  }, [filters]);
+
   const cols: Column<FraudRow>[] = [
     { key: "id", header: "ID", width: "70px", sortable: true },
     { key: "kind", header: "Тип", sortable: true, render: (r) => <span className="font-mono text-xs font-bold">{r.kind}</span> },
-    { key: "subject", header: "Субъект", render: (r) => <span className="text-xs">{r.subject}</span> },
+    { key: "subject", header: "Субъект", sortable: true, render: (r) => <span className="text-xs">{r.subject}</span> },
     { key: "score", header: "Score", align: "right", sortable: true, render: (r) => <span className={`font-black tabular-nums ${r.score >= 80 ? "text-danger" : r.score >= 60 ? "text-warning" : "text-ink-soft"}`}>{r.score}%</span> },
-    { key: "status", header: "Статус", align: "center", render: (r) => <span className={`chip ${r.status === "open" ? "bg-danger-bg text-danger" : r.status === "reviewing" ? "bg-warning-bg text-warning" : "bg-success-bg text-success"}`}>{r.status}</span> },
+    { key: "status", header: "Статус", align: "center", render: (r) => <StatusBadge status={r.status} /> },
     { key: "at", header: "Время", width: "130px", sortable: true },
   ];
 
   return (
-    <main className="min-h-dvh bg-surface-dim">
-      <div className="sticky top-0 bg-surface px-4 py-3 shadow-sm">
-        <a href="/admin" className="text-sm font-bold">← Admin</a> <span className="ml-2 text-sm font-semibold">Fraud Center</span>
+    <AdminShell title="Fraud Center">
+      <div className="mb-4">
+        <FilterPanel fields={FRAUD_FILTERS} value={filters} onChange={setFilters} />
       </div>
-      <div className="p-4">
-        <div className="mb-3 flex items-center justify-between text-xs">
-          <span className="text-ink-faint">{rows.length} кейсов · score &gt;70 → auto-case · spec #46</span>
-          <span className="rounded-full bg-surface px-3 py-1 font-bold shadow-card">Фильтр ▾</span>
-        </div>
-        {/* @ts-ignore */}
-        <DataDenseTable columns={cols} rows={rows} sortKey="score" sortDir="desc" />
-        <p className="mt-2 text-xs text-ink-faint">TODO: `prisma.fraudCase.findMany` + engine evaluateFraud(subjectId)</p>
+      <div className="mb-4">
+        <DataDenseTable
+          columns={cols}
+          rows={filteredRows}
+          sortKey="score"
+          sortDir="desc"
+        />
       </div>
-    </main>
+      <p className="mt-2 text-xs text-ink-faint">
+        Filterlar client-side (demo). Prod: prisma.fraudCase.findMany + engine evaluateFraud(subjectId)
+      </p>
+    </AdminShell>
   );
 }

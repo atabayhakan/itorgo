@@ -1,0 +1,1200 @@
+
+> itorgo@0.1.0 dev
+> next dev --port 3002 --hostname 0.0.0.0
+
+   ▲ Next.js 15.5.23
+   - Local:        http://localhost:3002
+   - Network:      http://0.0.0.0:3002
+
+ ✓ Starting...
+ ✓ Ready in 5s
+ ✓ Compiled /middleware in 272ms (115 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 1239ms (667 modules)
+ GET / 200 in 2263ms
+ GET / 200 in 1017ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1995ms (682 modules)
+ GET /icon.png 404 in 3638ms
+ GET / 200 in 320ms
+ GET /icon.png 404 in 233ms
+ GET / 200 in 190ms
+ GET /icon.png 404 in 139ms
+ ✓ Compiled in 600ms (681 modules)
+ ✓ Compiled in 1189ms (681 modules)
+ ✓ Compiled in 698ms (681 modules)
+ ✓ Compiled in 2.3s (681 modules)
+ ✓ Compiled in 628ms (681 modules)
+ ✓ Compiled in 468ms (681 modules)
+ ✓ Compiled in 917ms (681 modules)
+ ✓ Compiled in 682ms (681 modules)
+ ✓ Compiled in 553ms (681 modules)
+ GET / 200 in 216ms
+ GET / 200 in 126ms
+ ○ Compiling /search ...
+ ✓ Compiled /search in 2.6s (714 modules)
+ GET /categories 200 in 3376ms
+ GET /stores 200 in 3380ms
+ GET /cart 200 in 3380ms
+ GET /search?filter=buy_now 200 in 3384ms
+ GET /auctions 200 in 3396ms
+ GET /icon.png 404 in 3481ms
+ ○ Compiling /product/[id] ...
+ ✓ Compiled /product/[id] in 2.4s (762 modules)
+ GET /profile 200 in 2856ms
+ GET /sell 200 in 2859ms
+ ⨯ [Error: Cannot find module './vendor-chunks/@swc.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\product\[id]\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\server\dev\static-paths-worker.js
+- D:\itorgo\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/product/p4'
+}
+ ⨯ [Error: Cannot find module './vendor-chunks/@swc.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\product\[id]\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\server\dev\static-paths-worker.js
+- D:\itorgo\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/product/p4'
+}
+ ⨯ [Error: Cannot find module './vendor-chunks/@swc.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\product\[id]\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\server\dev\static-paths-worker.js
+- D:\itorgo\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/product/p4'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /favorites in 10.1s (1104 modules)
+ GET /favorites 200 in 9699ms
+ GET /product/p1 500 in 15113ms
+ GET /product/p5 500 in 15112ms
+ GET /product/p4 500 in 15113ms
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/product/p2'
+}
+ GET /product/p6 200 in 6096ms
+ GET /product/p9 200 in 759ms
+ GET /product/p10 200 in 761ms
+ GET /product/p7 200 in 1208ms
+ GET /product/p11 200 in 86ms
+ GET /product/p2 500 in 1347ms
+ GET /product/p3 200 in 528ms
+ GET /product/p12 200 in 443ms
+ GET /product/p6 200 in 561ms
+ ✓ Compiled in 784ms (955 modules)
+ ✓ Compiled in 473ms (955 modules)
+ ✓ Compiled in 449ms (955 modules)
+ ✓ Compiled in 440ms (955 modules)
+ ✓ Compiled in 534ms (955 modules)
+ ✓ Compiled in 793ms (955 modules)
+ ✓ Compiled in 464ms (955 modules)
+ ✓ Compiled in 753ms (955 modules)
+ ✓ Compiled in 382ms (955 modules)
+ GET / 200 in 130ms
+ GET / 200 in 95ms
+ ○ Compiling /cart ...
+ ✓ Compiled /cart in 737ms (520 modules)
+ ✓ Compiled (540 modules)
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\itorgo\.next\server\vendor-chunks\next.js'
+    at <unknown> (D:\itorgo\.next\server\app\stores\page.js:584:47)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\stores\page.js:587:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\itorgo\\.next\\server\\vendor-chunks\\next.js',
+  page: '/stores'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\itorgo\.next\server\vendor-chunks\next.js'
+    at <unknown> (D:\itorgo\.next\server\app\search\page.js:681:47)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\search\page.js:684:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\itorgo\\.next\\server\\vendor-chunks\\next.js',
+  page: '/search'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\itorgo\.next\server\vendor-chunks\next.js'
+    at <unknown> (D:\itorgo\.next\server\app\categories\page.js:604:47)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\categories\page.js:607:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\itorgo\\.next\\server\\vendor-chunks\\next.js',
+  page: '/categories'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\itorgo\.next\server\vendor-chunks\next.js'
+    at <unknown> (D:\itorgo\.next\server\app\cart\page.js:659:47)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\cart\page.js:662:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\itorgo\\.next\\server\\vendor-chunks\\next.js',
+  page: '/cart'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\itorgo\.next\server\vendor-chunks\next.js'
+    at <unknown> (D:\itorgo\.next\server\app\auctions\page.js:670:47)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\auctions\page.js:673:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\itorgo\\.next\\server\\vendor-chunks\\next.js',
+  page: '/auctions'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 977ms (1075 modules)
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\pages\_document.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\pages\_document.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\pages\_document.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\pages\_document.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\pages\_document.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /search?filter=buy_now 500 in 17908ms
+ GET /stores 500 in 17908ms
+ GET /cart 500 in 17908ms
+ GET /categories 500 in 17909ms
+ GET /auctions 500 in 17992ms
+ ○ Compiling /product/[id] ...
+ ✓ Compiled /product/[id] in 2.7s (640 modules)
+ ✓ Compiled (671 modules)
+ GET /profile 200 in 4550ms
+ GET /product/p1 200 in 4525ms
+ GET /product/p5 200 in 4525ms
+ GET /product/p4 200 in 4505ms
+ GET /sell 200 in 4556ms
+ ○ Compiling /favorites ...
+ ✓ Compiled /favorites in 917ms (677 modules)
+ ✓ Compiled in 0ms (677 modules)
+ GET /product/p6 200 in 1992ms
+ ✓ Compiled in 0ms (677 modules)
+ ✓ Compiled in 1ms (677 modules)
+ GET /favorites 200 in 4125ms
+ GET /product/p7 200 in 3998ms
+ GET /product/p9 200 in 3998ms
+ GET /product/p2 200 in 4000ms
+ ✓ Compiled in 0ms (677 modules)
+ GET /product/p10 200 in 3195ms
+ GET /cart 200 in 4534ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\itorgo\.next\cache\webpack\client-development-fallback\0.pack.gz_' -> 'D:\itorgo\.next\cache\webpack\client-development-fallback\0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\itorgo\.next\cache\webpack\client-development-fallback\0.pack.gz_' -> 'D:\itorgo\.next\cache\webpack\client-development-fallback\0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\itorgo\.next\cache\webpack\client-development-fallback\0.pack.gz_' -> 'D:\itorgo\.next\cache\webpack\client-development-fallback\0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\itorgo\.next\cache\webpack\client-development-fallback\0.pack.gz_' -> 'D:\itorgo\.next\cache\webpack\client-development-fallback\0.pack.gz'
+ ⨯ Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\product\[id]\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:7815)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:7882) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\product\[id]\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET / 500 in 129ms
+ ✓ Compiled in 1464ms (440 modules)
+ ✓ Compiled in 1634ms (1051 modules)
+ ✓ Compiled in 824ms (1051 modules)
+ ⨯ ./src/components/ui/ProductImage.tsx
+Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:3:1]
+ [2m1[0m | import type { Product, Category } from "@/lib/types";
+ [2m2[0m | import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
+ [2m3[0m | import { useState } from "react";
+   : [35;1m         ^^^^^^^^[0m
+ [2m4[0m | import { CategoryIcon } from "@/components/icons/CategoryIcon";
+ [2m5[0m | 
+ [2m6[0m | export function catOf(p: { categoryId: string }): Category {
+   `----
+
+Import trace for requested module:
+./src/components/ui/ProductImage.tsx
+./src/components/home/PremiumHero.tsx
+./src/app/page.tsx
+ ⨯ ./src/components/ui/ProductImage.tsx
+Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:3:1]
+ [2m1[0m | import type { Product, Category } from "@/lib/types";
+ [2m2[0m | import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
+ [2m3[0m | import { useState } from "react";
+   : [35;1m         ^^^^^^^^[0m
+ [2m4[0m | import { CategoryIcon } from "@/components/icons/CategoryIcon";
+ [2m5[0m | 
+ [2m6[0m | export function catOf(p: { categoryId: string }): Category {
+   `----
+
+Import trace for requested module:
+./src/components/ui/ProductImage.tsx
+./src/components/home/PremiumHero.tsx
+./src/app/page.tsx
+ ⨯ ./src/components/ui/ProductImage.tsx
+Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:3:1]
+ [2m1[0m | import type { Product, Category } from "@/lib/types";
+ [2m2[0m | import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
+ [2m3[0m | import { useState } from "react";
+   : [35;1m         ^^^^^^^^[0m
+ [2m4[0m | import { CategoryIcon } from "@/components/icons/CategoryIcon";
+ [2m5[0m | 
+ [2m6[0m | export function catOf(p: { categoryId: string }): Category {
+   `----
+
+Import trace for requested module:
+./src/components/ui/ProductImage.tsx
+./src/components/home/StoreStrip.tsx
+./src/app/page.tsx
+ ⨯ ./src/components/ui/ProductImage.tsx
+Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:3:1]
+ [2m1[0m | import type { Product, Category } from "@/lib/types";
+ [2m2[0m | import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
+ [2m3[0m | import { useState } from "react";
+   : [35;1m         ^^^^^^^^[0m
+ [2m4[0m | import { CategoryIcon } from "@/components/icons/CategoryIcon";
+ [2m5[0m | 
+ [2m6[0m | export function catOf(p: { categoryId: string }): Category {
+   `----
+
+Import trace for requested module:
+./src/components/ui/ProductImage.tsx
+./src/components/home/PremiumHero.tsx
+./src/app/page.tsx
+ ⨯ ./src/components/ui/ProductImage.tsx
+Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:3:1]
+ [2m1[0m | import type { Product, Category } from "@/lib/types";
+ [2m2[0m | import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
+ [2m3[0m | import { useState } from "react";
+   : [35;1m         ^^^^^^^^[0m
+ [2m4[0m | import { CategoryIcon } from "@/components/icons/CategoryIcon";
+ [2m5[0m | 
+ [2m6[0m | export function catOf(p: { categoryId: string }): Category {
+   `----
+
+Import trace for requested module:
+./src/components/ui/ProductImage.tsx
+./src/components/home/StoreStrip.tsx
+./src/app/page.tsx
+ ⨯ ./src/components/ui/ProductImage.tsx
+Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:3:1]
+ [2m1[0m | import type { Product, Category } from "@/lib/types";
+ [2m2[0m | import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
+ [2m3[0m | import { useState } from "react";
+   : [35;1m         ^^^^^^^^[0m
+ [2m4[0m | import { CategoryIcon } from "@/components/icons/CategoryIcon";
+ [2m5[0m | 
+ [2m6[0m | export function catOf(p: { categoryId: string }): Category {
+   `----
+
+Import trace for requested module:
+./src/components/ui/ProductImage.tsx
+./src/components/home/PremiumHero.tsx
+./src/app/page.tsx
+ ⨯ ./src/components/ui/ProductImage.tsx
+Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:3:1]
+ [2m1[0m | import type { Product, Category } from "@/lib/types";
+ [2m2[0m | import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
+ [2m3[0m | import { useState } from "react";
+   : [35;1m         ^^^^^^^^[0m
+ [2m4[0m | import { CategoryIcon } from "@/components/icons/CategoryIcon";
+ [2m5[0m | 
+ [2m6[0m | export function catOf(p: { categoryId: string }): Category {
+   `----
+
+Import trace for requested module:
+./src/components/ui/ProductImage.tsx
+./src/components/home/PremiumHero.tsx
+./src/app/page.tsx
+ ⨯ ./src/components/home/QuickActions.tsx
+Module parse failed: Export 'IconSparkles' is not defined (138:9)
+|     }, this);
+| }
+> export { IconSparkles };
+| 
+
+Import trace for requested module:
+./src/components/home/QuickActions.tsx
+./src/app/page.tsx
+ ⨯ ./src/components/ui/ProductImage.tsx
+Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:3:1]
+ [2m1[0m | import type { Product, Category } from "@/lib/types";
+ [2m2[0m | import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
+ [2m3[0m | import { useState } from "react";
+   : [35;1m         ^^^^^^^^[0m
+ [2m4[0m | import { CategoryIcon } from "@/components/icons/CategoryIcon";
+ [2m5[0m | 
+ [2m6[0m | export function catOf(p: { categoryId: string }): Category {
+   `----
+
+Import trace for requested module:
+./src/components/ui/ProductImage.tsx
+./src/components/home/PremiumHero.tsx
+./src/app/page.tsx
+ ✓ Compiled in 1123ms (1054 modules)
+ ⨯ ./src/lib/data/mock-data.ts
+Module parse failed: Identifier 'U' has already been declared (879:6)
+| // ── Real product imagery (Unsplash, stable IDs, WebP via params) ──
+| // Fallback: premium neutral placeholder (ProductImage onError) — never emoji.
+> const U = (id)=>"https://images.unsplash.com/".concat(id, "?w=900&q=80&auto=format&fit=crop");
+| const CAT_IMAGES = {
+|     electronics: [
+
+Import trace for requested module:
+./src/lib/data/mock-data.ts
+./src/components/auction/AuctionCard.tsx
+ ✓ Compiled in 1597ms (1054 modules)
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  {src: ..., alt: ..., loading: "eager", decoding: ..., onError: function onError, className: ...}
+                                                                 ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>) {
+  digest: '3578077650'
+}
+ ⨯ TypeError: a[d] is not a function
+    at 838 (D:\itorgo\.next\server\chunks\2199.js:1:187) {
+  digest: '2029391936'
+}
+ ⨯ TypeError: a[d] is not a function
+    at 838 (D:\itorgo\.next\server\chunks\2199.js:1:187) {
+  digest: '2029391936'
+}
+ GET / 200 in 2440ms
+ ✓ Compiled in 1824ms (1054 modules)
+ ✓ Compiled in 383ms (441 modules)
+ ✓ Compiled in 727ms (441 modules)
+ ✓ Compiled in 526ms (441 modules)
+ ✓ Compiled in 391ms (441 modules)
+ ✓ Compiled in 536ms (441 modules)
+ ✓ Compiled in 1237ms (1054 modules)
+ ✓ Compiled in 452ms (441 modules)
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  {src: ..., alt: ..., loading: "eager", decoding: ..., onError: function onError, className: ...}
+                                                                 ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>) {
+  digest: '3578077650'
+}
+ ⨯ [TypeError: a[d] is not a function] { digest: '3139826288' }
+[TypeError: a[d] is not a function]
+ ⨯ [TypeError: a[d] is not a function]
+ ⨯ [TypeError: a[d] is not a function] { page: '/' }
+ GET / 500 in 1421ms
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  {src: ..., alt: ..., loading: "eager", decoding: ..., onError: function onError, className: ...}
+                                                                 ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>) {
+  digest: '3578077650'
+}
+ ⨯ [TypeError: a[d] is not a function] { digest: '3139826288' }
+[TypeError: a[d] is not a function]
+ ⨯ [TypeError: a[d] is not a function]
+ ⨯ [TypeError: a[d] is not a function] { page: '/' }
+ GET / 500 in 1193ms
+ ✓ Compiled in 982ms (1054 modules)
+ ✓ Compiled in 402ms (441 modules)
+ ✓ Compiled in 1226ms (1054 modules)
+ ✓ Compiled in 1832ms (1057 modules)
+ ⨯ ./src/components/product/ProductTopBar.tsx
+Error:   [31mx[0m Expected '>', got 'div'
+    ,-[[36;1;4mD:\itorgo\src\components\product\ProductTopBar.tsx[0m:64:1]
+ [2m61[0m |               <span className="ml-1 text-xs font-bold uppercase tracking-wider text-danger">-{discount}%</span>
+ [2m62[0m |             )}
+ [2m63[0m |           </div>
+ [2m64[0m |         </div>
+    : [35;1m          ^^^[0m
+ [2m65[0m |       </div>
+ [2m66[0m |     </>
+ [2m67[0m |   );
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/product/ProductTopBar.tsx
+ ⨯ ./src/components/product/ProductTopBar.tsx
+Error:   [31mx[0m Expected '>', got 'div'
+    ,-[[36;1;4mD:\itorgo\src\components\product\ProductTopBar.tsx[0m:64:1]
+ [2m61[0m |               <span className="ml-1 text-xs font-bold uppercase tracking-wider text-danger">-{discount}%</span>
+ [2m62[0m |             )}
+ [2m63[0m |           </div>
+ [2m64[0m |         </div>
+    : [35;1m          ^^^[0m
+ [2m65[0m |       </div>
+ [2m66[0m |     </>
+ [2m67[0m |   );
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/product/ProductTopBar.tsx
+ ⨯ ./src/components/product/ProductTopBar.tsx
+Error:   [31mx[0m Expected '>', got 'div'
+    ,-[[36;1;4mD:\itorgo\src\components\product\ProductTopBar.tsx[0m:64:1]
+ [2m61[0m |               <span className="ml-1 text-xs font-bold uppercase tracking-wider text-danger">-{discount}%</span>
+ [2m62[0m |             )}
+ [2m63[0m |           </div>
+ [2m64[0m |         </div>
+    : [35;1m          ^^^[0m
+ [2m65[0m |       </div>
+ [2m66[0m |     </>
+ [2m67[0m |   );
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/product/ProductTopBar.tsx
+ ✓ Compiled in 549ms (442 modules)
+ ✓ Compiled in 316ms (442 modules)
+ ✓ Compiled in 292ms (442 modules)
+ ✓ Compiled in 490ms (442 modules)
+ ✓ Compiled in 211ms (442 modules)
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  {src: ..., alt: ..., loading: "eager", decoding: ..., onError: function onError, className: ...}
+                                                                 ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>) {
+  digest: '3578077650'
+}
+ ⨯ [TypeError: a[d] is not a function] { digest: '3139826288' }
+[TypeError: a[d] is not a function]
+ ⨯ [TypeError: a[d] is not a function]
+ ⨯ [TypeError: a[d] is not a function] { page: '/' }
+ GET / 500 in 2536ms
+ ✓ Compiled in 529ms (442 modules)
+ ✓ Compiled in 335ms (442 modules)
+ ✓ Compiled in 388ms (442 modules)
+ ✓ Compiled in 529ms (442 modules)
+ ✓ Compiled in 594ms (442 modules)
+ ✓ Compiled in 481ms (442 modules)
+ ✓ Compiled in 495ms (442 modules)
+ ✓ Compiled in 272ms (442 modules)
+ ✓ Compiled in 268ms (442 modules)
+ ✓ Compiled in 444ms (442 modules)
+ ✓ Compiled in 254ms (442 modules)
+ ✓ Compiled in 286ms (442 modules)
+ ✓ Compiled in 268ms (442 modules)
+ ✓ Compiled in 295ms (442 modules)
+ ✓ Compiled in 234ms (442 modules)
+ ✓ Compiled in 166ms (442 modules)
+ ⨯ ./src/components/ui/ProductImage.tsx
+Error:   [31mx[0m Unterminated string constant
+    ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:20:1]
+ [2m17[0m |  * Fallback renders underneath; a failed img hides itself (no client state needed).
+ [2m18[0m |  */
+ [2m19[0m | export function ProductImage({ product, className = "", big = false, priority = false }: {
+ [2m20[0m |   product: Pick<Product, "imageSeed" | "categoryId" | "title" | "imageUrl'>;
+    : [35;1m                                                                ^^^^^^^^^^^^[0m
+ [2m21[0m |   className?: string;
+ [2m22[0m |   big?: boolean;
+ [2m23[0m |   priority?: boolean;
+    `----
+  [31mx[0m Expected ',', got 'className'
+    ,-[[36;1;4mD:\itorgo\src\components\ui\ProductImage.tsx[0m:21:1]
+ [2m18[0m |  */
+ [2m19[0m | export function ProductImage({ product, className = "", big = false, priority = false }: {
+ [2m20[0m |   product: Pick<Product, "imageSeed" | "categoryId" | "title" | "imageUrl'>;
+ [2m21[0m |   className?: string;
+    : [35;1m  ^^^^^^^^^[0m
+ [2m22[0m |   big?: boolean;
+ [2m23[0m |   priority?: boolean;
+ [2m24[0m | }) {
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/ui/ProductImage.tsx
+./src/components/auction/AuctionCard.tsx
+ ✓ Compiled in 609ms (1057 modules)
+ ✓ Compiled in 892ms (1057 modules)
+ ✓ Compiled /_not-found in 452ms (616 modules)
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\itorgo\.next\server\vendor-chunks\next.js'
+    at <unknown> (D:\itorgo\.next\server\app\_not-found\page.js:573:47)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\_not-found\page.js:576:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\itorgo\\.next\\server\\vendor-chunks\\next.js'
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [Error: ENOENT: no such file or directory, open 'D:\itorgo\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\itorgo\\.next\\server\\pages\\_document.js'
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [Error: ENOENT: no such file or directory, open 'D:\itorgo\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\itorgo\\.next\\server\\pages\\_document.js'
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ GET / 500 in 863ms
+ GET / 500 in 46ms
+ ⨯ Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ GET / 500 in 201ms
+ GET / 500 in 48ms
+ ⨯ Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ GET / 500 in 159ms
+ GET / 500 in 44ms
+ ⨯ Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ GET / 500 in 145ms
+ GET / 500 in 48ms
+ ⨯ Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ GET / 500 in 138ms
+ GET / 500 in 40ms
+ ⨯ Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ GET / 500 in 171ms
+ GET / 500 in 70ms
+ ⨯ Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+Error: Cannot find module './1331.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\app\page.js:2:8261)
+    at Object.<anonymous> (D:\itorgo\.next\server\app\page.js:2:8332) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './5611.js'
+Require stack:
+- D:\itorgo\.next\server\webpack-runtime.js
+- D:\itorgo\.next\server\app\_not-found\page.js
+- D:\itorgo\node_modules\next\dist\server\require.js
+- D:\itorgo\node_modules\next\dist\server\load-components.js
+- D:\itorgo\node_modules\next\dist\build\utils.js
+- D:\itorgo\node_modules\next\dist\build\swc\options.js
+- D:\itorgo\node_modules\next\dist\build\swc\index.js
+- D:\itorgo\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- D:\itorgo\node_modules\next\dist\server\config.js
+- D:\itorgo\node_modules\next\dist\server\next.js
+- D:\itorgo\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (D:\itorgo\.next\server\pages\_document.js:1:327)
+    at Object.<anonymous> (D:\itorgo\.next\server\pages\_document.js:1:374) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ ⨯ [TypeError: Cannot read properties of undefined (reading '/_app')]
+[TypeError: Cannot read properties of undefined (reading '/_app')]
+ GET / 500 in 150ms
+ GET / 500 in 46ms

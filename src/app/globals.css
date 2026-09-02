@@ -5,7 +5,7 @@
    Mobile-first · Premium · Trust
    ============================================================ */
 @theme {
-  /* Brand — deep violet-indigo: modern fintech trust */
+  /* Brand — premium deep indigo-violet: modern commerce trust */
   --color-brand-50: #f0efff;
   --color-brand-100: #e3e1ff;
   --color-brand-200: #cbc7ff;
@@ -18,7 +18,7 @@
   --color-brand-900: #372e82;
   --color-brand-950: #231b4d;
 
-  /* Auction / attention — hot amber-coral */
+  /* Auction / attention — restrained amber */
   --color-auction-50: #fff7ed;
   --color-auction-100: #ffedd5;
   --color-auction-200: #fed7aa;
@@ -30,35 +30,40 @@
   /* Semantic */
   --color-success: #16a34a;
   --color-success-bg: #f0fdf4;
+  --color-success-border: #bbf0cc;
   --color-warning: #d97706;
   --color-warning-bg: #fffbeb;
+  --color-warning-border: #fde3ad;
   --color-danger: #dc2626;
   --color-danger-bg: #fef2f2;
+  --color-danger-border: #fecaca;
   --color-info: #0284c7;
   --color-info-bg: #f0f9ff;
+  --color-info-border: #bae3fb;
 
-  /* Neutrals */
-  --color-ink: #17171f;
-  --color-ink-soft: #55555f;
-  --color-ink-faint: #8a8a94;
-  --color-line: #ececf1;
+  /* Neutrals — warm neutral / off-white base */
+  --color-ink: #1a1a22;
+  --color-ink-soft: #5a5a66;
+  --color-ink-faint: #8c8c96;
+  --color-line: #e8e8ed;
   --color-surface: #ffffff;
-  --color-surface-dim: #f6f6f9;
-  --color-surface-sunken: #efeff4;
+  --color-surface-dim: #fafafa;
+  --color-surface-sunken: #f0f0f4;
 
-  /* Radii */
-  --radius-card: 1rem;
-  --radius-xl2: 1.25rem;
+  /* Radii — 8-16px range, no pill shapes */
+  --radius-btn: 0.75rem;
+  --radius-card: 0.875rem;
+  --radius-xl2: 1rem;
 
-  /* Shadows */
-  --shadow-card: 0 1px 2px rgb(23 23 31 / 0.05), 0 8px 24px -8px rgb(23 23 31 / 0.10);
-  --shadow-lifted: 0 2px 4px rgb(23 23 31 / 0.06), 0 12px 32px -12px rgb(35 27 77 / 0.22);
-  --shadow-cta: 0 8px 20px -6px rgb(91 70 232 / 0.45);
+  /* Shadows — soft, subtle */
+  --shadow-card: 0 1px 2px rgb(26 26 34 / 0.04), 0 6px 16px -6px rgb(26 26 34 / 0.08);
+  --shadow-lifted: 0 2px 4px rgb(26 26 34 / 0.05), 0 10px 24px -8px rgb(26 26 34 / 0.12);
+  --shadow-cta: 0 6px 16px -4px rgb(91 70 232 / 0.35);
 
   /* Typography */
   --font-sans: var(--font-inter), system-ui, sans-serif;
 
-  /* Motion */
+  /* Motion — fast, subtle */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -111,7 +116,7 @@ button { touch-action: manipulation; }
 /* ---------- Component primitives ---------- */
 @utility btn-primary {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  border-radius: 0.875rem; font-weight: 600; font-size: 0.9375rem;
+  border-radius: var(--radius-btn); font-weight: 600; font-size: 0.9375rem;
   min-height: 3rem; padding-inline: 1.25rem;
   background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-700));
   color: #fff; box-shadow: var(--shadow-cta);
@@ -121,22 +126,25 @@ button { touch-action: manipulation; }
   &:active { transform: scale(0.97); filter: brightness(1.08); }
 }
 
-.btn-secondary {
+@utility btn-secondary {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  border-radius: 0.875rem; font-weight: 600; font-size: 0.9375rem;
+  border-radius: var(--radius-btn); font-weight: 600; font-size: 0.9375rem;
   min-height: 3rem; padding-inline: 1.25rem;
   background: var(--color-brand-50); color: var(--color-brand-700);
   transition: transform 120ms var(--ease-out-expo);
 }
-.btn-secondary:active { transform: scale(0.97); }
+@utility btn-secondary {
+  &:active { transform: scale(0.97); }
+}
 
-.card {
+@utility card {
   background: var(--color-surface);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-line);
 }
 
-.chip {
+@utility chip {
   display: inline-flex; align-items: center; gap: 0.25rem;
   border-radius: 9999px; font-size: 0.75rem; font-weight: 600;
   padding: 0.25rem 0.625rem; white-space: nowrap;

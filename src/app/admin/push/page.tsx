@@ -1,6 +1,9 @@
 "use client";
 
+import { AdminShell } from "@/components/admin/AdminShell";
 import { DataDenseTable, type Column } from "@/components/admin/DataDenseTable";
+import { FilterBar } from "@/components/admin/FilterBar";
+import React from "react";
 
 type PushRow = { id: string; to: string; title: string; status: string; at: string };
 
@@ -12,6 +15,22 @@ const rows: PushRow[] = [
 ];
 
 export default function AdminPushPage() {
+  // Filter state
+  const [cities, setCities] = React.useState<string[]>(["Бишкек", "Ош", "Токмок", "Джалал-Абад", "Каракол"]);
+  const [kyc, setKyc] = React.useState<"all" | "verified" | "pending" | "rejected">("all");
+  const [trustMin, setTrustMin] = React.useState(0);
+  const [trustMax, setTrustMax] = React.useState(100);
+
+  // Filtered rows (client-side for demo)
+  const filteredRows = React.useMemo(() => {
+    return rows.filter((r) => {
+      const cityMatch = cities.includes(r.to.split("·")[0] || ""); // demo filter on recipient
+      const kycMatch = kyc === "all" || r.status === kyc;
+      const trustMatch = r.title.length >= trustMin && r.title.length <= trustMax;
+      return cityMatch && kycMatch && trustMatch;
+    });
+  }, [cities, kyc, trustMin, trustMax]);
+
   const cols: Column<PushRow>[] = [
     { key: "id", header: "ID", width: "70px" },
     { key: "to", header: "Кому", sortable: true },
@@ -21,19 +40,33 @@ export default function AdminPushPage() {
   ];
 
   return (
-    <main className="min-h-dvh bg-surface-dim">
-      <div className="sticky top-0 bg-surface px-4 py-3 shadow-sm">
-        <a href="/admin" className="text-sm font-bold">← Admin</a> <span className="ml-2 text-sm font-semibold">Push log</span>
+    <AdminShell title="Push log">
+      <FilterBar
+        roles={[]}
+        setRoles={() => {}}
+        cities={cities}
+        setCities={setCities}
+        kyc={kyc}
+        setKyc={setKyc}
+        trustMin={trustMin}
+        setTrustMin={setTrustMin}
+        trustMax={trustMax}
+        setTrustMax={setTrustMax}
+        onApply={() => {
+          // Re-render with filteredRows
+        }}
+      />
+      <div className="mb-4">
+        <DataDenseTable
+          columns={cols}
+          rows={filteredRows}
+          sortKey="at"
+          sortDir="desc"
+        />
       </div>
-      <div className="p-4">
-        <div className="mb-3 flex items-center justify-between text-xs">
-          <span className="text-ink-faint">{rows.length} отправок · PWA push · spec #56 · TODO: VAPID + SW</span>
-          <span className="rounded-full bg-surface px-3 py-1 font-bold shadow-card">Фильтр ▾</span>
-        </div>
-        {/* @ts-ignore */}
-        <DataDenseTable columns={cols} rows={rows} sortKey="at" sortDir="desc" />
-        <p className="mt-2 text-xs text-ink-faint">TODO: `prisma.pushSubscription` + `web-push` + `/api/push/send`</p>
-      </div>
-    </main>
+      <p className="mt-2 text-xs text-ink-faint">
+        Filterlar client-side (demo). Prod: prisma.pushSubscription + web-push + /api/push/send
+      </p>
+    </AdminShell>
   );
 }

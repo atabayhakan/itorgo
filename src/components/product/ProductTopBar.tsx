@@ -1,15 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { IconBack, IconHeart, IconShare } from "@/components/icons/Icons";
 import { ShareSheet } from "@/components/share/ShareSheet";
 import { useFavorites } from "@/lib/favorites/FavoritesContext";
 
-export function ProductTopBar({ productId, title }: { productId: string; title: string }) {
+export function ProductTopBar({ productId, title, price, oldPrice, condition }: {
+  productId: string;
+  title: string;
+  price?: number;
+  oldPrice?: number;
+  condition?: "new" | "used";
+}) {
   const [shareOpen, setShareOpen] = useState(false);
   const { has, toggle } = useFavorites();
   const fav = has(productId);
+  const discount = oldPrice && price ? Math.round((1 - price / oldPrice) * 100) : 0;
 
   return (
     <>
@@ -27,6 +34,36 @@ export function ProductTopBar({ productId, title }: { productId: string; title: 
         </div>
       </div>
       {shareOpen && <ShareSheet url={`https://www.itorgo.kg/product/${productId}`} title={title} onClose={() => setShareOpen(false)} />}
+
+      <div className="mx-auto max-w-7xl px-4 py-2 bg-surface-dim border-y border-line">
+        <div className="flex items-center justify-between gap-2">
+          <h1 className="text-xl font-extrabold leading-tight tracking-tight text-white">{title}</h1>
+
+          <div className="flex items-baseline gap-2">
+            {price !== undefined && (
+              <span className="font-black tabular-nums text-[32px] lg:text-[40px] text-white">
+                {price} сом
+              </span>
+            )}
+
+            {condition && (
+              <span className={`chip ${condition === "new" ? "bg-brand-50 text-brand-700" : "bg-surface-sunken text-ink-soft"}`}>
+                {condition === "new" ? "Новый" : "Б/у"}
+              </span>
+            )}
+
+            {discount > 0 && oldPrice && (
+              <span className="text-sm text-ink-faint line-through ml-2">
+                {oldPrice} сом
+              </span>
+            )}
+
+            {discount > 0 && (
+              <span className="ml-1 text-xs font-bold uppercase tracking-wider text-danger">-{discount}%</span>
+            )}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

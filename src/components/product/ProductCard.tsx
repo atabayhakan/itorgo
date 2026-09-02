@@ -30,8 +30,8 @@ export function ProductCard({ product }: { product: Product }) {
       href={`/product/${product.id}`}
       className="group block overflow-hidden rounded-[14px] border border-line/70 bg-surface transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lifted"
     >
-      <div className="relative aspect-square overflow-hidden bg-[#f6f6f9]">
-        <ProductImage product={product} className="h-full w-full transition duration-500 group-hover:scale-[1.04]" />
+      <div className="relative aspect-[4/3] overflow-hidden bg-surface-sunken">
+        <ProductImage product={product} className="h-full w-full transition duration-500 group-hover:scale-[1.03]" />
         <button
           onClick={toggleFav}
           aria-label={fav ? "Убрать из избранного" : "В избранное"}
@@ -47,21 +47,21 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="p-3">
-        <p className="flex items-baseline gap-1.5">
-          <span className="text-[16px] font-extrabold tabular-nums tracking-tight">{formatKGS(product.price)}</span>
+        <h3 className="line-clamp-1 text-[14px] font-semibold leading-snug tracking-tight">{product.title}</h3>
+        <p className="mt-1.5 flex items-baseline gap-1.5">
+          <span className="text-[18px] font-extrabold tabular-nums tracking-tight">{formatKGS(product.price)}</span>
           <span className="text-[11px] font-semibold text-ink-faint">сом</span>
           {product.oldPrice && <span className="ml-auto text-[11px] text-ink-faint line-through">{formatKGS(product.oldPrice)}</span>}
         </p>
-        <h3 className="mt-1 line-clamp-1 text-[13px] font-medium leading-snug">{product.title}</h3>
-        <p className="mt-1 flex items-center gap-1 text-[11px] text-ink-faint">
-          <IconStar size={11} filled /> <span className="font-medium text-ink-soft">{product.rating}</span>
-          <span>·</span>
+        <div className="mt-2 flex items-center gap-2 text-[11px] text-ink-faint">
+          <span className="inline-flex items-center gap-0.5 font-medium text-ink-soft">
+            <IconStar size={11} filled /> {product.rating}
+          </span>
+          <span className="text-line">·</span>
           <span>{product.city}</span>
-        </p>
-        <p className="mt-0.5 flex items-center gap-1 truncate text-[11px] text-ink-faint">
-          {store?.name ?? seller.name}
-          {seller.verified && <span className="text-info" title="Проверен">✓</span>}
-        </p>
+          {seller.verified && <span className="text-info text-[10px] font-bold" title="Проверен">✓</span>}
+        </div>
+        <p className="mt-0.5 truncate text-[10px] text-ink-faint/70">{store?.name ?? seller.name}</p>
       </div>
     </Link>
   );

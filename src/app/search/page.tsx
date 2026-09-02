@@ -22,33 +22,37 @@ export default async function SearchPage({
   });
 
   return (
-    <main className="px-4 py-4">
-      <h1 className="text-lg font-extrabold">Поиск</h1>
-      <p className="text-xs text-ink-faint">Ключевое слово · категория · город · цена — AI разберёт</p>
+    <main className="min-h-dvh bg-[#0f0f14] text-white">
+      <div className="mx-auto max-w-xl px-4 py-5 space-y-5">
+        <div>
+          <h1 className="text-2xl font-black tracking-tight">Поиск</h1>
+          <p className="text-xs text-white/30 mt-1">Ключевое слово · категория · город · цена — AI разберёт</p>
+        </div>
 
-      <div className="mt-4">
-        <Suspense fallback={<div className="skeleton h-24 w-full" />}>
-          <SearchControls />
-        </Suspense>
+        <div className="rounded-[16px] bg-[#16161f] border border-white/[0.06] p-4 shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+          <Suspense fallback={<div className="skeleton h-24 w-full rounded-xl" />}>
+            <SearchControls />
+          </Suspense>
+        </div>
+
+        <p className="text-sm font-extrabold tracking-tight">
+          Найдено <span className="text-auction-400">{total}</span> {total === 1 ? "товар" : total < 5 ? "товара" : "товаров"}
+        </p>
+
+        {list.length > 0 ? (
+          <div className="grid grid-cols-2 gap-3">
+            {list.slice(0, 40).map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-10 rounded-[20px] bg-[#16161f] border border-white/[0.06] p-8 text-center shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+            <p className="text-4xl">🔍</p>
+            <p className="mt-3 text-lg font-extrabold">Ничего не найдено</p>
+            <p className="mt-1 text-sm text-white/30">Попробуйте изменить фильтры или запрос.</p>
+          </div>
+        )}
       </div>
-
-      <p className="mt-4 text-sm font-semibold">
-        Найдено {total} {total === 1 ? "товар" : total < 5 ? "товара" : "товаров"}
-      </p>
-
-      {list.length > 0 ? (
-        <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-4">
-          {list.slice(0, 40).map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      ) : (
-        <div className="mt-10 rounded-2xl bg-surface p-8 text-center shadow-card">
-          <p className="text-3xl">🔍</p>
-          <p className="mt-2 font-bold">Ничего не найдено</p>
-          <p className="mt-1 text-sm text-ink-faint">Попробуйте изменить фильтры или запрос.</p>
-        </div>
-      )}
     </main>
   );
 }

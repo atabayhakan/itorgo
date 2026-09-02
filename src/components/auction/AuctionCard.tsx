@@ -23,9 +23,9 @@ export function AuctionCard({ auctionId, dark = false }: { auctionId: string; da
 
   return (
     <>
-      <article className={`relative flex w-[264px] shrink-0 flex-col overflow-hidden rounded-[12px] ${surface} shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lifted`}>
+      <article className={`relative flex w-[280px] shrink-0 flex-col overflow-hidden rounded-[14px] ${surface} shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lifted`}>
         <Link href={`/product/${p.id}`} className="absolute inset-0 z-[1]" aria-label={p.title} />
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#f6f6f9]">
+        <div className="relative aspect-[4/3] overflow-hidden bg-surface-sunken">
           <ProductImage product={p} big className="h-full w-full" />
           {a.buyNowPrice && (
             <span className="absolute left-2 top-2 rounded-md bg-ink px-2 py-1 text-[11px] font-bold text-white">Buy now {formatKGS(a.buyNowPrice)}</span>

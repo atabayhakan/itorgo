@@ -19,7 +19,7 @@ export function LiveTicker() {
   }, []);
   return (
     <div className="mx-4 flex items-center gap-2 rounded-full bg-ink px-3.5 py-2 text-xs text-white">
-      <span className="live-dot h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
+      <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
       <span className="truncate" key={i} role="status" aria-live="polite">
         {EVENTS[i]}
       </span>

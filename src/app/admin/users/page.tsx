@@ -1,19 +1,10 @@
 "use client";
 
-import Link from "next/link";
+import { AdminShell } from "@/components/admin/AdminShell";
 import { DataDenseTable, type Column } from "@/components/admin/DataDenseTable";
-
-function AdminShell({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <main className="min-h-dvh bg-surface-dim">
-      <div className="sticky top-0 z-10 flex items-center gap-3 bg-surface px-4 py-3 shadow-sm">
-        <Link href="/admin" className="text-sm font-bold">← Admin</Link>
-        <span className="text-sm font-semibold">{title}</span>
-      </div>
-      <div className="p-4">{children}</div>
-    </main>
-  );
-}
+import { FilterPanel, type FilterField, type FilterValue } from "@/components/admin/FilterPanel";
+import { StatusBadge } from "@/components/admin/StatusBadge";
+import React from "react";
 
 type UserRow = { id: string; name: string; role: string; city: string; trust: number; kyc: string; sales: number };
 
@@ -28,26 +19,48 @@ const rows: UserRow[] = [
   { id: "s20", name: "Aida Market", role: "moderator", city: "Бишкек", trust: 99, kyc: "verified", sales: 0 },
 ];
 
+const USER_FILTERS: FilterField[] = [
+  { key: "role", label: "Роль", options: ["seller", "store_owner", "moderator"] },
+  { key: "city", label: "Город", options: ["Бишкек", "Ош", "Токмок", "Джалал-Абад", "Каракол"] },
+  { key: "kyc", label: "KYC", options: ["verified", "pending", "rejected"] },
+];
+
 export default function AdminUsersPage() {
+  const [filters, setFilters] = React.useState<FilterValue>({});
+
+  const filteredRows = React.useMemo(() => {
+    return rows.filter((r) => {
+      const roleMatch = !filters.role?.length || filters.role.includes(r.role);
+      const cityMatch = !filters.city?.length || filters.city.includes(r.city);
+      const kycMatch = !filters.kyc?.length || filters.kyc.includes(r.kyc);
+      return roleMatch && cityMatch && kycMatch;
+    });
+  }, [filters]);
+
   const cols: Column<UserRow>[] = [
     { key: "id", header: "ID", width: "70px", sortable: true },
     { key: "name", header: "Имя", sortable: true },
     { key: "role", header: "Роль", render: (r) => <span className="chip bg-brand-50 text-brand-700">{r.role}</span> },
     { key: "city", header: "Город", sortable: true },
     { key: "trust", header: "Trust", align: "right", sortable: true, render: (r) => <span className={r.trust >= 90 ? "font-black text-success" : r.trust >= 80 ? "font-bold" : "text-warning"}>{r.trust}%</span> },
-    { key: "kyc", header: "KYC", align: "center", render: (r) => <span className={`chip ${r.kyc === "verified" ? "bg-success-bg text-success" : r.kyc === "pending" ? "bg-warning-bg text-warning" : "bg-danger-bg text-danger"}`}>{r.kyc}</span> },
+    { key: "kyc", header: "KYC", align: "center", render: (r) => <StatusBadge status={r.kyc} /> },
     { key: "sales", header: "Продажи", align: "right", sortable: true },
   ];
 
   return (
     <AdminShell title="Пользователи">
-      <div className="mb-3 flex items-center justify-between text-xs">
-        <span className="text-ink-faint">{rows.length} пользователей · density + KYC</span>
-        <span className="rounded-full bg-surface px-3 py-1 font-bold shadow-card">Поиск ▾</span>
+      <div className="mb-4">
+        <FilterPanel fields={USER_FILTERS} value={filters} onChange={setFilters} />
       </div>
-      {/* @ts-ignore — DataDenseTable generic */}
-      <DataDenseTable columns={cols} rows={rows} sortKey="trust" sortDir="desc" />
-      <p className="mt-2 text-xs text-ink-faint">TODO: pagination + `prisma.user.findMany` + RBAC filter</p>
+      <div className="mb-4">
+        <DataDenseTable
+          columns={cols}
+          rows={filteredRows}
+          sortKey="trust"
+          sortDir="desc"
+        />
+      </div>
+      <p className="mt-2 text-xs text-ink-faint">Filterlar client-side (demo). Prod: prisma.user.findMany RBAC filter</p>
     </AdminShell>
   );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import type { Product, Category } from "@/lib/types";
 import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
@@ -35,9 +37,22 @@ export function ProductImage({ product, className = "", big = false, priority = 
         alt={product.title}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
-        onError={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = "hidden"; }}
-        className="absolute inset-0 h-full w-full object-cover"
+        onError={(e) => {
+          const img = e.currentTarget as HTMLImageElement;
+          img.style.visibility = "hidden";
+          img.style.width = "0";
+          img.style.height = "0";
+        }}
+        className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300"
       />
+      {/* Fallback placeholder when loading or after error */}
+      <div className="absolute inset-0 flex items-center justify-center text-ink-faint/35 fade-in">
+        {src ? (
+          <CategoryIcon id={product.categoryId} size={big ? 64 : 40} strokeWidth={1.4} />
+        ) : (
+          <div className="rounded-full bg-surface-sunken px-3 py-2 text-[11px] text-ink-faint">No image</div>
+        )}
+      </div>
     </div>
   );
 }
