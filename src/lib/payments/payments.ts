@@ -23,13 +23,25 @@ export interface PaymentProvider {
   refund(paymentId: string): Promise<PaymentStatus>;
 }
 
+/** i18n key (wallet namespace) for a transaction's label; translate at render time with t(). */
+export type WalletTransactionLabelKey = "wallet.tx_topup" | "wallet.tx_purchase" | "wallet.tx_refund";
+
+export interface WalletTransaction {
+  id: string;
+  labelKey: WalletTransactionLabelKey;
+  /** Optional non-translatable detail (e.g. product name) appended after the label. */
+  detail?: string;
+  amount: number;
+  at: string;
+}
+
 // Mock balances for wallet (#48)
-export const MOCK_WALLET = {
+export const MOCK_WALLET: { balance: number; currency: "сом"; transactions: readonly WalletTransaction[] } = {
   balance: 12450,
-  currency: "сом" as const,
+  currency: "сом",
   transactions: [
-    { id: "t1", label: "Пополнение", amount: 5000, at: "2026-08-20" },
-    { id: "t2", label: "Покупка · iPhone 16", amount: -49500, at: "2026-08-19" },
-    { id: "t3", label: "Возврат", amount: 2300, at: "2026-08-18" },
-  ] as const,
+    { id: "t1", labelKey: "wallet.tx_topup", amount: 5000, at: "2026-08-20" },
+    { id: "t2", labelKey: "wallet.tx_purchase", detail: "iPhone 16", amount: -49500, at: "2026-08-19" },
+    { id: "t3", labelKey: "wallet.tx_refund", amount: 2300, at: "2026-08-18" },
+  ],
 };

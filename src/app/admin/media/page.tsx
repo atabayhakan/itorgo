@@ -39,11 +39,11 @@ export default function AdminMediaPage() {
     { key: "folder", header: "Папка", sortable: true },
     { key: "type", header: "Тип", align: "center", width: "70px" },
     { key: "size", header: "Размер", align: "right", width: "90px", sortable: true },
-    { key: "hash", header: "Hash", width: "80px", render: (r) => <span className={`font-mono text-xs ${r.dup ? "font-black text-warning" : ""}`}>{r.hash}</span> },
+    { key: "hash", header: "Хеш", width: "80px", render: (r) => <span className={`font-mono text-xs ${r.dup ? "font-black text-warning" : ""}`}>{r.hash}</span> },
   ];
 
   return (
-    <AdminShell title="Media Library">
+    <AdminShell title="Медиатека">
       <FilterBar
         roles={[]}
         setRoles={() => {}}
@@ -66,9 +66,6 @@ export default function AdminMediaPage() {
           sortKey="name"
         />
       </div>
-      <p className="mt-2 text-xs text-ink-faint">
-        Filterlar client-side (demo). Prod: prisma.media.findMany + search tags + dedup by hash + S3/Neon Object Storage
-      </p>
     </AdminShell>
   );
 }

@@ -1,101 +1,50 @@
-// ITOrgo — translation keys. Default: Russian.
-// Structure ready for: ru (active), ky / en / kk / uz / tr.
+// ITOrgo — message registry. Flat keys "<namespace>.<key>", locales ru (source) / ky / tr.
+// Add a namespace: create messages/<ns>.ts and register it in MODULES.
+import { LOCALES, type Locale, type Messages, type NamespaceMessages } from "./config";
+import { common } from "./messages/common";
+import { nav } from "./messages/nav";
+import { currency, cities } from "./messages/currency";
+import { states } from "./messages/states";
+import { home } from "./messages/home";
+import { ai } from "./messages/ai";
+import { pwa } from "./messages/pwa";
+import { auction } from "./messages/auction";
+import { product } from "./messages/product";
+import { seller } from "./messages/seller";
+import { cart } from "./messages/cart";
+import { checkout } from "./messages/checkout";
+import { profile } from "./messages/profile";
+import { sell } from "./messages/sell";
+import { search } from "./messages/search";
+import { orders } from "./messages/orders";
+import { wallet } from "./messages/wallet";
+import { kyc } from "./messages/kyc";
+import { notifications } from "./messages/notifications";
+import { messages as msgs } from "./messages/messages";
+import { reviews } from "./messages/reviews";
+import { auth } from "./messages/auth";
+import { coupons } from "./messages/coupons";
+import { share } from "./messages/share";
 
-export const ru = {
-  common: {
-    app_name: "ITOrgo",
-    see_all: "Все",
-    search_placeholder: "Что вы ищете?",
-    cancel: "Отмена",
-    retry: "Повторить",
-    share: "Поделиться",
-    loading: "Загрузка…",
-  },
-  nav: {
-    home: "Главная",
-    search: "Поиск",
-    auctions: "Аукционы",
-    favorites: "Избранное",
-    profile: "Профиль",
-    sell: "Продать",
-  },
-  home: {
-    live_now: "Сейчас на торгах",
-    quick_title: "",
-    categories: "Категории",
-    all_categories: "Все категории",
-    for_you: "Для вас",
-    new_items: "Новинки",
-    ending_soon: "Скоро закончится",
-    top_stores: "Популярные магазины",
-  },
-  auction: {
-    bid: "Сделать ставку",
-    buy_now: "Купить сейчас",
-    current_bid: "Текущая ставка",
-    bids_count: "{n} ставок",
-    ends_in: "Осталось",
-    starting_price: "Начальная цена",
-    your_max_bid: "Ваша максимальная ставка",
-    suggestions: "Предложения",
-    recent_bids: "Последние ставки",
-    confirm_bid: "Подтвердить ставку",
-    participants: "{n} участников",
-  },
-  product: {
-    add_favorite: "В избранное",
-    in_favorites: "В избранном",
-    seller: "Продавец",
-    verified: "Проверен",
-    condition_new: "Новый",
-    condition_used: "Б/у",
-    discount: "-{p}%",
-  },
-  seller: {
-    follow: "Подписаться",
-    following: "Вы подписаны",
-    positive_reviews: "{p}% положительных отзывов",
-    sales: "{n} продаж",
-    on_itorgo_since: "{y} на ITOrgo",
-    products_tab: "Товары",
-    auctions_tab: "Аукционы",
-    reviews_tab: "Отзывы",
-    store_tab: "Магазин",
-  },
-  trust: {
-    score: "Надёжность",
-    phone: "Телефон",
-    email: "Email",
-    documents: "Документы",
-    bank: "Банк",
-    history: "История продаж",
-  },
-  states: {
-    empty_favorites_title: "Здесь пока пусто",
-    empty_favorites_text: "Добавляйте товары, которые хотите сохранить.",
-    error_title: "Что-то пошло не так",
-    error_text: "Попробуйте ещё раз.",
-    offline: "Нет соединения. Проверьте интернет.",
-  },
-  ai: {
-    help_find: "Помочь найти?",
-    analyzing: "AI анализирует товар…",
-    found_variants: "Я нашёл {n} вариантов.",
-  },
-  currency: {
-    som: "сом",
-  },
-  cities: {
-    bishkek: "Бишкек",
-    osh: "Ош",
-    jalal_abad: "Джалал-Абад",
-    karakol: "Каракол",
-    tokmok: "Токмок",
-  },
+const MODULES: Record<string, NamespaceMessages> = {
+  common, nav, currency, cities, states, home, ai, pwa, auction, product, seller, cart, checkout,
+  profile, sell, search, orders, wallet, kyc, notifications, messages: msgs, reviews, auth, coupons, share,
 };
 
-export type TranslationKey = keyof typeof ru;
-export type Dictionary = typeof ru;
+function build(locale: Locale): Messages {
+  const out: Messages = {};
+  for (const [ns, mod] of Object.entries(MODULES)) {
+    const m = mod[locale] ?? {};
+    for (const [k, v] of Object.entries(m)) out[`${ns}.${k}`] = v;
+  }
+  return out;
+}
 
-export const dictionaries = { ru } as const;
-export const defaultLocale = "ru" as const;
+export const dictionaries: Record<Locale, Messages> = Object.fromEntries(
+  LOCALES.map((l) => [l, build(l)]),
+) as Record<Locale, Messages>;
+
+export const ru = dictionaries.ru;
+export type Dictionary = Messages;
+export type TranslationKey = keyof typeof ru;
+export { defaultLocale } from "./config";

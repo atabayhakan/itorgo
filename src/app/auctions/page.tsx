@@ -1,9 +1,11 @@
 import { getLiveAuctions } from "@/lib/data/catalog";
 import { AuctionCard } from "@/components/auction/AuctionCard";
+import { getT } from "@/lib/i18n/server";
 
 export const dynamic = "force-dynamic";
 
 export default async function AuctionsPage() {
+  const t = await getT();
   const live = await getLiveAuctions();
 
   return (
@@ -17,27 +19,27 @@ export default async function AuctionsPage() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
               </span>
-              LIVE
+              {t("auction.live")}
             </span>
-            <span className="text-xs font-bold text-white/40">{live.length} активных торгов</span>
+            <span className="text-xs font-bold text-white/40">{t("auction.active_count", { n: live.length })}</span>
           </div>
           <h1 className="mt-3 text-[28px] font-black leading-tight tracking-tight lg:text-[36px]">
-            Аукционы
+            {t("nav.auctions")}
             <br />
             <span className="bg-gradient-to-r from-auction-400 to-auction-600 bg-clip-text text-transparent">
-              в реальном времени
+              {t("auction.title_accent")}
             </span>
           </h1>
           <p className="mt-2 text-sm text-white/60">
-            Делайте ставки, наблюдайте за торгами и покупайте по лучшей цене
+            {t("auction.subtitle")}
           </p>
 
           {/* Quick stats */}
           <div className="mt-4 grid grid-cols-3 gap-2">
             {[
-              { v: live.length, l: "LIVE" },
-              { v: "1.2K", l: "ставок сегодня" },
-              { v: "−34%", l: "vs рынок" },
+              { v: live.length, l: t("auction.live") },
+              { v: "1.2K", l: t("auction.bids_today") },
+              { v: "−34%", l: t("auction.vs_market") },
             ].map((s, i) => (
               <div
                 key={i}
@@ -53,11 +55,11 @@ export default async function AuctionsPage() {
         {/* Section title */}
         <div className="mt-6 flex items-end justify-between">
           <div>
-            <h2 className="text-[18px] font-extrabold">Сейчас на торгах</h2>
-            <p className="text-xs text-white/50">Свайп → чтобы увидеть больше</p>
+            <h2 className="text-[18px] font-extrabold">{t("auction.now_bidding")}</h2>
+            <p className="text-xs text-white/50">{t("auction.swipe_hint")}</p>
           </div>
           <button className="rounded-full border border-white/[0.06] bg-[#16161f] px-3 py-1.5 text-xs font-bold text-white/70">
-            Фильтр
+            {t("auction.filter")}
           </button>
         </div>
 
@@ -71,7 +73,7 @@ export default async function AuctionsPage() {
             ))}
           </div>
           <p className="mt-3 text-center text-xs text-white/30">
-            Горизонтальный свайп · нажмите «Ставка» для bottom sheet
+            {t("auction.swipe_footer_hint")}
           </p>
         </div>
       </div>

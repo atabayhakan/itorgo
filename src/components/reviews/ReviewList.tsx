@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export interface Review {
   id: string;
@@ -19,6 +20,7 @@ const MOCK_REVIEWS: Record<string, Review[]> = {
 };
 
 export function ReviewList({ productId }: { productId: string }) {
+  const t = useT();
   const [reviews, setReviews] = useState<Review[]>(MOCK_REVIEWS[productId] ?? [
     { id: "rx1", author: "Айгүл С.", rating: 5, text: "Супер товар, как на фото.", at: "2026-08-19" },
     { id: "rx2", author: "Bek", rating: 4, text: "Хорошее соотношение цена/качество.", at: "2026-08-17" },
@@ -28,23 +30,22 @@ export function ReviewList({ productId }: { productId: string }) {
 
   function submit() {
     if (!text.trim()) return;
-    setReviews((r) => [{ id: `r${Date.now()}`, author: "Вы", rating, text: text.trim(), at: new Date().toISOString().slice(0, 10) }, ...r]);
+    setReviews((r) => [{ id: `r${Date.now()}`, author: t("reviews.you"), rating, text: text.trim(), at: new Date().toISOString().slice(0, 10) }, ...r]);
     setText("");
   }
 
   return (
     <section className="mx-4 mt-4 rounded-2xl bg-surface p-4 shadow-card">
-      <h3 className="font-bold">Отзывы · {reviews.length}</h3>
+      <h3 className="font-bold">{t("reviews.title", { n: reviews.length })}</h3>
       <div className="mt-3 rounded-xl bg-surface-dim p-3">
         <div className="flex items-center gap-1">
           {[1, 2, 3, 4, 5].map((n) => (
             <button key={n} onClick={() => setRating(n)} className={`text-lg ${n <= rating ? "text-amber-400" : "text-line"}`}>★</button>
           ))}
-          <span className="ml-2 text-xs text-ink-faint">{rating} звёзд</span>
+          <span className="ml-2 text-xs text-ink-faint">{t("reviews.stars", { n: rating })}</span>
         </div>
-        <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="Поделитесь впечатлением…" rows={2} className="mt-2 w-full rounded-xl border border-line bg-surface px-3 py-2 text-sm" />
-        <button onClick={submit} className="btn-primary mt-2 !min-h-9 w-full !text-sm">Оставить отзыв</button>
-        <p className="mt-1 text-center text-xs text-ink-faint">TODO: POST /api/reviews → Review + analytics review_created</p>
+        <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder={t("reviews.placeholder")} rows={2} className="mt-2 w-full rounded-xl border border-line bg-surface px-3 py-2 text-sm" />
+        <button onClick={submit} className="btn-primary mt-2 !min-h-9 w-full !text-sm">{t("reviews.submit")}</button>
       </div>
       <ul className="mt-3 space-y-2">
         {reviews.map((r) => (

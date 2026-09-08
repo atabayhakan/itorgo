@@ -66,3 +66,25 @@ export const IconVerified = (p: P) => (
     <path d="m8 12 2.6 2.6L16 9.2" stroke="#fff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
+
+// --- added for profile page (Icons referenced there but previously missing) ---
+export const IconCheck = (p: P) => (<Base {...p}><path d="m5 12.5 4.5 4.5L19 7.5" /></Base>);
+export const IconArrowRight = (p: P) => (<Base {...p}><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></Base>);
+export const IconPhone = (p: P) => (
+  <Base {...p}><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" /></Base>
+);
+export const IconMail = (p: P) => (
+  <Base {...p}><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></Base>
+);
+export const IconFileText = (p: P) => (
+  <Base {...p}><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" /><path d="M14 3v5h5" /><path d="M9 13h6M9 17h6" /></Base>
+);
+export const IconCreditCard = (p: P) => (
+  <Base {...p}><rect x="3" y="6" width="18" height="12" rx="2" /><path d="M3 10h18" /><path d="M7 15h3" /></Base>
+);
+export const IconHistory = (p: P) => (
+  <Base {...p}><path d="M3 12a9 9 0 1 0 3-6.7" /><path d="M3 4v5h5" /><path d="M12 8v4l3 2" /></Base>
+);
+export const IconPalette = (p: P) => (
+  <Base {...p}><path d="M12 3a9 9 0 1 0 0 18h1.5a2 2 0 0 0 0-4H12a2 2 0 0 1 0-4h2.5A6.5 6.5 0 0 0 12 3Z" /><circle cx="7.5" cy="10.5" r="1" /><circle cx="10" cy="7" r="1" /><circle cx="14.5" cy="7" r="1" /></Base>
+);

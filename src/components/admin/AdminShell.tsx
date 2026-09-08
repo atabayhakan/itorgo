@@ -15,17 +15,17 @@ const NAV_GROUPS: { label: string; items: { href: string; label: string }[] }[] 
   {
     label: "Доверие и безопасность",
     items: [
-      { href: "/admin/fraud", label: "Fraud Center" },
+      { href: "/admin/fraud", label: "Антифрод" },
       { href: "/admin/kyc", label: "KYC очередь" },
-      { href: "/admin/audit", label: "Audit Log" },
+      { href: "/admin/audit", label: "Журнал аудита" },
     ],
   },
   {
     label: "Контент",
     items: [
-      { href: "/admin/cms", label: "CMS · тексты" },
-      { href: "/admin/media", label: "Media Library" },
-      { href: "/admin/push", label: "Push log" },
+      { href: "/admin/cms", label: "CMS · Тексты" },
+      { href: "/admin/media", label: "Медиатека" },
+      { href: "/admin/push", label: "Push-рассылки" },
     ],
   },
   { label: "Пользователи", items: [{ href: "/admin/users", label: "Пользователи" }] },
@@ -70,11 +70,16 @@ export function AdminShell({ title, children }: { title: string; children: React
 
       <div className="min-w-0 flex-1">
         <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-line bg-surface px-4 py-3 md:hidden">
-          <Link href="/admin" className="text-sm font-bold">← Admin</Link>
+          <Link href="/admin" className="text-sm font-bold">← Админ</Link>
           <span className="text-sm font-semibold">{title}</span>
         </div>
-        <div className="hidden border-b border-line bg-surface px-6 py-3 md:block">
+        <div className="hidden items-center justify-between border-b border-line bg-surface px-6 py-3 md:flex">
           <span className="text-sm font-bold">{title}</span>
+          <form action="/api/admin/logout" method="post">
+            <button type="submit" className="rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-semibold text-ink-soft hover:bg-surface-dim">
+              Выйти
+            </button>
+          </form>
         </div>
         <div className="p-4 md:p-6">{children}</div>
       </div>

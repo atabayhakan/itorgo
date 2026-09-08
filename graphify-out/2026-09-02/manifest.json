@@ -150,10 +150,10 @@
     "semantic_hash": "dee0ba860acb912bc3783cd5d997e8e6"
   },
   "src/app/auctions/page.tsx": {
-    "mtime": 1787983510.5652473,
-    "seen": 1788294738.8559418,
-    "ast_hash": "41696c7a5dfb73260c851e0a57600874",
-    "semantic_hash": "41696c7a5dfb73260c851e0a57600874"
+    "mtime": 1788296459.9848619,
+    "seen": 1788325086.1007204,
+    "ast_hash": "f3e06643994af56497997967122f0746",
+    "semantic_hash": ""
   },
   "src/app/cart/page.tsx": {
     "mtime": 1787681534.2279525,
@@ -252,16 +252,16 @@
     "semantic_hash": "b9d37dd5fd439d203521db28e5dcab78"
   },
   "src/app/page.tsx": {
-    "mtime": 1787977677.2853675,
-    "seen": 1788294738.8559587,
-    "ast_hash": "bbbf0b2c376d0df408d44e1c785868e4",
-    "semantic_hash": "bbbf0b2c376d0df408d44e1c785868e4"
+    "mtime": 1788295021.6323042,
+    "seen": 1788325086.1007445,
+    "ast_hash": "b53da726cf9accd2271789fcc561505c",
+    "semantic_hash": ""
   },
   "src/app/product/[id]/page.tsx": {
-    "mtime": 1787805427.669451,
-    "seen": 1788294738.8559604,
-    "ast_hash": "28090c75b503af357366adb6ff9b2f1a",
-    "semantic_hash": "28090c75b503af357366adb6ff9b2f1a"
+    "mtime": 1788295021.6394186,
+    "seen": 1788325086.1007457,
+    "ast_hash": "5fa226719170fafd81b5a546b392c674",
+    "semantic_hash": ""
   },
   "src/app/profile/page.tsx": {
     "mtime": 1787949551.3585865,
@@ -706,5 +706,47 @@
     "seen": 1788294738.8560333,
     "ast_hash": "54e76583f94d035c4718a387aefaef57",
     "semantic_hash": "54e76583f94d035c4718a387aefaef57"
+  },
+  "src/lib/data/catalog.ts": {
+    "mtime": 1788294935.5126023,
+    "seen": 1788325086.1008813,
+    "ast_hash": "111f4f640b7e1cd5dcb8616c07df0a20",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ci.yml": {
+    "mtime": 1787678547.1384838,
+    "seen": 1788325086.1009502,
+    "ast_hash": "0fe023d5d0051655544c6d61cd6fe08a",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1788029803.0215814,
+    "seen": 1788325086.100953,
+    "ast_hash": "8a6643a420fdad6bfb583523bc6cef16",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1787677758.906726,
+    "seen": 1788325086.1009555,
+    "ast_hash": "c0e2521fff53336a1df23d75ee38a747",
+    "semantic_hash": ""
+  },
+  "docker-compose.yml": {
+    "mtime": 1787677735.7292717,
+    "seen": 1788325086.1009576,
+    "ast_hash": "0ea94bbcaaf7c0d0c8c63ed4c2cdbfa5",
+    "semantic_hash": ""
+  },
+  "docs/QA.md": {
+    "mtime": 1787678380.384751,
+    "seen": 1788325086.1009605,
+    "ast_hash": "7e18f7de74a5e03599a238efef22be63",
+    "semantic_hash": ""
+  },
+  "docs/SECURITY.md": {
+    "mtime": 1787686982.4867618,
+    "seen": 1788325086.1009634,
+    "ast_hash": "5f93a55d868f88760c571e201bb480e0",
+    "semantic_hash": ""
   }
 }

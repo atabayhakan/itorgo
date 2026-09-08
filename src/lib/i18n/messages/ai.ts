@@ -1,0 +1,43 @@
+import type { NamespaceMessages } from "../config";
+
+export const ai: NamespaceMessages = {
+  ru: {
+    help_find: "Помочь найти?",
+    analyzing: "AI анализирует товар…",
+    found_variants: "Я нашёл {n} вариантов.",
+    assistant: "AI помощник",
+    example_query: "iPhone до 50000 сом",
+    placeholder: "Например: iPhone до 50 000 сом в Бишкеке",
+    chip_phone: "Телефон",
+    chip_car: "Автомобиль",
+    chip_house: "Дом",
+    chip_auction: "Аукцион",
+    find: "Найти",
+  },
+  ky: {
+    help_find: "Табууга жардам берейинби?",
+    analyzing: "AI товарды талдап жатат…",
+    found_variants: "Мен {n} вариант таптым.",
+    assistant: "AI жардамчы",
+    example_query: "iPhone 50000 сомго чейин",
+    placeholder: "Мисалы: Бишкекте 50 000 сомго чейин iPhone",
+    chip_phone: "Телефон",
+    chip_car: "Унаа",
+    chip_house: "Үй",
+    chip_auction: "Аукцион",
+    find: "Табуу",
+  },
+  tr: {
+    help_find: "Bulmaya yardım edeyim mi?",
+    analyzing: "AI ürünü analiz ediyor…",
+    found_variants: "{n} seçenek buldum.",
+    assistant: "AI asistan",
+    example_query: "50000 som'a kadar iPhone",
+    placeholder: "Örneğin: Bişkek'te 50 000 som'a kadar iPhone",
+    chip_phone: "Telefon",
+    chip_car: "Araba",
+    chip_house: "Ev",
+    chip_auction: "Açık artırma",
+    find: "Bul",
+  },
+};

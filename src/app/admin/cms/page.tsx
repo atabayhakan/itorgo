@@ -69,7 +69,7 @@ export default function AdminCmsPage() {
   }, [cities, kyc, trustMin, trustMax]);
 
   return (
-    <AdminShell title="CMS · Динамические тексты">
+    <AdminShell title="CMS · Тексты">
       <FilterBar
         roles={[]}
         setRoles={() => {}}
@@ -87,11 +87,10 @@ export default function AdminCmsPage() {
       />
       <div className="p-4">
         <div className="mb-3 flex items-center justify-between text-xs">
-          <span className="text-ink-faint">{filteredRows.length} ключей · spec #42 · auction.bid / common.search_placeholder …</span>
+          <span className="text-ink-faint">{filteredRows.length} ключей</span>
           <span className="rounded-full bg-surface px-3 py-1 font-bold shadow-card">ru ▾</span>
         </div>
         <DataDenseTable columns={cols} rows={filteredRows} sortKey="key" />
-        <p className="mt-2 text-xs text-ink-faint">Click Ред. → inline edit · TODO: upsert Translation(key,locale) + revalidatePath + auditLog</p>
       </div>
     </AdminShell>
   );

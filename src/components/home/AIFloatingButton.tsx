@@ -1,19 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
-/** Premium AI floating button — bottom-right, always visible on home. */
+/** AI assistant launcher — desktop only; on mobile the header search already carries the AI entry and the corner is taken by FloatingSell + BottomNav. */
 export function AIFloatingButton() {
+  const t = useT();
   const [open, setOpen] = useState(false);
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2"
+      className="fixed bottom-6 right-6 z-50 hidden flex-col items-end gap-2 lg:flex"
     >
       <button
         onClick={() => setOpen(!open)}
         className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-600 to-brand-800 text-white shadow-[0_6px_20px_rgba(111,92,247,0.4)] hover:shadow-[0_8px_28px_rgba(111,92,247,0.55)] transition hover:-translate-y-0.5 active:translate-y-0"
-        aria-label="AI помощник"
+        aria-label={t("ai.assistant")}
       >
         <svg
           className="h-5 w-5 fill-current text-white"
@@ -25,41 +27,41 @@ export function AIFloatingButton() {
       </button>
       {open && (
         <div
-          className="mb-2 w-[260px] rounded-[16px] bg-[#16161f] border border-white/[0.08] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.5)] animate-in-from-bottom-0"
+          className="rise-in mb-2 w-[260px] rounded-[16px] bg-[#16161f] border border-white/[0.08] p-4 text-white shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
         >
-          <p>Что вы ищете?</p>
+          <p className="text-sm font-semibold">{t("common.search_placeholder")}</p>
           <input
-            defaultValue="iPhone до 50000 сом"
-            className="w-full bg-transparent border-none outline-none text-ink-soft placeholder:text-ink-soft py-1"
-            placeholder="Что вы ищем? · Я хочу iPhone до 50000 сом в Бишкеке"
+            defaultValue={t("ai.example_query")}
+            className="w-full bg-transparent border-none outline-none text-white/80 placeholder:text-white/40 py-1 text-sm"
+            placeholder={t("ai.placeholder")}
           />
           <div className="mt-2 grid grid-cols-2 gap-1">
             <button
               className="rounded-full bg-brand-50 px-2 py-1 text-[10px] font-bold text-brand-700"
             >
-              Телефон
+              {t("ai.chip_phone")}
             </button>
             <button
               className="rounded-full bg-brand-50 px-2 py-1 text-[10px] font-bold text-brand-700"
             >
-              Автомобиль
+              {t("ai.chip_car")}
             </button>
             <button
               className="rounded-full bg-brand-50 px-2 py-1 text-[10px] font-bold text-brand-700"
             >
-              Дом
+              {t("ai.chip_house")}
             </button>
             <button
               className="rounded-full bg-brand-50 px-2 py-1 text-[10px] font-bold text-brand-700"
             >
-              Аукцион
+              {t("ai.chip_auction")}
             </button>
           </div>
           <button
             onClick={() => setOpen(false)}
             className="mt-2 w-full rounded-[10px] bg-ink px-3 py-1.5 text-sm font-bold text-white"
           >
-            Найти
+            {t("ai.find")}
           </button>
         </div>
       )}

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { IconChevron } from "@/components/icons/Icons";
+import { getT } from "@/lib/i18n/server";
 
-export function SectionHeader({
+export async function SectionHeader({
   title,
   subtitle,
   href,
@@ -14,6 +15,7 @@ export function SectionHeader({
   live?: boolean;
   count?: number;
 }) {
+  const t = await getT();
   return (
     <div className="flex items-end justify-between gap-3 px-4">
       <div className="min-w-0">
@@ -33,12 +35,12 @@ export function SectionHeader({
       </div>
       {href && (
         <Link href={href} className="hidden shrink-0 items-center gap-0.5 rounded-full bg-surface px-3 py-1.5 text-sm font-bold text-ink-soft shadow-card hover:text-brand-600 lg:inline-flex">
-          Все <IconChevron size={14} strokeWidth={2.2} />
+          {t("common.see_all")} <IconChevron size={14} strokeWidth={2.2} />
         </Link>
       )}
       {href && (
         <Link href={href} className="inline-flex shrink-0 items-center gap-0.5 text-sm font-bold text-brand-600 lg:hidden">
-          Все <IconChevron size={16} strokeWidth={2.2} />
+          {t("common.see_all")} <IconChevron size={16} strokeWidth={2.2} />
         </Link>
       )}
     </div>

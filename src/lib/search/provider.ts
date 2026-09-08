@@ -1,9 +1,9 @@
-// Search abstraction — spec #54
+// Search abstraction
 // Ready to swap to Elasticsearch/OpenSearch without touching UI.
 // Current: Memory provider (fast, clean). Future: Elastic provider.
 
 import type { Product } from "@/lib/types";
-import { PRODUCTS } from "@/lib/data/mock-data";
+import { getProducts } from "@/lib/data/catalog";
 
 export interface SearchQuery {
   q?: string;
@@ -29,10 +29,12 @@ export interface SearchProvider {
 }
 
 // ── Memory (default) ───────────────────────────────────────
+// Reads from the catalog layer (Prisma if available, mock otherwise).
+// The provider is still in-memory; the data source is now DB-aware.
 export const MemorySearchProvider: SearchProvider = {
   async search(q) {
     const t0 = Date.now();
-    let list = [...PRODUCTS];
+    let list = await getProducts();
     const term = (q.q ?? "").toLowerCase().trim();
     const priceMatch = term.match(/до\s*(\d[\d ]*)/);
     const keyword = term.replace(/до\s*\d[\d ]*.*/, "").trim();
@@ -55,7 +57,8 @@ export const MemorySearchProvider: SearchProvider = {
   },
   async suggest(prefix) {
     const p = prefix.toLowerCase();
-    return [...new Set(PRODUCTS.filter((x) => x.title.toLowerCase().includes(p)).map((x) => x.title))].slice(0, 5);
+    const products = await getProducts();
+    return [...new Set(products.filter((x) => x.title.toLowerCase().includes(p)).map((x) => x.title))].slice(0, 5);
   },
 };
 

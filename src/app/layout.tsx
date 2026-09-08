@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { StorefrontShell } from "@/components/layout/StorefrontShell";
 import { PWAInstaller } from "@/components/pwa/PWAInstaller";
+import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
+import { dictionaries } from "@/lib/i18n/dictionaries";
+import { getLocale, getT } from "@/lib/i18n/server";
 import { CartProvider } from "@/lib/cart/CartContext";
 import { FavoritesProvider } from "@/lib/favorites/FavoritesContext";
 import { FollowsProvider } from "@/lib/follows/FollowsContext";
@@ -14,22 +17,22 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata: Metadata = {
-  title: "ITOrgo — маркетплейс и аукционы Кыргызстана",
-  description:
-    "ITOrgo — Кыргызстандын жаңы муундагы соода платформасы. Marketplace · Live Auctions · Магазины · AI · Trust. Бишкек, Ош и вся страна — покупайте, торгуйтесь, продавайте.",
-  metadataBase: new URL("https://www.itorgo.kg"),
-  openGraph: {
-    title: "ITOrgo — маркетплейс и аукционы",
-    description: "Покупайте, торгуйтесь и продавайте — live-аукционы, магазины и безопасные сделки.",
-    locale: "ru_RU",
-    type: "website",
-    url: "https://www.itorgo.kg",
-  },
-  twitter: { card: "summary_large_image" },
-  manifest: "/manifest.json",
-  icons: { icon: "/icon.png" },
-};
+const OG_LOCALE: Record<string, string> = { ru: "ru_RU", ky: "ky_KG", tr: "tr_TR" };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getT(locale);
+  const title = `ITOrgo — ${t("common.tagline")}`;
+  const description = t("common.meta_description");
+  return {
+    title,
+    description,
+    metadataBase: new URL("https://www.itorgo.kg"),
+    openGraph: { title, description, locale: OG_LOCALE[locale] ?? "ru_RU", type: "website", url: "https://www.itorgo.kg" },
+    twitter: { card: "summary_large_image" },
+    manifest: "/manifest.json",
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#5b46e8",
@@ -38,21 +41,24 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale();
   return (
-    <html lang="ru" className={inter.variable} suppressHydrationWarning>
+    <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="antialiased">
-        <FavoritesProvider>
-          <CartProvider>
-            <FollowsProvider>
-              <StorefrontShell>{children}</StorefrontShell>
-              <PWAInstaller />
-            </FollowsProvider>
-          </CartProvider>
-        </FavoritesProvider>
+        <LocaleProvider locale={locale} messages={dictionaries[locale]} fallback={dictionaries.ru}>
+          <FavoritesProvider>
+            <CartProvider>
+              <FollowsProvider>
+                <StorefrontShell>{children}</StorefrontShell>
+                <PWAInstaller />
+              </FollowsProvider>
+            </CartProvider>
+          </FavoritesProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

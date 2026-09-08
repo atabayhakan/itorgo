@@ -77,7 +77,6 @@ export default function AdminCouponsPage() {
           <input value={pct} onChange={(e) => setPct(e.target.value)} placeholder="%" className="w-20 rounded-xl border border-line bg-surface px-3 py-2 text-sm" />
           <button onClick={add} className="rounded-xl bg-ink px-4 py-2 text-sm font-bold text-white">Добавить</button>
         </div>
-        <p className="mt-1 text-xs text-ink-faint">Spec Coupon · `code unique`, `discount`, `active`, `endsAt` — TODO: prisma.coupon</p>
         <div className="mt-3">
           {/* @ts-ignore */}
           <DataDenseTable columns={cols} rows={filteredRows} sortKey="code" />

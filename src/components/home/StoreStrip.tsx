@@ -2,8 +2,10 @@ import Link from "next/link";
 import { STORES } from "@/lib/data/mock-data";
 import { Avatar } from "@/components/ui/ProductImage";
 import { IconVerified } from "@/components/icons/Icons";
+import { getT } from "@/lib/i18n/server";
 
-export function StoreStrip() {
+export async function StoreStrip() {
+  const t = await getT();
   return (
     <div className="no-scrollbar flex gap-3 overflow-x-auto px-4">
       {STORES.slice(0, 8).map((s) => (
@@ -19,7 +21,7 @@ export function StoreStrip() {
               {s.verified && <IconVerified size={13} />}
             </div>
             <p className="mt-2 line-clamp-1 text-sm font-black tracking-tight">{s.name}</p>
-            <p className="text-xs text-ink-faint">⭐ {s.rating} · {s.followers.toLocaleString("ru-RU")} · {s.salesCount} продаж</p>
+            <p className="text-xs text-ink-faint">⭐ {s.rating} · {s.followers.toLocaleString("ru-RU")} · {t("home.sales_count", { n: s.salesCount })}</p>
           </div>
         </Link>
       ))}

@@ -40,7 +40,7 @@ export default function AdminPushPage() {
   ];
 
   return (
-    <AdminShell title="Push log">
+    <AdminShell title="Push-рассылки">
       <FilterBar
         roles={[]}
         setRoles={() => {}}
@@ -64,9 +64,6 @@ export default function AdminPushPage() {
           sortDir="desc"
         />
       </div>
-      <p className="mt-2 text-xs text-ink-faint">
-        Filterlar client-side (demo). Prod: prisma.pushSubscription + web-push + /api/push/send
-      </p>
     </AdminShell>
   );
 }

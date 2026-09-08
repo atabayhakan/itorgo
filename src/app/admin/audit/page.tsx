@@ -43,7 +43,7 @@ export default function AdminAuditPage() {
   ];
 
   return (
-    <AdminShell title="Audit Log">
+    <AdminShell title="Журнал аудита">
       <FilterBar
         roles={[]}
         setRoles={() => {}}
@@ -67,9 +67,6 @@ export default function AdminAuditPage() {
           sortDir="desc"
         />
       </div>
-      <p className="mt-2 text-xs text-ink-faint">
-        Filterlar client-side (demo). Prod: prisma.auditLog.findMany + logAudit(actorId, action, target, oldValue, newValue)
-      </p>
     </AdminShell>
   );
 }

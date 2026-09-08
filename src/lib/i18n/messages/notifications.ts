@@ -1,0 +1,40 @@
+import type { NamespaceMessages } from "../config";
+
+export const notifications: NamespaceMessages = {
+  ru: {
+    all: "Все",
+    unread: "Непрочитанные · {n}",
+    group_auctions: "Аукционы",
+    group_purchases: "Покупки",
+    group_delivery: "Доставка",
+    group_favorites: "Избранное",
+    group_stores: "Магазины",
+    group_security: "Безопасность",
+    end_title: "На этом всё",
+    end_text: "Новых уведомлений пока нет.",
+  },
+  ky: {
+    all: "Баары",
+    unread: "Окула элек · {n}",
+    group_auctions: "Аукциондор",
+    group_purchases: "Сатып алуулар",
+    group_delivery: "Жеткирүү",
+    group_favorites: "Тандалгандар",
+    group_stores: "Дүкөндөр",
+    group_security: "Коопсуздук",
+    end_title: "Ушул эле",
+    end_text: "Азырынча жаңы билдирмелер жок.",
+  },
+  tr: {
+    all: "Tümü",
+    unread: "Okunmamış · {n}",
+    group_auctions: "Açık artırmalar",
+    group_purchases: "Alışverişler",
+    group_delivery: "Teslimat",
+    group_favorites: "Favoriler",
+    group_stores: "Mağazalar",
+    group_security: "Güvenlik",
+    end_title: "Hepsi bu kadar",
+    end_text: "Şimdilik yeni bildirim yok.",
+  },
+};

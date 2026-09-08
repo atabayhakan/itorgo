@@ -38,7 +38,7 @@ export default function AdminKycPage() {
     { key: "user", header: "Пользователь", sortable: true },
     { key: "type", header: "Тип", sortable: true },
     { key: "status", header: "Статус", align: "center", render: (r) => <StatusBadge status={r.status} /> },
-    { key: "score", header: "Trust", align: "right", sortable: true, render: (r) => <span className={`font-black tabular-nums ${r.score >= 80 ? "text-success" : r.score >= 60 ? "text-warning" : "text-danger"}`}>{r.score}%</span> },
+    { key: "score", header: "Доверие", align: "right", sortable: true, render: (r) => <span className={`font-black tabular-nums ${r.score >= 80 ? "text-success" : r.score >= 60 ? "text-warning" : "text-danger"}`}>{r.score}%</span> },
     { key: "at", header: "Время", width: "130px", sortable: true },
   ];
 
@@ -55,9 +55,6 @@ export default function AdminKycPage() {
           sortDir="desc"
         />
       </div>
-      <p className="mt-2 text-xs text-ink-faint">
-        Filterlar client-side (demo). Prod: prisma.kyc.findMany + verification + approve/reject → AuditLog
-      </p>
     </AdminShell>
   );
 }

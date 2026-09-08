@@ -83,7 +83,7 @@ export function FilterPanel({
                 <button
                   onClick={() => clearField(f.key)}
                   className="text-brand-700/60 hover:text-brand-700"
-                  aria-label={`${f.label} filtresini temizle`}
+                  aria-label={`Сбросить фильтр «${f.label}»`}
                 >
                   ×
                 </button>

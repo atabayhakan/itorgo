@@ -42,7 +42,7 @@ export default function AdminUsersPage() {
     { key: "name", header: "Имя", sortable: true },
     { key: "role", header: "Роль", render: (r) => <span className="chip bg-brand-50 text-brand-700">{r.role}</span> },
     { key: "city", header: "Город", sortable: true },
-    { key: "trust", header: "Trust", align: "right", sortable: true, render: (r) => <span className={r.trust >= 90 ? "font-black text-success" : r.trust >= 80 ? "font-bold" : "text-warning"}>{r.trust}%</span> },
+    { key: "trust", header: "Доверие", align: "right", sortable: true, render: (r) => <span className={r.trust >= 90 ? "font-black text-success" : r.trust >= 80 ? "font-bold" : "text-warning"}>{r.trust}%</span> },
     { key: "kyc", header: "KYC", align: "center", render: (r) => <StatusBadge status={r.kyc} /> },
     { key: "sales", header: "Продажи", align: "right", sortable: true },
   ];
@@ -60,7 +60,6 @@ export default function AdminUsersPage() {
           sortDir="desc"
         />
       </div>
-      <p className="mt-2 text-xs text-ink-faint">Filterlar client-side (demo). Prod: prisma.user.findMany RBAC filter</p>
     </AdminShell>
   );
 }

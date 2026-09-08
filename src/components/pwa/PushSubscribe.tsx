@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export function PushSubscribe() {
+  const t = useT();
   const [status, setStatus] = useState<"idle" | "granted" | "denied">("idle");
 
   async function subscribe() {
@@ -11,18 +13,17 @@ export function PushSubscribe() {
     if (perm === "granted") {
       // TODO: POST /api/push/subscribe with PushSubscription
       setStatus("granted");
-      new Notification("ITOrgo", { body: "Push-уведомления включены — аукционы и доставка" });
+      new Notification("ITOrgo", { body: t("pwa.push_enabled_body") });
     } else setStatus("denied");
   }
 
   return (
     <div className="rounded-xl bg-surface-dim p-3">
-      <p className="text-sm font-bold">Push-уведомления</p>
-      <p className="mt-1 text-xs text-ink-faint">Аукционы, ставки, доставка — PWA push (spec #56)</p>
+      <p className="text-sm font-bold">{t("pwa.push_title")}</p>
+      <p className="mt-1 text-xs text-ink-faint">{t("pwa.push_text")}</p>
       <button onClick={subscribe} className="btn-primary mt-2 !min-h-9 w-full !text-sm">
-        {status === "granted" ? "✓ Включены" : status === "denied" ? "Заблокированы" : "Включить push"}
+        {status === "granted" ? `✓ ${t("pwa.push_enabled")}` : status === "denied" ? t("pwa.push_blocked") : t("pwa.push_enable")}
       </button>
-      <p className="mt-1 text-center text-xs text-ink-faint">TODO: VAPID + /api/push/subscribe + SW push event</p>
     </div>
   );
 }

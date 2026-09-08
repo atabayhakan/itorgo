@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PRODUCTS } from "@/lib/data/mock-data";
+import { getProducts } from "@/lib/data/catalog";
 import { track } from "@/lib/analytics/events";
 
 export async function GET(req: Request) {
@@ -8,7 +8,7 @@ export async function GET(req: Request) {
   const cat = searchParams.get("cat");
   const city = searchParams.get("city");
 
-  let list = [...PRODUCTS];
+  let list = await getProducts();
   if (q) list = list.filter((p) => p.title.toLowerCase().includes(q));
   if (cat) list = list.filter((p) => p.categoryId === cat);
   if (city) list = list.filter((p) => p.city === city);

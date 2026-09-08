@@ -3,6 +3,7 @@
 import type { Product, Category } from "@/lib/types";
 import { CATEGORIES, imageFor } from "@/lib/data/mock-data";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export function catOf(p: { categoryId: string }): Category {
   return CATEGORIES.find((c) => c.id === p.categoryId) ?? CATEGORIES[0];
@@ -24,6 +25,7 @@ export function ProductImage({ product, className = "", big = false, priority = 
   big?: boolean;
   priority?: boolean;
 }) {
+  const t = useT();
   const src = (product as Product).imageUrl ?? imageFor(product.categoryId, product.imageSeed);
 
   return (
@@ -50,7 +52,7 @@ export function ProductImage({ product, className = "", big = false, priority = 
         {src ? (
           <CategoryIcon id={product.categoryId} size={big ? 64 : 40} strokeWidth={1.4} />
         ) : (
-          <div className="rounded-full bg-surface-sunken px-3 py-2 text-[11px] text-ink-faint">No image</div>
+          <div className="rounded-full bg-surface-sunken px-3 py-2 text-[11px] text-ink-faint">{t("product.no_image")}</div>
         )}
       </div>
     </div>

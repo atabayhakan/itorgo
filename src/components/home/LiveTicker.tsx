@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 const EVENTS = [
   "Азамат выиграл iPhone 17 Pro Max",
@@ -12,6 +13,7 @@ const EVENTS = [
 ];
 
 export function LiveTicker() {
+  const t = useT();
   const [i, setI] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setI((v) => (v + 1) % EVENTS.length), 2600);
@@ -23,7 +25,7 @@ export function LiveTicker() {
       <span className="truncate" key={i} role="status" aria-live="polite">
         {EVENTS[i]}
       </span>
-      <span className="ml-auto hidden shrink-0 text-[11px] opacity-60 sm:inline">сейчас</span>
+      <span className="ml-auto hidden shrink-0 text-[11px] opacity-60 sm:inline">{t("common.now")}</span>
     </div>
   );
 }

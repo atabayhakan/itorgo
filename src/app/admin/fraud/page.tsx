@@ -37,13 +37,13 @@ export default function AdminFraudPage() {
     { key: "id", header: "ID", width: "70px", sortable: true },
     { key: "kind", header: "Тип", sortable: true, render: (r) => <span className="font-mono text-xs font-bold">{r.kind}</span> },
     { key: "subject", header: "Субъект", sortable: true, render: (r) => <span className="text-xs">{r.subject}</span> },
-    { key: "score", header: "Score", align: "right", sortable: true, render: (r) => <span className={`font-black tabular-nums ${r.score >= 80 ? "text-danger" : r.score >= 60 ? "text-warning" : "text-ink-soft"}`}>{r.score}%</span> },
+    { key: "score", header: "Оценка", align: "right", sortable: true, render: (r) => <span className={`font-black tabular-nums ${r.score >= 80 ? "text-danger" : r.score >= 60 ? "text-warning" : "text-ink-soft"}`}>{r.score}%</span> },
     { key: "status", header: "Статус", align: "center", render: (r) => <StatusBadge status={r.status} /> },
     { key: "at", header: "Время", width: "130px", sortable: true },
   ];
 
   return (
-    <AdminShell title="Fraud Center">
+    <AdminShell title="Антифрод">
       <div className="mb-4">
         <FilterPanel fields={FRAUD_FILTERS} value={filters} onChange={setFilters} />
       </div>
@@ -55,9 +55,6 @@ export default function AdminFraudPage() {
           sortDir="desc"
         />
       </div>
-      <p className="mt-2 text-xs text-ink-faint">
-        Filterlar client-side (demo). Prod: prisma.fraudCase.findMany + engine evaluateFraud(subjectId)
-      </p>
     </AdminShell>
   );
 }

@@ -11,11 +11,13 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { AIFloatingButton } from "@/components/home/AIFloatingButton";
 import Link from "next/link";
 import { getLiveAuctions, getFeed } from "@/lib/data/catalog";
+import { getT } from "@/lib/i18n/server";
 
 // Force dynamic so countdown "endsAt" is live per request (demo).
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
+  const t = await getT();
   const live = await getLiveAuctions();
   const feed = await getFeed(12);
   // Ending-soon auctions get their own FOMO rail below — keep the general
@@ -46,7 +48,7 @@ export default async function HomePage() {
         <TrustBarPro />
       </div>
 
-      {/* Signature: dark auction section — Сейчас на торгах */}
+      {/* Signature: dark auction section — live now */}
       <section className="rise-in mt-14 bg-ink py-12" style={{ animationDelay: "100ms" }}>
         <div className="mx-auto max-w-[1400px]">
           <div className="mb-4 flex items-end justify-between gap-3 px-4 lg:px-6">
@@ -55,13 +57,13 @@ export default async function HomePage() {
                 <span className="inline-flex items-center gap-1.5 rounded-md bg-white px-2 py-1 text-[11px] font-bold tracking-wide text-danger">
                   <span className="live-dot h-2 w-2 rounded-full bg-danger" /> LIVE
                 </span>
-                Сейчас на торгах
+                {t("home.live_now")}
                 <span className="rounded-md bg-white/10 px-2 py-0.5 text-xs font-bold text-white/70">{live.length}</span>
               </h2>
-              <p className="mt-1 text-sm text-white/60">Торги в реальном времени — сделайте ставку</p>
+              <p className="mt-1 text-sm text-white/60">{t("home.live_subtitle")}</p>
             </div>
             <Link href="/auctions" className="shrink-0 rounded-[10px] border border-white/25 px-3.5 py-2 text-sm font-semibold text-white hover:bg-white/10">
-              Все
+              {t("common.see_all")}
             </Link>
           </div>
           <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 lg:px-6">
@@ -76,13 +78,13 @@ export default async function HomePage() {
 
       {/* CATEGORY EXPERIENCE */}
       <section className="rise-in mt-16 space-y-6" style={{ animationDelay: "180ms" }}>
-        <SectionHeader title="Категории" href="/categories" subtitle="16 категорий — от электроники до фермы" />
+        <SectionHeader title={t("home.categories")} href="/categories" subtitle={t("home.categories_subtitle", { n: 16 })} />
         <CategoryGrid />
       </section>
 
       {/* SMART FEED */}
       <section className="rise-in mt-16 space-y-6" style={{ animationDelay: "240ms" }}>
-        <SectionHeader title="Для вас" subtitle="Подобрано на основе ваших интересов · Бишкек" href="/search" />
+        <SectionHeader title={t("home.for_you")} subtitle={t("home.for_you_subtitle", { city: t("cities.bishkek") })} href="/search" />
         <div className="grid grid-cols-2 gap-3 px-4 lg:grid-cols-4 lg:px-0">
           {feed.map((p) => (
             <ProductCard key={p.id} product={p} />
@@ -90,7 +92,7 @@ export default async function HomePage() {
         </div>
         <div className="px-4 lg:px-0">
           <Link href="/search" className="inline-flex w-full items-center justify-center rounded-[10px] border border-line bg-surface py-4 text-sm font-semibold hover:bg-surface-dim transition">
-            Показать ещё
+            {t("common.more")}
           </Link>
         </div>
       </section>
@@ -98,7 +100,7 @@ export default async function HomePage() {
       {/* Ending soon — FOMO */}
       {endingSoon.length > 0 && (
         <section className="mt-16 space-y-6">
-          <SectionHeader title="Скоро закончится" subtitle="Успейте сделать ставку" href="/auctions?filter=ending_soon" />
+          <SectionHeader title={t("home.ending_soon")} subtitle={t("home.ending_soon_subtitle")} href="/auctions?filter=ending_soon" />
           <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1">
             {endingSoon.slice(0, 6).map((a) => (
               <div key={a.id} className="snap-start">
@@ -111,7 +113,7 @@ export default async function HomePage() {
 
       {/* Popular stores */}
       <section className="mt-16 space-y-6">
-        <SectionHeader title="Популярные магазины" subtitle="Проверенные продавцы Кыргызстана" href="/stores" />
+        <SectionHeader title={t("home.top_stores")} subtitle={t("home.top_stores_subtitle")} href="/stores" />
         <StoreStrip />
       </section>
 
@@ -119,17 +121,16 @@ export default async function HomePage() {
 
       {/* Footer */}
       <footer className="mt-12 border-t border-line bg-surface px-4 py-8">
-        <p className="text-sm font-bold">ITOrgo — Кыргызстандын жаңы муундагы соода платформасы</p>
+        <p className="text-sm font-bold">{t("home.footer_title")}</p>
         <p className="mt-1 text-xs leading-relaxed text-ink-faint">
-          Marketplace · Live Auctions · Магазины · AI · Trust. Бишкек · Ош · Джалал-Абад · Каракол · Токмок и вся страна.
-          Валюта — сом. Языки — русский, кыргызча.
+          {t("home.footer_text", { cities: t("nav.cities_line") })}
         </p>
         <div className="mt-4 flex flex-wrap gap-2 text-xs">
-          <span className="chip bg-surface-sunken text-ink-soft">KG · активен</span>
-          <span className="chip bg-surface-sunken text-ink-faint">KZ · скоро</span>
-          <span className="chip bg-surface-sunken text-ink-faint">UZ · скоро</span>
+          <span className="chip bg-surface-sunken text-ink-soft">KG · {t("home.country_active")}</span>
+          <span className="chip bg-surface-sunken text-ink-faint">KZ · {t("common.soon")}</span>
+          <span className="chip bg-surface-sunken text-ink-faint">UZ · {t("common.soon")}</span>
         </div>
-        <p className="mt-6 text-center text-[11px] text-ink-faint">© {new Date().getFullYear()} ITOrgo · www.itorgo.kg</p>
+        <p className="mt-6 text-center text-[11px] text-ink-faint">{t("home.copyright", { year: new Date().getFullYear() })}</p>
       </footer>
     </main>
   );

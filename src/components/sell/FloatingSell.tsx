@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { IconPlus } from "@/components/icons/Icons";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export function FloatingSell() {
+  const t = useT();
   const [pressed, setPressed] = useState(false);
   return (
     <button
@@ -12,7 +14,7 @@ export function FloatingSell() {
         setTimeout(() => setPressed(false), 900);
       }}
       className="fixed right-4 bottom-[86px] z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-auction-500 to-auction-700 text-white shadow-[0_8px_28px_-6px_rgba(249,115,22,0.55)] transition-transform duration-150 active:scale-95 hover:shadow-[0_12px_36px_-8px_rgba(249,115,22,0.65)]"
-      aria-label="Продать"
+      aria-label={t("nav.sell")}
     >
       {pressed ? (
         <span className="rise-in text-[10px] font-bold">AI…</span>

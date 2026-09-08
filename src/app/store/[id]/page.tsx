@@ -4,6 +4,7 @@ import { STORES, PRODUCTS, getSeller } from "@/lib/data/mock-data";
 import { Avatar } from "@/components/ui/ProductImage";
 import { IconBack, IconVerified } from "@/components/icons/Icons";
 import { ProductCard } from "@/components/product/ProductCard";
+import { getT } from "@/lib/i18n/server";
 
 export function generateStaticParams() {
   return STORES.slice(0, 6).map((s) => ({ id: s.id }));
@@ -13,6 +14,7 @@ export default async function StorePage({ params }: { params: Promise<{ id: stri
   const { id } = await params;
   const store = STORES.find((s) => s.id === id);
   if (!store) notFound();
+  const t = await getT();
   const seller = getSeller(store.sellerId);
   const items = PRODUCTS.filter((p) => p.storeId === store.id);
 
@@ -32,20 +34,20 @@ export default async function StorePage({ params }: { params: Promise<{ id: stri
               {store.name} {store.verified && <IconVerified size={16} />}
             </p>
             <p className="text-xs text-ink-faint">
-              ⭐ {store.rating} · {store.followers.toLocaleString("ru-RU")} подписчиков · {store.salesCount} продаж
+              ⭐ {store.rating} · {t("seller.followers", { n: store.followers.toLocaleString("ru-RU") })} · {t("seller.sales", { n: store.salesCount })}
             </p>
           </div>
         </div>
       </div>
 
       <div className="mt-4 flex gap-2 px-4">
-        <span className="rounded-full bg-ink px-3 py-1.5 text-sm font-semibold text-white">Товары · {items.length}</span>
-        <span className="rounded-full bg-surface px-3 py-1.5 text-sm font-semibold text-ink-soft shadow-card">Аукционы</span>
-        <span className="rounded-full bg-surface px-3 py-1.5 text-sm font-semibold text-ink-soft shadow-card">Отзывы</span>
+        <span className="rounded-full bg-ink px-3 py-1.5 text-sm font-semibold text-white">{t("seller.products_tab")} · {items.length}</span>
+        <span className="rounded-full bg-surface px-3 py-1.5 text-sm font-semibold text-ink-soft shadow-card">{t("seller.auctions_tab")}</span>
+        <span className="rounded-full bg-surface px-3 py-1.5 text-sm font-semibold text-ink-soft shadow-card">{t("seller.reviews_tab")}</span>
       </div>
 
       <p className="mt-3 px-4 text-xs text-ink-faint">
-        Владелец: <Link href={`/seller/${seller.id}`} className="font-semibold text-brand-600">{seller.name}</Link> · Магазин проверен
+        {t("seller.owner")} <Link href={`/seller/${seller.id}`} className="font-semibold text-brand-600">{seller.name}</Link> · {t("seller.store_verified")}
       </p>
 
       <section className="mt-4 grid grid-cols-2 gap-3 px-4">
@@ -53,7 +55,7 @@ export default async function StorePage({ params }: { params: Promise<{ id: stri
           <ProductCard key={p.id} product={p} />
         ))}
         {items.length === 0 && (
-          <p className="col-span-2 rounded-2xl bg-surface p-8 text-center text-sm text-ink-faint shadow-card">В магазине пока нет товаров</p>
+          <p className="col-span-2 rounded-2xl bg-surface p-8 text-center text-sm text-ink-faint shadow-card">{t("seller.store_empty")}</p>
         )}
       </section>
     </main>

@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export function ThemeToggle() {
+  const t = useT();
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
@@ -21,7 +23,7 @@ export function ThemeToggle() {
 
   return (
     <button onClick={toggle} className="rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-semibold">
-      {theme === "light" ? "🌙 Тёмная" : "☀️ Светлая"}
+      {theme === "light" ? `🌙 ${t("nav.theme_dark")}` : `☀️ ${t("nav.theme_light")}`}
     </button>
   );
 }

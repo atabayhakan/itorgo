@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ProductImage } from "@/components/ui/ProductImage";
 import type { Product } from "@/lib/types";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 /**
  * Full-width swipe gallery — mobile-first.
@@ -10,6 +11,7 @@ import type { Product } from "@/lib/types";
  * Crossfade transition between slides.
  */
 export function ProductGallery({ product }: { product: Product }) {
+  const t = useT();
   const [idx, setIdx] = useState(0);
   // Demo: 4 virtual slides derived from seed variations
   const slides = [0, 1, 2, 3];
@@ -30,14 +32,14 @@ export function ProductGallery({ product }: { product: Product }) {
           <button
             key={s}
             onClick={() => setIdx(s)}
-            aria-label={`Фото ${s + 1}`}
+            aria-label={t("product.photo_n", { n: s + 1 })}
             className={`h-1.5 rounded-full transition-all ${idx === s ? "w-6 bg-white" : "w-1.5 bg-white/55"}`}
           />
         ))}
       </div>
 
       <span className="chip absolute top-3 left-3 bg-black/55 text-white backdrop-blur-md">
-        {product.city} · {product.condition === "new" ? "Новый" : "Б/у"}
+        {product.city} · {product.condition === "new" ? t("product.condition_new") : t("product.condition_used")}
       </span>
     </div>
   );

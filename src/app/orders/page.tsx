@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { formatKGS } from "@/lib/data/mock-data";
+import { getT } from "@/lib/i18n/server";
 
 const MOCK_ORDERS = [
   { id: "o2041", title: "iPhone 17 Pro Max 256GB", price: 49500, status: "paid" as const, at: "2026-08-20" },
@@ -9,25 +10,26 @@ const MOCK_ORDERS = [
 
 const tone: Record<string, string> = { paid: "bg-success-bg text-success", delivered: "bg-success-bg text-success", processing: "bg-warning-bg text-warning", pending: "bg-surface-sunken text-ink-soft" };
 
-export default function OrdersPage() {
+export default async function OrdersPage() {
+  const t = await getT();
   return (
     <main className="px-4 py-4">
-      <h1 className="text-lg font-extrabold">Мои покупки</h1>
-      <p className="text-xs text-ink-faint">История заказов · статусы: pending → processing → paid → shipped → delivered</p>
+      <h1 className="text-lg font-extrabold">{t("orders.my_purchases")}</h1>
+      <p className="text-xs text-ink-faint">{t("orders.history")}</p>
       <ul className="mt-4 space-y-2">
         {MOCK_ORDERS.map((o) => (
           <li key={o.id}>
             <Link href={`/orders/${o.id}`} className="flex items-center justify-between rounded-2xl bg-surface px-4 py-3 shadow-card">
               <div>
                 <p className="text-sm font-semibold">{o.title}</p>
-                <p className="text-xs text-ink-faint">{o.id} · {o.at} · {formatKGS(o.price)} сом</p>
+                <p className="text-xs text-ink-faint">{o.id} · {o.at} · {formatKGS(o.price)} {t("currency.som")}</p>
               </div>
-              <span className={`chip ${tone[o.status]}`}>{o.status}</span>
+              <span className={`chip ${tone[o.status]}`}>{t(`orders.status_${o.status}`)}</span>
             </Link>
           </li>
         ))}
       </ul>
-      <Link href="/" className="btn-secondary mt-4 w-full">На главную</Link>
+      <Link href="/" className="btn-secondary mt-4 w-full">{t("states.go_home")}</Link>
     </main>
   );
 }

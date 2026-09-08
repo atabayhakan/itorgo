@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 /**
  * PWA install prompt + service worker registration stub.
  * TODO: generate real SW with workbox / next-pwa, add offline fallback.
  */
 export function PWAInstaller() {
+  const t = useT();
   const [deferred, setDeferred] = useState<Event | null>(null);
   const [installed, setInstalled] = useState(false);
 
@@ -38,7 +40,7 @@ export function PWAInstaller() {
           setDeferred(null);
         }}
       >
-        📲 Установить ITOrgo
+        📲 {t("pwa.install")}
       </button>
     </div>
   );

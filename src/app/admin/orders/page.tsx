@@ -83,9 +83,6 @@ export default function AdminOrdersPage() {
         <FilterPanel fields={ORDER_FILTERS} value={filters} onChange={setFilters} />
       </div>
       <DataDenseTable columns={cols} rows={sortedRows} onSort={handleSort} sortKey={sortKey} sortDir={sortDir} />
-      <p className="mt-2 text-xs text-ink-faint">
-        Filterlar client-side (demo). Prod: prisma.order.findMany RBAC filter · Toplam {rows.length} order
-      </p>
     </AdminShell>
   );
 }

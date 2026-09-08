@@ -5,9 +5,11 @@ import { getSeller, getStore } from "@/lib/data/mock-data";
 import { Avatar } from "@/components/ui/ProductImage";
 import { IconShield, IconStar, IconVerified } from "@/components/icons/Icons";
 import { useFollows } from "@/lib/follows/FollowsContext";
+import { useT } from "@/lib/i18n/LocaleProvider";
 import type { Product } from "@/lib/types";
 
 export function SellerCard({ product }: { product: Product }) {
+  const t = useT();
   const seller = getSeller(product.sellerId);
   const store = getStore(product.storeId);
   const { has, toggle } = useFollows();
@@ -24,25 +26,25 @@ export function SellerCard({ product }: { product: Product }) {
             <span className="inline-flex items-center gap-1">
               <IconStar size={12} filled /> {seller.rating}
             </span>
-            · {seller.positivePct}% положительных · {seller.salesCount} продаж · {seller.yearsOnPlatform} года на ITOrgo
+            · {t("seller.positive_reviews", { p: seller.positivePct })} · {t("seller.sales", { n: seller.salesCount })} · {t("seller.on_itorgo_since", { y: t("seller.years", { y: seller.yearsOnPlatform }) })}
           </p>
         </div>
-        <span className="chip bg-brand-50 text-brand-700">Профиль</span>
+        <span className="chip bg-brand-50 text-brand-700">{t("seller.profile")}</span>
       </Link>
       {store && (
         <Link href={`/store/${store.id}`} className="mt-3 flex items-center justify-between rounded-xl bg-surface-dim px-3 py-2.5">
           <span className="text-sm font-semibold">🏪 {store.name}</span>
-          <span className="text-xs text-ink-faint">Открыть магазин →</span>
+          <span className="text-xs text-ink-faint">{t("seller.open_store")}</span>
         </Link>
       )}
       <div className="mt-3 grid grid-cols-2 gap-2">
         <button onClick={() => toggle(seller.id)} className={`!min-h-10 rounded-xl px-3 py-2.5 text-sm font-semibold ${following ? "bg-ink text-white" : "btn-secondary"}`}>
-          {following ? "✓ Подписан" : "Подписаться"}
+          {following ? `✓ ${t("seller.following")}` : t("seller.follow")}
         </button>
-        <button className="rounded-xl border border-line bg-surface px-3 py-2.5 text-sm font-semibold">Сообщение</button>
+        <button className="rounded-xl border border-line bg-surface px-3 py-2.5 text-sm font-semibold">{t("seller.message")}</button>
       </div>
       <p className="mt-2 flex items-center justify-center gap-1 text-xs text-success">
-        <IconShield size={12} /> Проверенный продавец
+        <IconShield size={12} /> {t("seller.verified_seller")}
       </p>
     </section>
   );
