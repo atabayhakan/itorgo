@@ -14,7 +14,7 @@
     "admin:hash": "node scripts/admin-hash.mjs"
   },
   "dependencies": {
-    "next": "^15.3.3",
+    "next": "^15.5.25",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "@prisma/client": "^6.8.2"
@@ -26,11 +26,16 @@
     "@tailwindcss/postcss": "^4.1.8",
     "tailwindcss": "^4.1.8",
     "prisma": "^6.8.2",
-    "tsx": "^4.19.0",
+    "tsx": "^4.23.13",
     "vitest": "^3.1.0",
     "@types/node": "^22.15.0",
     "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.0",
+    "@types/react-dom": "^19.2.7",
     "typescript": "^5.8.0"
+  },
+  "overrides": {
+    "sharp": "^0.35.0",
+    "postcss": "^8.5.26",
+    "deepmerge-ts": "^8.0.0"
   }
 }

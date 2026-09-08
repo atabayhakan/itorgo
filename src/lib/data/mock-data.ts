@@ -263,6 +263,7 @@ export function getFeed(limit = 12): Product[] {
   return mixed.filter(Boolean);
 }
 
+/** Thousands separated by a regular space, independent of the runtime's ICU (which may emit U+202F/U+00A0). */
 export function formatKGS(n: number): string {
-  return n.toLocaleString("ru-RU").replace(/,/g, " ");
+  return n.toLocaleString("ru-RU").replace(/[,  ]/g, " ");
 }
